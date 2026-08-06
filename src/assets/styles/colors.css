@@ -1,0 +1,7 @@
+:root {
+  /* KWT Brand Colors — single source of truth */
+  --color-primary: #1B2A52;      /* headline text, pill text, primary UI */
+  --color-secondary: #4A5568;    /* body/supporting text, labels */
+  --color-accent: #EAE6FF;       /* lavender — tags, pills, small surface area only */
+  --color-background: #FCFCFE;   /* page background */
+}

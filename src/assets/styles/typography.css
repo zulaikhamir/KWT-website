@@ -1,0 +1,17 @@
+:root {
+  --font-heading: 'Sora', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --fw-heading: 700;
+  --fw-label: 500;
+  --fw-body: 400;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-heading);
+}
+
+body, p, span {
+  font-family: var(--font-body);
+  font-weight: var(--fw-body);
+}
