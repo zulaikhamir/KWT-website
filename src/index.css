@@ -2,12 +2,21 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
+@import "./assets/styles/colors.css";
+@import "./assets/styles/typography.css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
     --font-heading: var(--font-sans);
     --font-sans: 'Geist Variable', sans-serif;
+    /* ─── Footer semantic tokens ──────────────────────── */
+    --color-footer-bg:         var(--color-footer-bg);
+    --color-footer-text:       var(--color-footer-text);
+    --color-footer-text-muted: var(--color-footer-text-muted);
+    --color-footer-border:     var(--color-footer-border);
+    --color-footer-icon-bg:    var(--color-footer-icon-bg);
+    --color-footer-icon-hover: var(--color-footer-icon-hover);
     --color-sidebar-ring: var(--sidebar-ring);
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -123,8 +132,43 @@
     }
   body {
     @apply bg-background text-foreground;
+    background-color: var(--color-background);
     }
   html {
     @apply font-sans;
     }
+}
+
+/* ─── Hero entrance animations ─────────────────────────────────────────── */
+@keyframes kwt-fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes kwt-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes kwt-float {
+  0%, 100% { transform: translateY(0px);   }
+  50%       { transform: translateY(-6px);  }
+}
+
+@keyframes kwt-pulse-soft {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1;   }
+}
+
+.kwt-animate-fade-up {
+  animation: kwt-fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.kwt-animate-fade-in {
+  animation: kwt-fade-in 0.6s ease both;
+}
+.kwt-float {
+  animation: kwt-float 5s ease-in-out infinite;
+}
+.kwt-pulse-soft {
+  animation: kwt-pulse-soft 3s ease-in-out infinite;
 }
