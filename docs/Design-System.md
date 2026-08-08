@@ -18,9 +18,9 @@ Border: #E5E7EB
 
 ## Typography
 
-Headings: Inter
+Headings: Geist Variable
 
-Body: Inter
+Body: Geist Variable
 
 ---
 
@@ -75,8 +75,8 @@ The KWT color system is defined in a single source of truth at [src/assets/style
 
 The KWT typography system is defined in [src/assets/styles/typography.css](src/assets/styles/typography.css).
 
-- `--font-heading: 'Sora', sans-serif` — used for headings and title-style text
-- `--font-body: 'Inter', sans-serif` — used for body copy, paragraphs, labels, and supporting text
+- `--font-heading: 'Geist Variable', sans-serif` — used for headings and title-style text
+- `--font-body: 'Geist Variable', sans-serif` — used for body copy, paragraphs, labels, and supporting text
 - `--fw-heading: 700` — heading weight
 - `--fw-label: 500` — label or emphasis weight
 - `--fw-body: 400` — default body weight
