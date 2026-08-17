@@ -1,5 +1,9 @@
+import PageContainer from "@/components/layout/PageContainer";
+
+
 export default function Home() {
   return (
+    <PageContainer>
     <main className="flex min-h-screen items-center justify-center bg-[var(--color-background)] px-6 py-16 text-center">
       <section className="max-w-2xl">
         <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-[var(--color-primary)]">
@@ -13,5 +17,6 @@ export default function Home() {
         </p>
       </section>
     </main>
+      </PageContainer>
   );
 }
