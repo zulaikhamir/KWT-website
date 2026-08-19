@@ -8,6 +8,7 @@ import Events      from "./pages/Events";
 import Contact     from "./pages/Contact";
 import Opportunities from "./pages/Opportunities";
 import NotFound    from "./pages/NotFound";
+import WallOfGratitude from "./pages/WallOfGratitude";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/events"        element={<Events />}        />
             <Route path="/contact"       element={<Contact />}       />
             <Route path="/opportunities" element={<Opportunities />} />
+            <Route path="/wall-of-gratitude" element={<WallOfGratitude />} />
             <Route path="*"              element={<NotFound />}      />
           </Routes>
         </div>
