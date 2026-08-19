@@ -1,33 +1,32 @@
+import type { ReactNode } from "react";
+
 import { cn } from "@/lib/utils";
 
-interface SectionWrapperProps {
-  children: React.ReactNode;
-  className?: string;
-  /** "white" = #FCFCFE (default), "surface" = very light off-white for visual rhythm */
-  bg?: "white" | "surface";
+type SectionWrapperProps = {
+  children: ReactNode;
   id?: string;
-}
+  className?: string;
+  tone?: "default" | "surface";
+  divided?: boolean;
+};
 
-/**
- * Consistent section shell used across all homepage sections.
- * Handles horizontal padding, max-width centering, and alternating backgrounds.
- */
 export default function SectionWrapper({
   children,
-  className,
-  bg = "white",
   id,
+  className,
+  tone = "default",
+  divided = false,
 }: SectionWrapperProps) {
   return (
     <section
       id={id}
       className={cn(
-        "py-16 sm:py-20",
-        bg === "surface" ? "bg-[#F8FAFC]" : "bg-[var(--color-background)]",
-        className,
+        "w-full",
+        tone === "surface" && "bg-surface",
+        divided && "border-t border-hairline"
       )}
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+      <div className={cn("mx-auto max-w-6xl px-6 py-20 sm:py-28 lg:px-8", className)}>
         {children}
       </div>
     </section>

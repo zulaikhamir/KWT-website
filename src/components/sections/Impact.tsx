@@ -46,12 +46,11 @@ function StatBlock({ stat }: { stat: StatItem }) {
 // ─── Impact ──────────────────────────────────────────────────────────────────
 export default function Impact() {
   return (
-    <SectionWrapper bg="white" id="impact">
+    <SectionWrapper id="impact">
       <SectionHeading
         align="center"
-        heading="Our Growing Community"
-        body="KWT is an active and growing space for Kashmiri women across STEM and technology — here's where we are so far."
-        bodyMaxWidth="max-w-xl"
+        title="Our Growing Community"
+        description="KWT is an active and growing space for Kashmiri women across STEM and technology — here's where we are so far."
         className="mb-14"
       />
 

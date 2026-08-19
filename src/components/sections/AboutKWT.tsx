@@ -69,11 +69,13 @@ function PillarCard(props: (typeof PILLARS)[number]) {
 // ─── About KWT ───────────────────────────────────────────────────────────────
 export default function AboutKWT() {
   return (
-    <SectionWrapper bg="surface">
+
+
+<SectionWrapper tone="surface">
       <SectionHeading
         eyebrow="About KWT"
-        heading="A community built by and for Kashmiri women in STEM."
-        body="KWT brings together Kashmiri women across technology, engineering, science, and research — at every stage of their journey — to learn, discover opportunities, build meaningful connections, and give back."
+        title="A community built by and for Kashmiri women in STEM."
+        description="KWT brings together Kashmiri women across technology, engineering, science, and research — at every stage of their journey — to learn, discover opportunities, build meaningful connections, and give back."
         className="mb-10"
       />
 

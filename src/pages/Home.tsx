@@ -1,17 +1,18 @@
-import Hero       from "@/components/sections/Hero";
-import AboutKWT   from "@/components/sections/AboutKWT";
-import Impact     from "@/components/sections/Impact";
+import PageContainer from "@/components/layout/PageContainer";
+import Hero        from "@/components/sections/Hero";
+import AboutKWT    from "@/components/sections/AboutKWT";
+import Impact      from "@/components/sections/Impact";
 import GetInvolved from "@/components/sections/GetInvolved";
-import JoinCTA    from "@/components/sections/JoinCTA";
+import JoinCTA     from "@/components/sections/JoinCTA";
 
 export default function Home() {
   return (
-    <main>
+    <PageContainer>
       <Hero />
       <AboutKWT />
       <Impact />
       <GetInvolved />
       <JoinCTA />
-    </main>
+    </PageContainer>
   );
 }

@@ -92,12 +92,11 @@ function InvolvementCard(props: (typeof CARDS)[number]) {
 // ─── Get Involved ────────────────────────────────────────────────────────────
 export default function GetInvolved() {
   return (
-    <SectionWrapper bg="white" id="get-involved">
+    <SectionWrapper id="get-involved">
       <SectionHeading
         align="center"
-        heading="Help Build KWT"
-        body="KWT is built through community contribution. There are many ways to get involved."
-        bodyMaxWidth="max-w-xl"
+        title="Help Build KWT"
+        description="KWT is built through community contribution. There are many ways to get involved."
         className="mb-12"
       />
 

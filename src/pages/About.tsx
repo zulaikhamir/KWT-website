@@ -1,7 +1,18 @@
+import PageContainer from "@/components/layout/PageContainer";
+import OurStory from "@/components/sections/about/OurStory";
+import MissionVision from "@/components/sections/about/MissionVision";
+import Values from "@/components/sections/about/Values";
+import Team from "@/components/sections/about/Team";
+import CommunityGuidelines from "@/components/sections/about/CommunityGuidelines";
+
 export default function About() {
   return (
-    <main className="flex min-h-[60vh] items-center justify-center px-6">
-      <p className="text-[var(--color-secondary)]">About page — coming soon.</p>
-    </main>
+    <PageContainer>
+      <OurStory />
+      <MissionVision />
+      <Values />
+      <Team />
+      <CommunityGuidelines />
+    </PageContainer>
   );
 }
