@@ -17,6 +17,7 @@ const GET_INVOLVED_ITEMS = [
 const NAV_LINKS = [
   { label: "About", href: "/about" },
   { label: "Events", href: "/events" },
+  { label: "Wall of Gratitude", href: "/wall-of-gratitude" },
 ] as const;
 
 // ─── Get Involved dropdown ───────────────────────────────────────────────────
