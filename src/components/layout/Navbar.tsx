@@ -6,9 +6,10 @@ import { cn } from "@/lib/utils";
 import headerLogo from "@/assets/images/header-logo.png";
 
 const navLinks = [
-  { label: "Home", to: "/" },
-  { label: "About", to: "/about" },
+  { label: "Home",   to: "/" },
+  { label: "About",  to: "/about" },
   { label: "Events", to: "/events" },
+  { label: "FAQs",   to: "/faq" },
 ];
 
 export default function Navbar() {
@@ -30,6 +31,7 @@ export default function Navbar() {
         aria-label="Main"
         className="mx-auto flex h-(--nav-height) max-w-6xl items-center justify-between px-6 lg:px-8"
       >
+        {/* Logo */}
         <Link to="/" className="shrink-0 transition-opacity hover:opacity-70">
           <img
             src={headerLogo}
@@ -38,6 +40,7 @@ export default function Navbar() {
           />
         </Link>
 
+        {/* Desktop nav links */}
         <ul className="hidden items-center gap-10 md:flex">
           {navLinks.map((link) => (
             <li key={link.to}>
@@ -48,6 +51,7 @@ export default function Navbar() {
           ))}
         </ul>
 
+        {/* Desktop CTA */}
         <div className="hidden md:block">
           <Link
             to="/get-involved"
@@ -55,7 +59,8 @@ export default function Navbar() {
               "group inline-flex items-center gap-1.5 rounded-full bg-[var(--color-primary)]",
               "px-5 py-2.5 text-[0.875rem] font-medium tracking-[-0.005em] text-white",
               "transition-all duration-200 hover:bg-[var(--color-primary)]/90",
-              "hover:shadow-[0_8px_24px_-8px_rgba(27,42,82,0.5)]"
+              "hover:shadow-[0_8px_24px_-8px_rgba(27,42,82,0.5)]",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/40 focus-visible:ring-offset-2",
             )}
           >
             Get involved
@@ -63,9 +68,10 @@ export default function Navbar() {
           </Link>
         </div>
 
+        {/* Mobile hamburger */}
         <button
           type="button"
-          onClick={() => setIsOpen((open) => !open)}
+          onClick={() => setIsOpen((v) => !v)}
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
           aria-label={isOpen ? "Close menu" : "Open menu"}
@@ -75,6 +81,7 @@ export default function Navbar() {
         </button>
       </nav>
 
+      {/* Mobile menu */}
       {isOpen && (
         <div
           id="mobile-menu"

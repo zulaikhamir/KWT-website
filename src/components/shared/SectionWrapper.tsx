@@ -22,11 +22,11 @@ export default function SectionWrapper({
       id={id}
       className={cn(
         "w-full",
-        tone === "surface" && "bg-surface",
+        tone === "surface" && "bg-[var(--color-bg-surface)]",
         divided && "border-t border-hairline"
       )}
     >
-      <div className={cn("mx-auto max-w-6xl px-6 py-20 sm:py-28 lg:px-8", className)}>
+      <div className={cn("mx-auto max-w-6xl px-6 py-14 sm:py-20 lg:px-8", className)}>
         {children}
       </div>
     </section>
