@@ -33,30 +33,40 @@ export function useCountUp(value: string, active: boolean, durationMs = 1200) {
     ).matches;
 
     if (prefersReducedMotion) {
-      setDisplay(target);
-      return;
+      const frame = requestAnimationFrame(() => {
+        setDisplay(target);
+      });
+
+      return () => cancelAnimationFrame(frame);
     }
 
     const start = performance.now();
+    let animationFrame: number;
 
     const step = (now: number) => {
       const progress = Math.min((now - start) / durationMs, 1);
-      // ease-out-cubic: fast start, settles gently — matches kwt-animate-fade-up's feel
+
+      // ease-out-cubic: fast start, settles gently
       const eased = 1 - Math.pow(1 - progress, 3);
+
       setDisplay(Math.round(eased * target));
-      if (progress < 1) requestAnimationFrame(step);
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(step);
+      }
     };
 
-    requestAnimationFrame(step);
+    animationFrame = requestAnimationFrame(step);
+
+    return () => cancelAnimationFrame(animationFrame);
   }, [active, target, durationMs]);
 
   return `${display}${suffix}`;
 }
 
 /**
- * Reports whether `ref`'s element has entered the viewport. Fires once —
- * `inView` stays true after the first intersection, it doesn't flip back to
- * false when you scroll past. That's what you want for a "play once" stat count.
+ * Reports whether `ref`'s element has entered the viewport.
+ * Fires once — `inView` stays true after the first intersection.
  */
 export function useInView<T extends HTMLElement>(threshold = 0.4) {
   const ref = useRef<T | null>(null);
@@ -70,13 +80,14 @@ export function useInView<T extends HTMLElement>(threshold = 0.4) {
       ([entry]) => {
         if (entry.isIntersecting) {
           setInView(true);
-          observer.disconnect(); // stop watching — we only need this once
+          observer.disconnect();
         }
       },
       { threshold }
     );
 
     observer.observe(node);
+
     return () => observer.disconnect();
   }, [threshold]);
 
