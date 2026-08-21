@@ -3,20 +3,24 @@ import SectionWrapper from "@/components/shared/SectionWrapper";
 
 const faqs = [
   {
-    question: "[Placeholder] How do I join KWT?",
-    answer: "[Placeholder] Explain the steps to become a member and where to start.",
+    question: "How do I join KWT?",
+    answer:
+      "You can join KWT by filling out our membership form, linked on the Get Involved page. Once your request is processed, you'll receive information about joining the community.",
   },
   {
-    question: "[Placeholder] Is membership free?",
-    answer: "[Placeholder] State any cost, or confirm that membership is free.",
+    question: "Is membership free?",
+    answer:
+      "Yes. KWT membership is currently free. Our goal is to make the community accessible to Kashmiri women at different stages of their technology and STEM journeys.",
   },
   {
-    question: "[Placeholder] Do I need to work in tech already?",
-    answer: "[Placeholder] Clarify whether beginners and career switchers are welcome.",
+    question: "Do I need to work in tech already?",
+    answer:
+      "No. KWT is intended for Kashmiri women at different stages of their journey, including students, beginners, researchers, and professionals. You don't need to already be working in technology to participate.",
   },
   {
-    question: "[Placeholder] Can I take part remotely?",
-    answer: "[Placeholder] Explain which activities are online versus in person.",
+    question: "Can I take part remotely?",
+    answer:
+      "Yes. KWT includes online community activities, discussions, and sessions, while some activities may also take place in person. The format will depend on the specific event or initiative.",
   },
 ];
 

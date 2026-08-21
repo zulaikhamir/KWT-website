@@ -4,10 +4,10 @@ import SectionWrapper from "@/components/shared/SectionWrapper";
 import CtaLink from "@/components/shared/CtaLink";
 
 const benefits = [
-  "[Placeholder] Access to community events, workshops, and meetups.",
-  "[Placeholder] A network of peers and mentors across the tech industry.",
-  "[Placeholder] Early notice of jobs, internships, and learning opportunities.",
-  "[Placeholder] A space to ask questions and share what you are building.",
+  "Learn from the community — access discussions, sessions, resources, and experiences shared by women working and learning across different areas of technology.",
+  "Discover opportunities — find relevant jobs, internships, events, research opportunities, and other resources shared within the community.",
+  "Build your network — connect with Kashmiri women studying, researching, and working across technology and related fields.",
+  "Contribute and grow — share your knowledge, participate in discussions, support others, and contribute to building the community.",
 ];
 
 export default function BecomeMember() {
@@ -18,13 +18,18 @@ export default function BecomeMember() {
           <p className="eyebrow">For individuals</p>
           <h2 className="heading mt-5">Become a member</h2>
           <p className="lede mt-5">
-            [Placeholder] Who membership is for and what joining the community involves.
+            KWT is for Kashmiri women who are interested in technology, science, engineering,
+            research, or related fields — whether you're a student, beginner, researcher, or
+            working professional. Joining the community gives you a space to connect with
+            others, discover opportunities, learn from shared experiences, and take part in
+            community activities.
           </p>
+          {/* [PLACEHOLDER — MEMBERSHIP FORM URL] — replace "#membership-form" with the real form URL */}
           <CtaLink
-            href="mailto:hello@example.org?subject=KWT%20membership"
+            href="#membership-form"
             className="mt-9"
           >
-            Join the community
+            Join the Community
           </CtaLink>
         </div>
 

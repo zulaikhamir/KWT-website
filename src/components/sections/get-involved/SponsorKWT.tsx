@@ -10,7 +10,7 @@ export default function SponsorKWT() {
         align="center"
         eyebrow="For sponsors"
         title="Sponsor KWT"
-        description="[Placeholder] How sponsorship money is used and the impact it makes on the community."
+        description="Sponsorship helps KWT create more opportunities for Kashmiri women through community events, learning initiatives, resources, and other programs that support professional and personal growth."
       />
 
       <div className="mt-16 flex flex-col items-center gap-8 rounded-2xl border border-hairline bg-white p-9 text-center shadow-[0_32px_80px_-32px_rgba(27,42,82,0.18)] sm:flex-row sm:gap-10 sm:p-10 sm:text-left">
@@ -24,19 +24,20 @@ export default function SponsorKWT() {
 
         <div className="flex-1">
           <h3 className="subheading text-xl">
-            [Placeholder] Help fund a community built by and for Kashmiri women in tech
+            Interested in supporting KWT?
           </h3>
           <p className="mt-2.5 text-[0.9375rem] leading-7 text-[var(--color-secondary)]">
-            [Placeholder] What sponsorship supports — events, resources, or member
-            opportunities — and the recognition sponsors receive in return.
+            We're open to conversations with organisations and individuals interested in
+            supporting the growth of Kashmiri Women in Tech. Contact us to discuss how we
+            could work together.
           </p>
         </div>
 
         <CtaLink
-          href="mailto:hello@example.org?subject=KWT%20sponsorship"
+          href="mailto:kashmiriwomenintech@gmail.com?subject=KWT%20sponsorship"
           className="shrink-0"
         >
-          Become a sponsor
+          Contact us to discuss
         </CtaLink>
       </div>
     </SectionWrapper>

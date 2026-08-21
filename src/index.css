@@ -2,13 +2,21 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
+@import "./assets/styles/colors.css";
+@import "./assets/styles/typography.css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-    --font-heading: 'Sora', sans-serif;
-    --font-body: 'Inter', sans-serif;
-    --font-sans: 'Inter', sans-serif;
+    --font-heading: var(--font-sans);
+    --font-sans: 'Geist Variable', sans-serif;
+    /* ─── Footer semantic tokens ──────────────────────── */
+    --color-footer-bg:         var(--color-footer-bg);
+    --color-footer-text:       var(--color-footer-text);
+    --color-footer-text-muted: var(--color-footer-text-muted);
+    --color-footer-border:     var(--color-footer-border);
+    --color-footer-icon-bg:    var(--color-footer-icon-bg);
+    --color-footer-icon-hover: var(--color-footer-icon-hover);
     --color-sidebar-ring: var(--sidebar-ring);
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -52,7 +60,7 @@
 :root {
     /* KWT brand values — these back the --color-* tokens in @theme inline above.
        Keep in sync with assets/styles/colors.css. */
-    --background: #FCFCFE;
+    --background: #F8F7FD;
     --foreground: #1B2A52;
     --card: #FFFFFF;
     --card-foreground: #1B2A52;
@@ -149,12 +157,12 @@
 
 /* ------------------------------------------------------------------
    KWT editorial type + surface system.
-   Premium feel comes from tight tracking on large type, wide tracking
-   on small caps labels, generous leading on body, and hairline surfaces.
    ------------------------------------------------------------------ */
 @theme {
   --color-hairline: rgba(27, 42, 82, 0.09);
   --color-surface: #F5F6FA;
+  --color-bg-base:    #F8F7FD;
+  --color-bg-surface: #F2F0FA;
   /* Deeper than brand navy — anchors the footer without competing with page content. */
   --color-navy-deep: #111C3A;
   /* Pinned navbar height. Full-height heroes subtract this so they fill the
@@ -165,7 +173,7 @@
 @layer components {
   /* Small uppercase label above a heading. */
   .eyebrow {
-    font-family: var(--font-body);
+    font-family: var(--font-sans);
     font-size: 0.75rem;
     font-weight: 500;
     line-height: 1;
@@ -222,17 +230,222 @@
     text-wrap: pretty;
   }
 
+  /* ─── Global page background treatment ────────────────────────────────────
+     Apply once on the outermost page wrapper (PageContainer).
+     Layering (back → front):
+       1. Solid base fill — #F8F7FD soft lavender/off-white
+       2. Dotted texture  — barely-visible lavender dots on a 24px grid
+       3. ::before        — top-right decorative radial orb
+       4. ::after         — bottom-left decorative radial orb
+       5. Page content    — z-0 and above
+  ────────────────────────────────────────────────────────────────────────── */
+  .kwt-page-bg {
+    position: relative;
+    background-color: var(--color-bg-base);
+    background-image: radial-gradient(
+      circle,
+      var(--color-bg-dot) 1.5px,
+      transparent 1.5px
+    );
+    background-size: 20px 20px;
+    /* Isolate stacking so orb pseudo-elements stay beneath content */
+    isolation: isolate;
+  }
+
+  /* Top-right orb */
+  .kwt-page-bg::before {
+    content: "";
+    pointer-events: none;
+    position: fixed;
+    top: -12rem;
+    right: -10rem;
+    width: 42rem;
+    height: 42rem;
+    border-radius: 9999px;
+    background: radial-gradient(
+      circle,
+      var(--color-bg-glow) 0%,
+      transparent 68%
+    );
+    z-index: -1;
+    /* No animation — purely static decorative shape */
+  }
+
+  /* Bottom-left orb */
+  .kwt-page-bg::after {
+    content: "";
+    pointer-events: none;
+    position: fixed;
+    bottom: -14rem;
+    left: -12rem;
+    width: 38rem;
+    height: 38rem;
+    border-radius: 9999px;
+    background: radial-gradient(
+      circle,
+      var(--color-bg-glow) 0%,
+      transparent 65%
+    );
+    z-index: -1;
+  }
+
+  /* Reduce visual noise for users who prefer reduced motion / minimal UI */
+  @media (prefers-reduced-motion: reduce) {
+    .kwt-page-bg::before,
+    .kwt-page-bg::after {
+      opacity: 0;
+    }
+  }
+
   /* Hairline-bordered surface used for cards across both pages. */
   .surface-card {
     background-color: #FFFFFF;
     border: 1px solid var(--color-hairline);
     border-radius: 1.25rem;
+    /* resting shadow lifts cards off the background — no hover required to read the grid */
+    box-shadow: 0 1px 3px rgba(27, 42, 82, 0.06), 0 4px 16px -6px rgba(27, 42, 82, 0.10);
     transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
   }
 
   .surface-card-interactive:hover {
     border-color: color-mix(in srgb, var(--color-primary) 22%, transparent);
-    box-shadow: 0 1px 2px rgba(27, 42, 82, 0.04), 0 12px 32px -12px rgba(27, 42, 82, 0.16);
+    box-shadow: 0 1px 2px rgba(27, 42, 82, 0.04), 0 16px 40px -12px rgba(27, 42, 82, 0.18);
     transform: translateY(-2px);
+  }
+}
+
+/* ─── Hero entrance animations ─────────────────────────────────────────── */
+@keyframes kwt-fade-up {
+  from { opacity: 0; transform: translateY(18px) scale(var(--kwt-fade-scale, 1)); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+@keyframes kwt-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes kwt-float {
+  0%, 100% { transform: translateY(0px);   }
+  50%       { transform: translateY(-6px);  }
+}
+
+@keyframes kwt-pulse-soft {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1;   }
+}
+
+.kwt-animate-fade-up {
+  animation: kwt-fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.kwt-animate-fade-in {
+  animation: kwt-fade-in 0.6s ease both;
+}
+.kwt-float {
+  animation: kwt-float 5s ease-in-out infinite;
+}
+.kwt-pulse-soft {
+  animation: kwt-pulse-soft 3s ease-in-out infinite;
+}
+
+/* ─── Scroll-reveal motion system ──────────────────────────────────────────
+   Philosophy:
+     • Elements start invisible/shifted; the JS hook adds .is-visible when
+       they enter the viewport, triggering the transition.
+     • A single consistent easing/duration pair for all scroll reveals.
+     • Card grids use stagger delay helpers (.kwt-stagger-1 … 4).
+     • prefers-reduced-motion: elements are shown immediately (no offset,
+       no delay) — content is never hidden from users who need it.
+
+   Motion tokens (CSS custom properties):
+     --kwt-ease-out  : the standard ease-out curve used across all reveals
+     --kwt-dur-fast  : 200ms  — hover / micro-interactions
+     --kwt-dur-base  : 480ms  — standard scroll reveal
+     --kwt-dur-slow  : 640ms  — hero / primary heading reveals
+     --kwt-reveal-y  : translateY offset for fade-up reveals
+─────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --kwt-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --kwt-dur-fast: 200ms;
+  --kwt-dur-base: 480ms;
+  --kwt-dur-slow: 640ms;
+  --kwt-reveal-y: 20px;
+}
+
+/* ── Base reveal state ────────────────────────────────────────────────────── */
+/* Elements decorated with kwt-reveal start hidden and transition in when
+   the .is-visible class is added by the IntersectionObserver hook.         */
+.kwt-reveal {
+  opacity: 0;
+  transform: translateY(var(--kwt-reveal-y));
+  transition:
+    opacity    var(--kwt-dur-base) var(--kwt-ease-out),
+    transform  var(--kwt-dur-base) var(--kwt-ease-out);
+}
+
+.kwt-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Descendant: parent container is the observer target; children carry kwt-reveal */
+.is-visible .kwt-reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade-only variant — used for full-width or horizontally-constrained blocks
+   where vertical shift would cause a visible layout jump.                    */
+.kwt-reveal-fade {
+  opacity: 0;
+  transition: opacity var(--kwt-dur-base) var(--kwt-ease-out);
+}
+
+.kwt-reveal-fade.is-visible {
+  opacity: 1;
+}
+
+/* Descendant variant */
+.is-visible .kwt-reveal-fade {
+  opacity: 1;
+}
+
+/* ── Stagger delay helpers ────────────────────────────────────────────────── */
+/* Apply to individual cards in a grid to stagger their reveal.
+   Keep delays short — the goal is rhythm, not waiting.                       */
+.kwt-stagger-1 { transition-delay:  60ms; }
+.kwt-stagger-2 { transition-delay: 130ms; }
+.kwt-stagger-3 { transition-delay: 200ms; }
+.kwt-stagger-4 { transition-delay: 270ms; }
+
+/* Stagger works on children of the observer container too */
+.is-visible .kwt-stagger-1 { transition-delay:  60ms; }
+.is-visible .kwt-stagger-2 { transition-delay: 130ms; }
+.is-visible .kwt-stagger-3 { transition-delay: 200ms; }
+.is-visible .kwt-stagger-4 { transition-delay: 270ms; }
+
+/* ── prefers-reduced-motion override ─────────────────────────────────────── */
+/* Override here is gentler than the global 0.01ms kill in @layer base:
+   show the element immediately (no offset, no delay) rather than
+   collapsing the transition duration to near-zero.                           */
+@media (prefers-reduced-motion: reduce) {
+  .kwt-reveal,
+  .kwt-reveal-fade,
+  .is-visible .kwt-reveal,
+  .is-visible .kwt-reveal-fade {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .kwt-stagger-1,
+  .kwt-stagger-2,
+  .kwt-stagger-3,
+  .kwt-stagger-4,
+  .is-visible .kwt-stagger-1,
+  .is-visible .kwt-stagger-2,
+  .is-visible .kwt-stagger-3,
+  .is-visible .kwt-stagger-4 {
+    transition-delay: 0ms;
   }
 }

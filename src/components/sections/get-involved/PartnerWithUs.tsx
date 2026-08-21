@@ -5,18 +5,18 @@ import CtaLink from "@/components/shared/CtaLink";
 const partnerships = [
   {
     index: "01",
-    title: "[Placeholder] Co-hosted events",
-    body: "[Placeholder] Run workshops, talks, or hackathons together with the KWT community.",
+    title: "Co-hosted events",
+    body: "Work with KWT to organise workshops, panels, talks, networking sessions, and other community events around topics relevant to our members.",
   },
   {
     index: "02",
-    title: "[Placeholder] Mentorship programs",
-    body: "[Placeholder] Connect your team's engineers with members looking for guidance.",
+    title: "Mentorship programs",
+    body: "Collaborate with KWT to connect members with experienced professionals who can share knowledge, guidance, and practical career insights.",
   },
   {
     index: "03",
-    title: "[Placeholder] Hiring pipelines",
-    body: "[Placeholder] Share roles and internships directly with a community of women in tech.",
+    title: "Hiring & opportunities",
+    body: "Partner with KWT to share relevant jobs, internships, projects, and other professional opportunities with women in our community.",
   },
 ];
 
@@ -26,7 +26,7 @@ export default function PartnerWithUs() {
       <SectionHeading
         eyebrow="For organizations"
         title="Partner with us"
-        description="[Placeholder] What a partnership with KWT looks like and who it suits."
+        description="We welcome organisations, companies, researchers, educators, and other communities that want to support opportunities for Kashmiri women in technology. Partnerships can help us create meaningful learning, networking, research, and career opportunities for our members."
       />
 
       <div className="mt-16 grid gap-5 sm:grid-cols-3">
@@ -45,7 +45,7 @@ export default function PartnerWithUs() {
       </div>
 
       <CtaLink
-        href="mailto:hello@example.org?subject=KWT%20partnership"
+        href="mailto:kashmiriwomenintech@gmail.com?subject=KWT%20partnership"
         variant="outline"
         className="mt-10"
       >

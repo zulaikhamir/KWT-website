@@ -1,4 +1,5 @@
 import SectionWrapper from "@/components/shared/SectionWrapper";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const guidelines = [
   {
@@ -35,10 +36,12 @@ const selfCheck = [
 ];
 
 export default function CommunityGuidelines() {
+  const ref = useScrollReveal<HTMLDivElement>();
+
   return (
     <SectionWrapper id="community-guidelines" divided>
-      <div className="grid gap-x-16 gap-y-10 lg:grid-cols-[0.8fr_1.2fr]">
-        <div className="lg:sticky lg:top-32 lg:self-start">
+      <div ref={ref} className="grid gap-x-16 gap-y-10 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="kwt-reveal lg:sticky lg:top-32 lg:self-start">
           <p className="eyebrow">How we show up</p>
           <h2 className="heading mt-5">Community guidelines</h2>
           <p className="lede mt-5">
@@ -47,7 +50,7 @@ export default function CommunityGuidelines() {
           </p>
         </div>
 
-        <div>
+        <div className="kwt-reveal kwt-stagger-2">
           <ol className="divide-y divide-hairline border-y border-hairline">
             {guidelines.map((guideline, index) => (
               <li

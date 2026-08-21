@@ -1,7 +1,24 @@
 :root {
   /* KWT Brand Colors — single source of truth */
-  --color-primary: #1B2A52;      /* headline text, pill text, primary UI */
-  --color-secondary: #4A5568;    /* body/supporting text, labels */
-  --color-accent: #EAE6FF;       /* lavender — tags, pills, small surface area only */
-  --color-background: #FCFCFE;   /* page background */
+  --color-primary:    #1B2A52;   /* headline text, pill text, primary UI */
+  --color-secondary:  #4A5568;   /* body/supporting text, labels */
+  --color-accent:     #EAE6FF;   /* lavender — tags, pills, small surface area only */
+  --color-accent-solid: #C4BAF5; /* deeper lavender — icon badge fills, needs real contrast */
+  --color-background: #F8F7FD;   /* page background — soft lavender/off-white base */
+
+  /* Background treatment palette */
+  --color-bg-base:    #F8F7FD;   /* same as --color-background; used as the solid fill */
+  --color-bg-dot:     rgba(80, 68, 140, 0.10); /* dotted texture dots — lavender, readable but not loud */
+  --color-bg-glow:    rgba(234, 230, 255, 0.55); /* decorative radial orb fill (accent at low opacity) */
+  --color-bg-surface: #F2F0FA;   /* slightly deeper tint for SectionWrapper surface tone */
+  --color-bg-dark:    #1B2A52;   /* unified dark section background — JoinCTA, page heroes */
+
+
+  /* Footer semantic tokens */
+  --color-footer-bg:          #1B2A52;   /* same as primary — dark navy */
+  --color-footer-text:        rgb(255 255 255 / 0.55);
+  --color-footer-text-muted:  rgb(255 255 255 / 0.35);
+  --color-footer-border:      rgb(255 255 255 / 0.10);
+  --color-footer-icon-bg:     rgb(255 255 255 / 0.10);
+  --color-footer-icon-hover:  rgb(255 255 255 / 0.20);
 }

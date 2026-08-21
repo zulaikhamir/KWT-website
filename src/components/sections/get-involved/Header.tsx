@@ -2,8 +2,9 @@ const heroImage = "/images/hero-image.png";
 
 const paths = [
   { label: "Become a member", href: "#become-member" },
+  { label: "Volunteer",       href: "#volunteer"      },
   { label: "Partner with us", href: "#partner-with-us" },
-  { label: "Sponsor KWT", href: "#sponsor-kwt" },
+  { label: "Sponsor KWT",     href: "#sponsor-kwt"    },
 ];
 
 export default function Header() {
@@ -30,10 +31,11 @@ export default function Header() {
       <div className="mx-auto flex min-h-[calc(100svh-var(--nav-height))] max-w-6xl flex-col justify-center px-6 py-20 lg:px-8">
         <div className="max-w-2xl">
           <p className="eyebrow text-white/60">Get involved</p>
-          <h1 className="display mt-6 text-white">There is a place for you here</h1>
+          <h1 className="display mt-6 text-white">There is a place for you in KWT</h1>
           <p className="lede mt-7 max-w-xl text-white/75">
-            [Placeholder] One or two sentences inviting individuals, organizations, and sponsors
-            to join KWT, and pointing them to the right path below.
+            Whether you want to join the community, volunteer your time, collaborate with us,
+            or support our work, there are different ways to contribute to KWT and help build
+            a stronger technology community for Kashmiri women.
           </p>
 
           <nav aria-label="Ways to get involved" className="mt-10 flex flex-wrap gap-3">
