@@ -1,110 +1,114 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, HeartHandshake, Mic2, Building2, Sparkles } from "lucide-react";
+import { ArrowRight, UserPlus, HeartHandshake, Building2, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import SectionHeading from "@/components/shared/SectionHeading";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-// ─── Card data ───────────────────────────────────────────────────────────────
+// ─── Cards ────────────────────────────────────────────────────────────────────
 const CARDS = [
   {
-    icon:  <HeartHandshake size={20} strokeWidth={1.6} />,
+    icon:  UserPlus,
+    title: "Become a Member",
+    body:  "KWT is open to all Kashmiri women in technology, engineering, science, and research — at any stage of their journey.",
+    cta:   null,
+    href:  null,
+  },
+  {
+    icon:  HeartHandshake,
     title: "Volunteer",
     body:  "Help with events, content, community operations, and more. Every contribution strengthens KWT.",
     cta:   "Start Volunteering",
-    href:  "/volunteer",
+    href:  "/get-involved#volunteer",
   },
   {
-    icon:  <Mic2 size={20} strokeWidth={1.6} />,
-    title: "Become a Mentor",
-    body:  "Share your experience, guide others through their journeys, and help create real impact.",
-    cta:   "Apply to Mentor",
-    href:  "/mentorship",
-  },
-  {
-    icon:  <Building2 size={20} strokeWidth={1.6} />,
+    icon:  Building2,
     title: "Partner With Us",
     body:  "Collaborate with KWT as a university, company, nonprofit, or community organisation.",
-    cta:   "Learn More",
-    href:  "/partners",
+    cta:   "Partner with us",
+    href:  "/get-involved#partner",
   },
   {
-    icon:  <Sparkles size={20} strokeWidth={1.6} />,
+    icon:  Sparkles,
     title: "Sponsor KWT",
     body:  "Support KWT events and community initiatives. Help us build what matters.",
-    cta:   "Sponsor",
-    href:  "/sponsor",
+    cta:   "Sponsor KWT",
+    href:  "/get-involved#sponsor",
   },
 ] as const;
 
-// ─── Involvement card ────────────────────────────────────────────────────────
-function InvolvementCard(props: (typeof CARDS)[number]) {
+// ─── Involvement card — uses the shared surface-card design token ──────────────
+function InvolvementCard({
+  icon: Icon,
+  title,
+  body,
+  cta,
+  href,
+}: {
+  icon: (typeof CARDS)[number]["icon"];
+  title: string;
+  body: string;
+  cta: string | null;
+  href: string | null;
+}) {
   return (
-    <div
-      className={cn(
-        "flex flex-col gap-4 p-6",
-        "rounded-2xl border border-[#E5E7EB] bg-white",
-        "hover:border-[var(--color-primary)]/20",
-        "hover:shadow-[0_4px_20px_-6px_rgba(27,42,82,0.1)]",
-        "transition-all duration-200",
-      )}
-    >
-      {/* Icon */}
-      <div
-        className={cn(
-          "w-10 h-10 rounded-xl flex items-center justify-center",
-          "bg-[var(--color-accent)]/60 border border-[var(--color-accent)]",
-          "text-[var(--color-primary)]",
-        )}
+    <li className="surface-card surface-card-interactive flex flex-col p-7">
+      <span
+        className="inline-flex size-11 items-center justify-center rounded-xl bg-[var(--color-accent-solid)]"
         aria-hidden="true"
       >
-        {props.icon}
-      </div>
+        <Icon className="size-[1.15rem] text-[var(--color-primary)]" strokeWidth={1.75} />
+      </span>
 
-      {/* Copy */}
-      <div className="flex flex-col gap-1.5 flex-1">
-        <h3 className="text-base font-semibold text-[var(--color-primary)]">
-          {props.title}
-        </h3>
-        <p className="text-sm leading-6 text-[var(--color-secondary)]">
-          {props.body}
-        </p>
-      </div>
+      <h3 className="subheading mt-6">{title}</h3>
+      <p className="mt-3 flex-1 text-[0.9375rem] leading-7 text-[var(--color-secondary)]">
+        {body}
+      </p>
 
-      {/* CTA link */}
-      <Link
-        to={props.href}
-        className={cn(
-          "self-start inline-flex items-center gap-1",
-          "text-xs font-semibold text-[var(--color-primary)]",
-          "border-b border-[var(--color-primary)]/25 pb-px",
-          "hover:border-[var(--color-primary)]",
-          "transition-colors duration-150",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/30",
-        )}
-      >
-        {props.cta}
-        <ArrowRight size={11} strokeWidth={2.4} />
-      </Link>
-    </div>
+      {cta && href && (
+        <Link
+          to={href}
+          className={cn(
+            "mt-6 self-start inline-flex items-center gap-1.5",
+            "text-[0.875rem] font-medium text-[var(--color-primary)]",
+            "border-b border-[var(--color-primary)]/30 pb-px",
+            "hover:border-[var(--color-primary)]",
+            "transition-colors duration-150",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/30",
+          )}
+        >
+          {cta}
+          <ArrowRight size={13} strokeWidth={2.2} aria-hidden="true" />
+        </Link>
+      )}
+    </li>
   );
 }
 
-// ─── Get Involved ────────────────────────────────────────────────────────────
+// ─── Get Involved ─────────────────────────────────────────────────────────────
 export default function GetInvolved() {
-  return (
-    <SectionWrapper bg="white" id="get-involved">
-      <SectionHeading
-        align="center"
-        heading="Help Build KWT"
-        body="KWT is built through community contribution. There are many ways to get involved."
-        bodyMaxWidth="max-w-xl"
-        className="mb-12"
-      />
+  const ref = useScrollReveal<HTMLDivElement>();
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-        {CARDS.map((card) => (
-          <InvolvementCard key={card.title} {...card} />
-        ))}
+  return (
+    <SectionWrapper tone="surface" divided id="get-involved">
+      <div ref={ref}>
+        <SectionHeading
+          align="center"
+          title="Get involved with KWT"
+          description="KWT is built through community contribution. There are many ways to join and make an impact."
+          className="mb-12 kwt-reveal"
+        />
+
+        <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {CARDS.map((card, i) => (
+            <div
+              key={card.title}
+              className={cn("kwt-reveal", `kwt-stagger-${(i + 1) as 1 | 2 | 3 | 4}`)}
+            >
+              <InvolvementCard {...card} />
+            </div>
+          ))}
+        </ul>
       </div>
     </SectionWrapper>
   );

@@ -1,80 +1,41 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import heroImage from "@/assets/images/hero-image.png";
 
-// ─── Role tags ───────────────────────────────────────────────────────────────
-const ROLE_TAGS = [
-  "students",
-  "engineers",
-  "researchers",
-  "professionals",
-] as const;
+const ROLE_TAGS = ["students", "engineers", "researchers", "professionals"] as const;
 
-// ─── Hero ────────────────────────────────────────────────────────────────────
+// Single source of truth for stagger timing. Add/reorder items here only.
+const FADE_DELAYS_MS = [0, 80, 160, 260, 340] as const;
+
+// Custom CSS properties aren't in React.CSSProperties by default —
+// extend the type instead of casting keys to `string`.
+type CSSVars = React.CSSProperties & { "--kwt-fade-scale"?: string };
+
 export default function Hero() {
   return (
-    <section
-      aria-label="Hero — KWT community introduction"
-      className="relative overflow-hidden bg-[var(--color-background)] pt-20 pb-16 sm:pt-24 sm:pb-20 lg:pt-28 lg:pb-24"
-    >
-      {/* Faint radial tint, top-left */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -top-32 -left-32 w-[480px] h-[480px] rounded-full"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(234,230,255,0.45) 0%, transparent 70%)",
-        }}
-      />
+    <section aria-labelledby="hero-heading" className="relative overflow-hidden">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        <div className="grid items-center gap-12 py-16 sm:py-24 lg:grid-cols-2 lg:gap-16">
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="mx-auto max-w-4xl">
+          {/* ── Text column ──────────────────────────────────────────── */}
           <div className="flex flex-col items-start">
 
-            {/* Eyebrow */}
-            <div className="kwt-animate-fade-up" style={{ animationDelay: "0ms" }}>
-              <span
-                className={cn(
-                  "inline-flex items-center gap-2",
-                  "rounded-full border border-[var(--color-accent)]",
-                  "bg-[var(--color-accent)]/60 px-3.5 py-1",
-                  "text-xs font-semibold tracking-[0.18em] uppercase",
-                  "text-[var(--color-primary)]",
-                )}
-              >
-                <span
-                  aria-hidden="true"
-                  className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--color-primary)] opacity-60"
-                />
-                Kashmiri Women in Tech
-              </span>
-            </div>
+            <p className="eyebrow kwt-animate-fade-up" style={{ animationDelay: `${FADE_DELAYS_MS[0]}ms` }}>
+              Kashmiri Women in Tech
+            </p>
 
-            {/* Main headline — no decorative underlines, emphasis via weight alone */}
             <h1
-              className={cn(
-                "kwt-animate-fade-up",
-                "mt-5 text-4xl sm:text-5xl lg:text-[3.25rem] xl:text-[3.6rem]",
-                "font-bold leading-[1.1] tracking-tight",
-                "text-[var(--color-primary)]",
-              )}
-              style={{ animationDelay: "80ms" }}
+              id="hero-heading"
+              className="display mt-6 kwt-animate-fade-up"
+              style={{ animationDelay: `${FADE_DELAYS_MS[1]}ms` }}
             >
-              Where Kashmiri{" "}
-              <br className="hidden sm:block" />
-              women in technology{" "}
-              <br className="hidden sm:block" />
-              learn, connect, and grow.
+              Where Kashmiri women in technology learn, connect, and grow.
             </h1>
 
-            {/* Supporting paragraph */}
             <p
-              className={cn(
-                "kwt-animate-fade-up",
-                "mt-6 max-w-2xl text-base sm:text-[1.05rem] leading-7",
-                "text-[var(--color-secondary)]",
-              )}
-              style={{ animationDelay: "160ms" }}
+              className="lede mt-7 max-w-xl kwt-animate-fade-up"
+              style={{ animationDelay: `${FADE_DELAYS_MS[2]}ms` }}
             >
               KWT is a community bringing together Kashmiri women across
               technology, science, engineering, and research — creating space
@@ -82,21 +43,19 @@ export default function Hero() {
               opportunities, and give back.
             </p>
 
-            {/* CTA buttons — clear primary / secondary hierarchy */}
             <div
-              className="kwt-animate-fade-up mt-8 flex flex-wrap items-center gap-3 sm:gap-4"
-              style={{ animationDelay: "240ms" }}
+              className="kwt-animate-fade-up mt-10 flex flex-wrap items-center gap-3"
+              style={{ animationDelay: `${FADE_DELAYS_MS[3]}ms` }}
             >
-              {/* Primary — solid fill, high visual weight */}
               <Link
-                to="/join"
+                to="/get-involved"
                 className={cn(
                   "inline-flex items-center gap-2",
-                  "rounded-xl bg-[var(--color-primary)] px-6 py-3",
-                  "text-sm font-semibold text-white tracking-wide",
+                  "rounded-full bg-[var(--color-primary)] px-6 py-3",
+                  "text-sm font-medium tracking-[-0.005em] text-white",
                   "hover:bg-[var(--color-primary)]/90",
-                  "active:scale-[0.98]",
-                  "transition-all duration-150",
+                  "hover:shadow-[0_10px_28px_-10px_rgba(27,42,82,0.55)]",
+                  "active:scale-[0.98] transition-all duration-200",
                   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/40 focus-visible:ring-offset-2",
                 )}
               >
@@ -104,16 +63,14 @@ export default function Hero() {
                 <ArrowRight size={15} strokeWidth={2.2} aria-hidden="true" />
               </Link>
 
-              {/* Secondary — outline only, no fill, visually lighter */}
               <Link
                 to="/events"
                 className={cn(
                   "inline-flex items-center gap-2",
-                  "rounded-xl border border-[var(--color-primary)]/30 px-6 py-3",
-                  "text-sm font-semibold text-[var(--color-primary)] tracking-wide",
-                  "hover:border-[var(--color-primary)]/60 hover:bg-[var(--color-accent)]/30",
-                  "active:scale-[0.98]",
-                  "transition-all duration-150",
+                  "rounded-full border border-[var(--color-primary)]/25 px-6 py-3",
+                  "text-sm font-medium tracking-[-0.005em] text-[var(--color-primary)]",
+                  "hover:border-[var(--color-primary)]/45 hover:bg-[var(--color-primary)]/[0.04]",
+                  "active:scale-[0.98] transition-all duration-200",
                   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/30 focus-visible:ring-offset-2",
                 )}
               >
@@ -121,10 +78,9 @@ export default function Hero() {
               </Link>
             </div>
 
-            {/* Audience micro-line */}
             <div
-              className="kwt-animate-fade-up mt-7 flex flex-wrap items-center gap-x-3 gap-y-1"
-              style={{ animationDelay: "320ms" }}
+              className="kwt-animate-fade-up mt-8 flex flex-wrap items-center gap-x-3 gap-y-1"
+              style={{ animationDelay: `${FADE_DELAYS_MS[4]}ms` }}
               aria-label="KWT welcomes students, engineers, researchers, and professionals"
             >
               <span className="text-xs text-[var(--color-secondary)] opacity-60 select-none">
@@ -144,8 +100,33 @@ export default function Hero() {
                 </span>
               ))}
             </div>
-
           </div>
+
+          {/* ── Image column ─────────────────────────────────────────── */}
+          {/* order-first on mobile: image leads, text follows.
+              lg:order-last restores the original left-text/right-image layout. */}
+          <div
+            className="kwt-animate-fade-up relative flex items-center order-first lg:order-last"
+            style={{ animationDelay: "120ms", "--kwt-fade-scale": "0.98" } as CSSVars}
+          >
+            <div className="relative w-full overflow-hidden rounded-2xl ring-1 ring-hairline shadow-[0_24px_64px_-24px_rgba(27,42,82,0.18)]">
+              <img
+                src={heroImage}
+                alt="Kashmiri Women in Tech community"
+                width={680}
+                height={520}
+                className="h-full w-full object-cover object-center"
+                style={{ maxHeight: "520px" }}
+              />
+              <div
+                className="absolute inset-x-0 bottom-0 h-24 pointer-events-none"
+                style={{
+                  background: "linear-gradient(to top, rgba(248,247,253,0.5) 0%, transparent 100%)",
+                }}
+              />
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

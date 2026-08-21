@@ -1,18 +1,14 @@
-import { cn } from "@/lib/utils";
+import type { ReactNode } from "react";
 
-interface PageContainerProps {
-  children: React.ReactNode;
-  className?: string;
-}
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
-/**
- * Standard horizontal-padding + max-width wrapper.
- * Used inside sections that manage their own vertical padding.
- */
-export default function PageContainer({ children, className }: PageContainerProps) {
+export default function PageContainer({ children }: { children: ReactNode }) {
   return (
-    <div className={cn("mx-auto max-w-7xl px-6 lg:px-10", className)}>
-      {children}
+    <div className="kwt-page-bg flex min-h-screen flex-col">
+      <Navbar />
+      <main className="flex-1">{children}</main>
+      <Footer />
     </div>
   );
 }

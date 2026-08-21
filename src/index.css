@@ -58,20 +58,23 @@
 }
 
 :root {
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.145 0 0);
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.145 0 0);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.205 0 0);
-    --primary-foreground: oklch(0.985 0 0);
-    --secondary: oklch(0.97 0 0);
-    --secondary-foreground: oklch(0.205 0 0);
+    /* KWT brand values — these back the --color-* tokens in @theme inline above.
+       Keep in sync with assets/styles/colors.css. */
+    --background: #F8F7FD;
+    --foreground: #1B2A52;
+    --card: #FFFFFF;
+    --card-foreground: #1B2A52;
+    --popover: #FFFFFF;
+    --popover-foreground: #1B2A52;
+    --primary: #1B2A52;
+    --primary-foreground: #FFFFFF;
+    /* Brand --color-secondary is a text color, so secondary-foreground is white for contrast. */
+    --secondary: #4A5568;
+    --secondary-foreground: #FFFFFF;
     --muted: oklch(0.97 0 0);
-    --muted-foreground: oklch(0.556 0 0);
-    --accent: oklch(0.97 0 0);
-    --accent-foreground: oklch(0.205 0 0);
+    --muted-foreground: #4A5568;
+    --accent: #EAE6FF;
+    --accent-foreground: #1B2A52;
     --destructive: oklch(0.577 0.245 27.325);
     --border: oklch(0.922 0 0);
     --input: oklch(0.922 0 0);
@@ -132,17 +135,189 @@
     }
   body {
     @apply bg-background text-foreground;
-    background-color: var(--color-background);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     }
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
     }
+  /* Keep anchor targets clear of the sticky navbar. */
+  section[id] {
+    scroll-margin-top: 6rem;
+    }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ------------------------------------------------------------------
+   KWT editorial type + surface system.
+   ------------------------------------------------------------------ */
+@theme {
+  --color-hairline: rgba(27, 42, 82, 0.09);
+  --color-surface: #F5F6FA;
+  --color-bg-base:    #F8F7FD;
+  --color-bg-surface: #F2F0FA;
+  /* Deeper than brand navy — anchors the footer without competing with page content. */
+  --color-navy-deep: #111C3A;
+  /* Pinned navbar height. Full-height heroes subtract this so they fill the
+     viewport exactly; keep Navbar and any calc(100svh - ...) in sync via this. */
+  --nav-height: 5rem;
+}
+
+@layer components {
+  /* Small uppercase label above a heading. */
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--color-primary) 55%, transparent);
+  }
+
+  /* Page-level hero heading. */
+  .display {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(2.75rem, 6.5vw, 4.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    color: var(--color-primary);
+    text-wrap: balance;
+  }
+
+  /* Section heading. */
+  .heading {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(1.875rem, 3.6vw, 2.75rem);
+    line-height: 1.08;
+    letter-spacing: -0.028em;
+    color: var(--color-primary);
+    text-wrap: balance;
+  }
+
+  /* Card / sub-section heading. */
+  .subheading {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.1875rem;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+    color: var(--color-primary);
+  }
+
+  /* Standfirst paragraph under a heading. */
+  .lede {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    letter-spacing: -0.005em;
+    color: var(--color-secondary);
+    text-wrap: pretty;
+  }
+
+  .body-copy {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--color-secondary);
+    text-wrap: pretty;
+  }
+
+  /* ─── Global page background treatment ────────────────────────────────────
+     Apply once on the outermost page wrapper (PageContainer).
+     Layering (back → front):
+       1. Solid base fill — #F8F7FD soft lavender/off-white
+       2. Dotted texture  — barely-visible lavender dots on a 24px grid
+       3. ::before        — top-right decorative radial orb
+       4. ::after         — bottom-left decorative radial orb
+       5. Page content    — z-0 and above
+  ────────────────────────────────────────────────────────────────────────── */
+  .kwt-page-bg {
+    position: relative;
+    background-color: var(--color-bg-base);
+    background-image: radial-gradient(
+      circle,
+      var(--color-bg-dot) 1.5px,
+      transparent 1.5px
+    );
+    background-size: 20px 20px;
+    /* Isolate stacking so orb pseudo-elements stay beneath content */
+    isolation: isolate;
+  }
+
+  /* Top-right orb */
+  .kwt-page-bg::before {
+    content: "";
+    pointer-events: none;
+    position: fixed;
+    top: -12rem;
+    right: -10rem;
+    width: 42rem;
+    height: 42rem;
+    border-radius: 9999px;
+    background: radial-gradient(
+      circle,
+      var(--color-bg-glow) 0%,
+      transparent 68%
+    );
+    z-index: -1;
+    /* No animation — purely static decorative shape */
+  }
+
+  /* Bottom-left orb */
+  .kwt-page-bg::after {
+    content: "";
+    pointer-events: none;
+    position: fixed;
+    bottom: -14rem;
+    left: -12rem;
+    width: 38rem;
+    height: 38rem;
+    border-radius: 9999px;
+    background: radial-gradient(
+      circle,
+      var(--color-bg-glow) 0%,
+      transparent 65%
+    );
+    z-index: -1;
+  }
+
+  /* Reduce visual noise for users who prefer reduced motion / minimal UI */
+  @media (prefers-reduced-motion: reduce) {
+    .kwt-page-bg::before,
+    .kwt-page-bg::after {
+      opacity: 0;
+    }
+  }
+
+  /* Hairline-bordered surface used for cards across both pages. */
+  .surface-card {
+    background-color: #FFFFFF;
+    border: 1px solid var(--color-hairline);
+    border-radius: 1.25rem;
+    /* resting shadow lifts cards off the background — no hover required to read the grid */
+    box-shadow: 0 1px 3px rgba(27, 42, 82, 0.06), 0 4px 16px -6px rgba(27, 42, 82, 0.10);
+    transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+  }
+
+  .surface-card-interactive:hover {
+    border-color: color-mix(in srgb, var(--color-primary) 22%, transparent);
+    box-shadow: 0 1px 2px rgba(27, 42, 82, 0.04), 0 16px 40px -12px rgba(27, 42, 82, 0.18);
+    transform: translateY(-2px);
+  }
 }
 
 /* ─── Hero entrance animations ─────────────────────────────────────────── */
 @keyframes kwt-fade-up {
-  from { opacity: 0; transform: translateY(18px); }
-  to   { opacity: 1; transform: translateY(0);    }
+  from { opacity: 0; transform: translateY(18px) scale(var(--kwt-fade-scale, 1)); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
 }
 
 @keyframes kwt-fade-in {
@@ -171,4 +346,106 @@
 }
 .kwt-pulse-soft {
   animation: kwt-pulse-soft 3s ease-in-out infinite;
+}
+
+/* ─── Scroll-reveal motion system ──────────────────────────────────────────
+   Philosophy:
+     • Elements start invisible/shifted; the JS hook adds .is-visible when
+       they enter the viewport, triggering the transition.
+     • A single consistent easing/duration pair for all scroll reveals.
+     • Card grids use stagger delay helpers (.kwt-stagger-1 … 4).
+     • prefers-reduced-motion: elements are shown immediately (no offset,
+       no delay) — content is never hidden from users who need it.
+
+   Motion tokens (CSS custom properties):
+     --kwt-ease-out  : the standard ease-out curve used across all reveals
+     --kwt-dur-fast  : 200ms  — hover / micro-interactions
+     --kwt-dur-base  : 480ms  — standard scroll reveal
+     --kwt-dur-slow  : 640ms  — hero / primary heading reveals
+     --kwt-reveal-y  : translateY offset for fade-up reveals
+─────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --kwt-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --kwt-dur-fast: 200ms;
+  --kwt-dur-base: 480ms;
+  --kwt-dur-slow: 640ms;
+  --kwt-reveal-y: 20px;
+}
+
+/* ── Base reveal state ────────────────────────────────────────────────────── */
+/* Elements decorated with kwt-reveal start hidden and transition in when
+   the .is-visible class is added by the IntersectionObserver hook.         */
+.kwt-reveal {
+  opacity: 0;
+  transform: translateY(var(--kwt-reveal-y));
+  transition:
+    opacity    var(--kwt-dur-base) var(--kwt-ease-out),
+    transform  var(--kwt-dur-base) var(--kwt-ease-out);
+}
+
+.kwt-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Descendant: parent container is the observer target; children carry kwt-reveal */
+.is-visible .kwt-reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade-only variant — used for full-width or horizontally-constrained blocks
+   where vertical shift would cause a visible layout jump.                    */
+.kwt-reveal-fade {
+  opacity: 0;
+  transition: opacity var(--kwt-dur-base) var(--kwt-ease-out);
+}
+
+.kwt-reveal-fade.is-visible {
+  opacity: 1;
+}
+
+/* Descendant variant */
+.is-visible .kwt-reveal-fade {
+  opacity: 1;
+}
+
+/* ── Stagger delay helpers ────────────────────────────────────────────────── */
+/* Apply to individual cards in a grid to stagger their reveal.
+   Keep delays short — the goal is rhythm, not waiting.                       */
+.kwt-stagger-1 { transition-delay:  60ms; }
+.kwt-stagger-2 { transition-delay: 130ms; }
+.kwt-stagger-3 { transition-delay: 200ms; }
+.kwt-stagger-4 { transition-delay: 270ms; }
+
+/* Stagger works on children of the observer container too */
+.is-visible .kwt-stagger-1 { transition-delay:  60ms; }
+.is-visible .kwt-stagger-2 { transition-delay: 130ms; }
+.is-visible .kwt-stagger-3 { transition-delay: 200ms; }
+.is-visible .kwt-stagger-4 { transition-delay: 270ms; }
+
+/* ── prefers-reduced-motion override ─────────────────────────────────────── */
+/* Override here is gentler than the global 0.01ms kill in @layer base:
+   show the element immediately (no offset, no delay) rather than
+   collapsing the transition duration to near-zero.                           */
+@media (prefers-reduced-motion: reduce) {
+  .kwt-reveal,
+  .kwt-reveal-fade,
+  .is-visible .kwt-reveal,
+  .is-visible .kwt-reveal-fade {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .kwt-stagger-1,
+  .kwt-stagger-2,
+  .kwt-stagger-3,
+  .kwt-stagger-4,
+  .is-visible .kwt-stagger-1,
+  .is-visible .kwt-stagger-2,
+  .is-visible .kwt-stagger-3,
+  .is-visible .kwt-stagger-4 {
+    transition-delay: 0ms;
+  }
 }
