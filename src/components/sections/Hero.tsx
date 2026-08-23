@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import heroImage from "@/assets/images/hero-image.png";
 
 const ROLE_TAGS = ["students", "engineers", "researchers", "professionals"] as const;
 
@@ -102,29 +101,34 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* ── Image column ─────────────────────────────────────────── */}
-          {/* order-first on mobile: image leads, text follows.
-              lg:order-last restores the original left-text/right-image layout. */}
+          {/* ── Illustration column ──────────────────────────────────── */}
+          {/* order-first on mobile: illustration leads, text follows.
+              lg:order-last restores the original left-text/right-art layout.
+
+              No card frame or shadow here, unlike the photo this replaced —
+              line art wants to sit on the page, not in a container. */}
           <div
             className="kwt-animate-fade-up relative flex items-center order-first lg:order-last"
             style={{ animationDelay: "120ms", "--kwt-fade-scale": "0.98" } as CSSVars}
           >
-            <div className="relative w-full overflow-hidden rounded-2xl ring-1 ring-hairline shadow-[0_24px_64px_-24px_rgba(27,42,82,0.18)]">
-              <img
-                src={heroImage}
-                alt="Kashmiri Women in Tech community"
-                width={680}
-                height={520}
-                className="h-full w-full object-cover object-center"
-                style={{ maxHeight: "520px" }}
-              />
-              <div
-                className="absolute inset-x-0 bottom-0 h-24 pointer-events-none"
-                style={{
-                  background: "linear-gradient(to top, rgba(248,247,253,0.5) 0%, transparent 100%)",
-                }}
-              />
-            </div>
+            {/* Decorative only. The heading already says what KWT is, so the
+                illustration carries no alt text and stays out of the a11y tree.
+
+                Background was knocked out to transparency, so it sits directly
+                on the page tint with no white box. Above the fold, so eager +
+                high priority rather than lazy; width/height are the file's own
+                so the box is reserved before it loads. */}
+            <img
+              src="/illustrations/home-hero.png"
+              alt=""
+              aria-hidden="true"
+              width={394}
+              height={400}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              className="mx-auto h-auto w-full max-w-md lg:max-w-lg"
+            />
           </div>
 
         </div>

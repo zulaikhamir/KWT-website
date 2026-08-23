@@ -41,25 +41,45 @@ export default function JoinCTA() {
             Whether you're here to learn, connect, or give back — there's a place for you in the community.
           </p>
 
+          {/* Mirrors "there's a place for you" without repeating it in
+              words. Decorative, so no alt text.
+
+              Background was knocked out to transparency, with the figures'
+              white clothing kept opaque — so it reads correctly against the
+              accent tint this section sits on rather than showing a white
+              box or tinted clothes. */}
+          <img
+            src="/illustrations/community.png"
+            alt=""
+            aria-hidden="true"
+            width={396}
+            height={394}
+            loading="lazy"
+            decoding="async"
+            className="mt-2 h-auto w-full max-w-xs sm:max-w-sm"
+          />
+
           {/* CTA */}
-          <Link
-            to="/get-involved"
-            className={cn(
-              "group mt-2 inline-flex items-center gap-1.5",
-              "rounded-full bg-[var(--color-primary)] px-7 py-3",
-              "text-[0.9375rem] font-medium tracking-[-0.005em] text-white",
-              "hover:bg-[var(--color-primary)]/90",
-              "hover:shadow-[0_10px_28px_-10px_rgba(27,42,82,0.45)]",
-              "active:scale-[0.98] transition-all duration-200",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-accent)]",
-            )}
-          >
-            Join KWT
-            <ArrowUpRight
-              className="size-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              aria-hidden="true"
-            />
-          </Link>
+          <div>
+            <Link
+              to="/get-involved"
+              className={cn(
+                "group inline-flex items-center gap-1.5",
+                "rounded-full bg-[var(--color-primary)] px-7 py-3",
+                "text-[0.9375rem] font-medium tracking-[-0.005em] text-white",
+                "hover:bg-[var(--color-primary)]/90",
+                "hover:shadow-[0_10px_28px_-10px_rgba(27,42,82,0.45)]",
+                "active:scale-[0.98] transition-all duration-200",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-accent)]",
+              )}
+            >
+              Join KWT
+              <ArrowUpRight
+                className="size-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                aria-hidden="true"
+              />
+            </Link>
+          </div>
         </div>
       </div>
     </section>

@@ -19,7 +19,7 @@ const team: TeamMember[] = [
     role:        "Founder",
     bio:         [
       "Founded KWT to connect Kashmiri women across technology, research, and STEM",
-      "Focused on creating opportunities for learning, mentorship, and professional growth",
+      // "Focused on creating opportunities for learning, mentorship, and professional growth",
       // Add: Your background, current role, or area of expertise
     ],
     image:       "/team/zulaikha-founder.png",
@@ -30,7 +30,7 @@ const team: TeamMember[] = [
     role:        "Strategy & Technical Lead",
     bio:         [
       "Leads strategy and technical direction at KWT",
-      "Hosted community Q&A on AI, DSA, MLOps, and security fundamentals",
+      // "Hosted community Q&A on AI, DSA, MLOps, and security fundamentals",
       // Add: Your current professional role, company, or technical specialization
     ],
     image:       "/team/uzma-techlead.jpg",

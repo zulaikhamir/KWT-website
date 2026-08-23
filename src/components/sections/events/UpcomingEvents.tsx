@@ -3,13 +3,6 @@ import SectionHeading from "@/components/shared/SectionHeading";
 import EventCard from "@/components/shared/EventCard";
 import { UPCOMING_EVENTS } from "@/data/events";
 
-/**
- * EVT-02 — Upcoming Events.
- *
- * Renders the next scheduled KWT events.
- * Cards come from the static UPCOMING_EVENTS array in src/data/events.ts —
- * swap that for an API/CMS call when real event data is available.
- */
 export default function UpcomingEvents() {
   if (UPCOMING_EVENTS.length === 0) {
     return (
@@ -54,7 +47,7 @@ export default function UpcomingEvents() {
       <SectionHeading
         eyebrow="What's next"
         title="Upcoming events"
-        description="Register early — spots fill up fast."
+        description="Register early, spots fill up fast."
         className="mb-12"
       />
 
