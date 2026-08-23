@@ -4,7 +4,6 @@ import { KWT_STATS } from "@/data/stats";
 import { useCountUp, useInView } from "@/hooks/useCountUp";
 
 // ─── AnimatedStat ─────────────────────────────────────────────────────────────
-// Fits the existing sticky-column dl layout — preserves font/spacing tokens.
 function AnimatedStat({ value, label }: { value: string; label: string }) {
   const { ref, inView } = useInView<HTMLDivElement>();
   const displayValue = useCountUp(value, inView);
@@ -30,11 +29,6 @@ export default function OurStory() {
 
   return (
     <SectionWrapper id="our-story" className="pt-16 sm:pt-24">
-      {/* Hero — above the fold, use load animation.
-
-          Two columns on desktop, stacked on mobile. Unlike the Home hero the
-          illustration stays *after* the text when stacked, so the page's h1
-          is the first thing on screen rather than being pushed down. */}
       <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
         <div>
           <p className="eyebrow kwt-animate-fade-up" style={{ animationDelay: "0ms" }}>About KWT</p>

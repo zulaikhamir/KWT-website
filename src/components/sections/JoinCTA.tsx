@@ -41,13 +41,6 @@ export default function JoinCTA() {
             Whether you're here to learn, connect, or give back — there's a place for you in the community.
           </p>
 
-          {/* Mirrors "there's a place for you" without repeating it in
-              words. Decorative, so no alt text.
-
-              Background was knocked out to transparency, with the figures'
-              white clothing kept opaque — so it reads correctly against the
-              accent tint this section sits on rather than showing a white
-              box or tinted clothes. */}
           <img
             src="/illustrations/community.png"
             alt=""

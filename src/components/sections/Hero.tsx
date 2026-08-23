@@ -4,11 +4,8 @@ import { cn } from "@/lib/utils";
 
 const ROLE_TAGS = ["students", "engineers", "researchers", "professionals"] as const;
 
-// Single source of truth for stagger timing. Add/reorder items here only.
 const FADE_DELAYS_MS = [0, 80, 160, 260, 340] as const;
 
-// Custom CSS properties aren't in React.CSSProperties by default —
-// extend the type instead of casting keys to `string`.
 type CSSVars = React.CSSProperties & { "--kwt-fade-scale"?: string };
 
 export default function Hero() {
@@ -100,24 +97,11 @@ export default function Hero() {
               ))}
             </div>
           </div>
-
-          {/* ── Illustration column ──────────────────────────────────── */}
-          {/* order-first on mobile: illustration leads, text follows.
-              lg:order-last restores the original left-text/right-art layout.
-
-              No card frame or shadow here, unlike the photo this replaced —
-              line art wants to sit on the page, not in a container. */}
           <div
             className="kwt-animate-fade-up relative flex items-center order-first lg:order-last"
             style={{ animationDelay: "120ms", "--kwt-fade-scale": "0.98" } as CSSVars}
           >
-            {/* Decorative only. The heading already says what KWT is, so the
-                illustration carries no alt text and stays out of the a11y tree.
-
-                Background was knocked out to transparency, so it sits directly
-                on the page tint with no white box. Above the fold, so eager +
-                high priority rather than lazy; width/height are the file's own
-                so the box is reserved before it loads. */}
+      
             <img
               src="/illustrations/home-hero.png"
               alt=""

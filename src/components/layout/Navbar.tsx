@@ -13,18 +13,9 @@ const navLinks = [
   { label: "FAQs",   to: "/faq" },
 ];
 
-// Shared easing/duration for every collapse transition so the bar, the logo
-// and the CTA all settle on the same beat.
 const COLLAPSE_TRANSITION =
   "duration-300 ease-out motion-reduce:transition-none";
-
-// Frosted-glass surface for the detached pill and the mobile card beneath it.
-// The tint stays translucent enough for page content to read through the blur;
-// `saturate` keeps colours passing underneath from going grey, and the inset
-// white line is the lit top edge that makes the panel feel like glass.
 const GLASS_SURFACE = cn(
-  // 65% keeps nav-link contrast safe over busy imagery while still letting
-  // colour bleed through; blur-2xl diffuses enough that it still reads glassy.
   "bg-[var(--color-background)]/65 backdrop-blur-2xl backdrop-saturate-150",
   "border-white/60",
   "shadow-[inset_0_1px_0_0_rgba(255,255,255,0.65),0_10px_34px_-14px_rgba(27,42,82,0.35)]"
@@ -32,8 +23,6 @@ const GLASS_SURFACE = cn(
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-
-  // Past the hero the bar detaches from the top edge and becomes a pill.
   const isCompact = useScrolledPastFirstSection();
 
   const linkClasses = ({ isActive }: { isActive: boolean }) =>
@@ -51,8 +40,6 @@ export default function Navbar() {
       className={cn(
         "sticky top-0 z-50 border-b transition-colors",
         COLLAPSE_TRANSITION,
-        // Expanded: a flush bar with its own hairline and blurred backdrop.
-        // Compact: fully transparent — the pill below carries the surface.
         isCompact
           ? "border-transparent bg-transparent"
           : "border-hairline bg-[var(--color-background)]/80 backdrop-blur-xl backdrop-saturate-150"
@@ -65,14 +52,10 @@ export default function Navbar() {
           isCompact ? "max-w-5xl" : "max-w-6xl"
         )}
       >
-        {/* Fixed-height row. The pill is inset with padding rather than by
-            shrinking this row, so collapsing never shifts page layout. */}
         <div
           className={cn(
             "flex h-(--nav-height) items-center transition-[padding]",
             COLLAPSE_TRANSITION,
-            // Asymmetric so the pill gains height without losing the gap
-            // that separates it from the top edge: 5rem - 1rem = 4rem tall.
             isCompact && "pt-3 pb-1"
           )}
         >
@@ -87,7 +70,6 @@ export default function Navbar() {
                 : "rounded-none border-transparent bg-transparent px-0 shadow-none"
             )}
           >
-            {/* Logo */}
             <Link to="/" className="shrink-0 transition-opacity hover:opacity-70">
               <img
                 src={headerLogo}
@@ -158,8 +140,6 @@ export default function Navbar() {
           </nav>
         </div>
 
-        {/* Mobile menu — a card under the pill when compact, a flush panel
-            spanning the bar when expanded. */}
         {isOpen && (
           <div
             id="mobile-menu"

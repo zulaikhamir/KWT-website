@@ -1,15 +1,3 @@
-/**
- * EVT-01 — Events page header.
- *
- * Full-bleed hero consistent with the Get Involved page header pattern:
- * viewport-height image background, two gradient overlays, eyebrow + h1 + lede.
- * Entrance animation matches the Home Hero stagger sequence.
- *
- * Height is `100svh - --nav-height` so the image fills the screen below the
- * navbar exactly; `svh` (not `vh`) keeps mobile browser chrome from pushing
- * the bottom of the hero off-screen.
- */
-
 const heroImage = "/images/hero-image.png";
 
 export default function EventsHeader() {

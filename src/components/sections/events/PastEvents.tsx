@@ -31,10 +31,6 @@ export default function PastEvents() {
         className="mb-12"
       />
 
-      {/*
-        Responsive grid: 1 col on mobile, 2 on tablet, 3 on desktop.
-        Works naturally as more events are added — no hardcoded column counts.
-      */}
       <ul id="past-events-list" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {visible.map((event) => (
           <li key={event.dateISO + event.title}>
