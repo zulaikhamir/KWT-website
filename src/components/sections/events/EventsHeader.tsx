@@ -1,11 +1,3 @@
-/**
- * EVT-01 — Events page header.
- *
- * Full-bleed hero consistent with the Get Involved page header pattern:
- * hero image background, two gradient overlays, eyebrow + h1 + lede.
- * Entrance animation matches the Home Hero stagger sequence.
- */
-
 const heroImage = "/images/hero-image.png";
 
 export default function EventsHeader() {
@@ -34,7 +26,7 @@ export default function EventsHeader() {
         className="absolute inset-0 -z-10 bg-linear-to-t from-[var(--color-bg-dark)] via-transparent to-[var(--color-bg-dark)]/40"
       />
 
-      <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32 lg:px-8">
+      <div className="mx-auto flex min-h-[calc(100svh-var(--nav-height))] max-w-6xl flex-col justify-center px-6 py-20 lg:px-8">
         <div className="max-w-2xl">
           {/* Eyebrow */}
           <p

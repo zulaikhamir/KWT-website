@@ -1,15 +1,11 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import heroImage from "@/assets/images/hero-image.png";
 
 const ROLE_TAGS = ["students", "engineers", "researchers", "professionals"] as const;
 
-// Single source of truth for stagger timing. Add/reorder items here only.
 const FADE_DELAYS_MS = [0, 80, 160, 260, 340] as const;
 
-// Custom CSS properties aren't in React.CSSProperties by default —
-// extend the type instead of casting keys to `string`.
 type CSSVars = React.CSSProperties & { "--kwt-fade-scale"?: string };
 
 export default function Hero() {
@@ -101,30 +97,22 @@ export default function Hero() {
               ))}
             </div>
           </div>
-
-          {/* ── Image column ─────────────────────────────────────────── */}
-          {/* order-first on mobile: image leads, text follows.
-              lg:order-last restores the original left-text/right-image layout. */}
           <div
             className="kwt-animate-fade-up relative flex items-center order-first lg:order-last"
             style={{ animationDelay: "120ms", "--kwt-fade-scale": "0.98" } as CSSVars}
           >
-            <div className="relative w-full overflow-hidden rounded-2xl ring-1 ring-hairline shadow-[0_24px_64px_-24px_rgba(27,42,82,0.18)]">
-              <img
-                src={heroImage}
-                alt="Kashmiri Women in Tech community"
-                width={680}
-                height={520}
-                className="h-full w-full object-cover object-center"
-                style={{ maxHeight: "520px" }}
-              />
-              <div
-                className="absolute inset-x-0 bottom-0 h-24 pointer-events-none"
-                style={{
-                  background: "linear-gradient(to top, rgba(248,247,253,0.5) 0%, transparent 100%)",
-                }}
-              />
-            </div>
+      
+            <img
+              src="/illustrations/home-hero.png"
+              alt=""
+              aria-hidden="true"
+              width={394}
+              height={400}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              className="mx-auto h-auto w-full max-w-md lg:max-w-lg"
+            />
           </div>
 
         </div>

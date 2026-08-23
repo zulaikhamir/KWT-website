@@ -8,7 +8,7 @@ const exploreLinks = [
   { label: "About",          to: "/about" },
   { label: "Events",         to: "/events" },
   { label: "Get involved",   to: "/get-involved" },
-  { label: "Privacy Policy", to: "/privacy" },
+  // { label: "Privacy Policy", to: "/privacy" },
 ];
 
 const socials = [
@@ -129,7 +129,7 @@ export default function Footer() {
             </p>
             <Link
               to="/get-involved"
-              className="group mt-6 inline-flex items-center gap-1 text-sm text-white/55 transition-colors duration-200 hover:text-white/90"
+              className="group mt-6 inline-flex items-center gap-1.5 rounded-full border border-white/25 px-5 py-2.5 text-sm font-medium text-white/75 transition-colors duration-200 hover:border-white/60 hover:bg-white/5 hover:text-white"
             >
               Join the community
               <ArrowUpRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

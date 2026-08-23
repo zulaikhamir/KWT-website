@@ -4,7 +4,6 @@ import { KWT_STATS } from "@/data/stats";
 import { useCountUp, useInView } from "@/hooks/useCountUp";
 
 // ─── AnimatedStat ─────────────────────────────────────────────────────────────
-// Fits the existing sticky-column dl layout — preserves font/spacing tokens.
 function AnimatedStat({ value, label }: { value: string; label: string }) {
   const { ref, inView } = useInView<HTMLDivElement>();
   const displayValue = useCountUp(value, inView);
@@ -30,24 +29,39 @@ export default function OurStory() {
 
   return (
     <SectionWrapper id="our-story" className="pt-16 sm:pt-24">
-      {/* Hero text — above the fold, use load animation */}
-      <div className="max-w-3xl">
-        <p className="eyebrow kwt-animate-fade-up" style={{ animationDelay: "0ms" }}>About KWT</p>
-        <h1
-          className="display mt-6 kwt-animate-fade-up"
-          style={{ animationDelay: "80ms" }}
-        >
-          Building a community for Kashmiri women in technology
-        </h1>
-        <p
-          className="lede mt-7 max-w-2xl kwt-animate-fade-up"
-          style={{ animationDelay: "160ms" }}
-        >
-          Kashmiri Women in Tech (KWT) is a community created to connect Kashmiri women
-          interested in technology, science, engineering, research, and related fields. We are
-          creating a space where women can learn from one another, discover opportunities, build
-          meaningful professional connections, and contribute to a growing technology community.
-        </p>
+      <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+        <div>
+          <p className="eyebrow kwt-animate-fade-up" style={{ animationDelay: "0ms" }}>About KWT</p>
+          <h1
+            className="display mt-6 kwt-animate-fade-up"
+            style={{ animationDelay: "80ms" }}
+          >
+            Building a community for Kashmiri women in technology
+          </h1>
+          <p
+            className="lede mt-7 kwt-animate-fade-up"
+            style={{ animationDelay: "160ms" }}
+          >
+            Kashmiri Women in Tech (KWT) is a community created to connect Kashmiri women
+            interested in technology, science, engineering, research, and related fields. We are
+            creating a space where women can learn from one another, discover opportunities, build
+            meaningful professional connections, and contribute to a growing technology community.
+          </p>
+        </div>
+
+        {/* Decorative — the heading carries the meaning, so no alt text. */}
+        <img
+          src="/illustrations/pencil.png"
+          alt=""
+          aria-hidden="true"
+          width={408}
+          height={408}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+          className="kwt-animate-fade-up mx-auto h-auto w-full max-w-sm lg:max-w-md"
+          style={{ animationDelay: "120ms" }}
+        />
       </div>
 
       {/* Story body — scroll-revealed */}
