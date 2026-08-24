@@ -1,52 +1,14 @@
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
-import { IdentificationBadge, Toolbox, Handshake, Gift } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import SectionHeading from "@/components/shared/SectionHeading";
 import MembershipModal from "@/components/shared/MembershipModal";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { CARDS, type CardDef } from "@/data/home";
 
 // ─── Cards ────────────────────────────────────────────────────────────────────
-type CardDef =
-  | { icon: React.ElementType; title: string; body: string; cta: string; action: "modal" }
-  | { icon: React.ElementType; title: string; body: string; cta: string; action: "external"; href: string }
-  | { icon: React.ElementType; title: string; body: string; cta: string; action: "internal"; href: string };
-
-const CARDS: CardDef[] = [
-  {
-    icon:   IdentificationBadge,
-    title:  "Become a Member",
-    body:   "KWT is open to all Kashmiri women in technology, engineering, science, and research — at any stage of their journey.",
-    cta:    "Join the Community",
-    action: "modal",
-  },
-  {
-    icon:   Toolbox,
-    title:  "Volunteer",
-    body:   "Help with events, content, community operations, and more. Every contribution strengthens KWT.",
-    cta:    "Start Volunteering",
-    action: "external",
-    href:   "https://tally.so/r/44leEO",
-  },
-  {
-    icon:   Handshake,
-    title:  "Partner With Us",
-    body:   "Collaborate with KWT as a university, company, nonprofit, or community organisation.",
-    cta:    "Partner with us",
-    action: "internal",
-    href:   "/get-involved#partner",
-  },
-  {
-    icon:   Gift,
-    title:  "Sponsor KWT",
-    body:   "Support KWT events and community initiatives. Help us build what matters.",
-    cta:    "Sponsor KWT",
-    action: "internal",
-    href:   "/get-involved#sponsor",
-  },
-];
 
 // ─── Shared CTA style ─────────────────────────────────────────────────────────
 const ctaClasses = cn(
@@ -133,7 +95,6 @@ export default function GetInvolved() {
           description="KWT is built through community contribution. There are many ways to join and make an impact."
           className="mb-12 kwt-reveal"
         />
-
 
         <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {CARDS.map((card, i) => (

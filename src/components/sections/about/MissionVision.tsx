@@ -1,18 +1,6 @@
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-
-const statements = [
-  {
-    index: "01",
-    title: "Our mission",
-    body: "Our mission is to connect and support Kashmiri women in technology by creating opportunities to learn, share knowledge, discover careers and research opportunities, build professional networks, and contribute to the community.",
-  },
-  {
-    index: "02",
-    title: "Our vision",
-    body: "Our vision is to build a strong and connected community of Kashmiri women who are visible, confident, and active in technology, research, and STEM. We want KWT to become a space where women can find opportunities, mentorship, collaboration, and a network that supports them throughout their journey.",
-  },
-];
+import { statements } from "@/data/about";
 
 export default function MissionVision() {
   const ref = useScrollReveal<HTMLDivElement>();

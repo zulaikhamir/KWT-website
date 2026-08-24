@@ -4,13 +4,7 @@ import { ArrowUpRight, Check } from "lucide-react";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import MembershipModal from "@/components/shared/MembershipModal";
 import { cn } from "@/lib/utils";
-
-const benefits = [
-  "Learn from the community — access discussions, sessions, resources, and experiences shared by women working and learning across different areas of technology.",
-  "Discover opportunities — find relevant jobs, internships, events, research opportunities, and other resources shared within the community.",
-  "Build your network — connect with Kashmiri women studying, researching, and working across technology and related fields.",
-  "Contribute and grow — share your knowledge, participate in discussions, support others, and contribute to building the community.",
-];
+import { benefits } from "@/data/get-involved";
 
 export default function BecomeMember() {
   const [open, setOpen] = useState(false);

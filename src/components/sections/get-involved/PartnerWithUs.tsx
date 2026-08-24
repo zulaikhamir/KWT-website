@@ -1,24 +1,7 @@
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import SectionHeading from "@/components/shared/SectionHeading";
 import CtaLink from "@/components/shared/CtaLink";
-
-const partnerships = [
-  {
-    index: "01",
-    title: "Co-hosted events",
-    body: "Work with KWT to organise workshops, panels, talks, networking sessions, and other community events around topics relevant to our members.",
-  },
-  {
-    index: "02",
-    title: "Mentorship programs",
-    body: "Collaborate with KWT to connect members with experienced professionals who can share knowledge, guidance, and practical career insights.",
-  },
-  {
-    index: "03",
-    title: "Hiring & opportunities",
-    body: "Partner with KWT to share relevant jobs, internships, projects, and other professional opportunities with women in our community.",
-  },
-];
+import { partnerships } from "@/data/get-involved";
 
 export default function PartnerWithUs() {
   return (

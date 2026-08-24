@@ -1,33 +1,10 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { GraduationCap, UsersThree, Ladder, HandHeart } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import SectionHeading from "@/components/shared/SectionHeading";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-
-const PILLARS = [
-  {
-    icon:  GraduationCap,
-    label: "Learn",
-    desc:  "Workshops, talks, and curated resources spanning technology, engineering, research, and more.",
-  },
-  {
-    icon:  UsersThree,
-    label: "Connect",
-    desc:  "A community of Kashmiri women across disciplines, career stages, and geographies.",
-  },
-  {
-    icon:  Ladder,
-    label: "Grow",
-    desc:  "Mentorship, career opportunities, and a network that opens real doors across STEM fields.",
-  },
-  {
-    icon:  HandHeart,
-    label: "Give Back",
-    desc:  "Contribute your expertise and experience to strengthen the next generation of Kashmiri women in TECH.",
-  },
-] as const;
+import { PILLARS } from "@/data/home";
 
 type PillarCardProps = (typeof PILLARS)[number] & { className?: string };
 

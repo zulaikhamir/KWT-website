@@ -1,42 +1,11 @@
 import { cn } from "@/lib/utils";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import SectionHeading from "@/components/shared/SectionHeading";
+import { team, type TeamMember } from "@/data/about";
 
 // ─── Team data ────────────────────────────────────────────────────────────────
 // Add `bio` (array of 2-3 bullets) and `linkedinUrl` for each member as needed.
 // `bio` is optional — the card renders gracefully without it.
-interface TeamMember {
-  name:         string;
-  role:         string;
-  bio?:         string[];  // 2-3 concise bullets showing the person beyond KWT
-  image:        string;
-  linkedinUrl?: string;
-}
-
-const team: TeamMember[] = [
-  {
-    name:        "Zulaikha Ashiq",
-    role:        "Founder",
-    bio:         [
-      "Founded KWT to connect Kashmiri women across technology, research, and STEM",
-      // "Focused on creating opportunities for learning, mentorship, and professional growth",
-      // Add: Your background, current role, or area of expertise
-    ],
-    image:       "/team/zulaikha-founder.png",
-    linkedinUrl: "", // [PLACEHOLDER — ZULAIKHA LINKEDIN URL]
-  },
-  {
-    name:        "Uzma Hamid",
-    role:        "Strategy & Technical Lead",
-    bio:         [
-      "Leads strategy and technical direction at KWT",
-      // "Hosted community Q&A on AI, DSA, MLOps, and security fundamentals",
-      // Add: Your current professional role, company, or technical specialization
-    ],
-    image:       "/team/uzma-techlead.jpg",
-    linkedinUrl: "", // [PLACEHOLDER — UZMA LINKEDIN URL]
-  },
-];
 
 // ─── TeamCard ─────────────────────────────────────────────────────────────────
 function TeamCard({ member }: { member: TeamMember }) {

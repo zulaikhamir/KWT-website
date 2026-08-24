@@ -13,34 +13,13 @@
  */
 
 import { Dialog } from "@base-ui/react";
-import { ArrowUpRight, BookOpen, HandHelping, X } from "lucide-react";
+import { ArrowUpRight, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { MEMBERSHIP_PATHS } from "@/data/get-involved";
 
 // ─── URLs ─────────────────────────────────────────────────────────────────────
-export const MEMBERSHIP_LEARN_URL       = "https://tally.so/r/686aVB";
-export const MEMBERSHIP_CONTRIBUTE_URL  = "https://tally.so/r/9qjB64";
 
 // ─── Card data ────────────────────────────────────────────────────────────────
-const PATHS = [
-  {
-    icon:        BookOpen,
-    eyebrow:     "Join to Learn",
-    heading:     "I want to learn & connect",
-    description:
-      "Join KWT to learn from the community, attend sessions, discover jobs and internships, and connect with Kashmiri women across technology.",
-    cta:         "Join to Learn",
-    href:        MEMBERSHIP_LEARN_URL,
-  },
-  {
-    icon:        HandHelping,
-    eyebrow:     "Join to Contribute",
-    heading:     "I want to give back",
-    description:
-      "Contribute to KWT by volunteering, mentoring, speaking, organising, sharing opportunities, or lending your skills to help the community grow.",
-    cta:         "Join to Contribute",
-    href:        MEMBERSHIP_CONTRIBUTE_URL,
-  },
-] as const;
 
 // ─── Props ────────────────────────────────────────────────────────────────────
 interface MembershipModalProps {
@@ -102,7 +81,7 @@ export default function MembershipModal({
 
             {/* ── Cards ───────────────────────────────────────────────── */}
             <div className="grid gap-4 p-6 sm:grid-cols-2">
-              {PATHS.map(({ icon: Icon, eyebrow, heading, description, cta, href }) => (
+              {MEMBERSHIP_PATHS.map(({ icon: Icon, eyebrow, heading, description, cta, href }) => (
                 <a
                   key={href}
                   href={href}

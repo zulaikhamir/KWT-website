@@ -1,5 +1,6 @@
 import { Plus } from "lucide-react";
 import SectionWrapper from "@/components/shared/SectionWrapper";
+import { faqs, type FaqItem } from "@/data/get-involved";
 
 // ─── link helper ─────────────────────────────────────────────────────────────
 function A({ href, children }: { href: string; children: React.ReactNode }) {
@@ -15,59 +16,23 @@ function A({ href, children }: { href: string; children: React.ReactNode }) {
   );
 }
 
-// ─── FAQ data ─────────────────────────────────────────────────────────────────
-const faqs: { question: string; answer: React.ReactNode }[] = [
-  {
-    question: "What is KWT?",
-    answer:
-      "Kashmiri Women in Tech (KWT) is a community connecting Kashmiri women in technology to learn, network, share opportunities, and grow together.",
-  },
-  {
-    question: "Who is KWT for?",
-    answer:
-      "Students, aspiring tech professionals, working professionals, researchers, founders, and any woman interested in technology.",
-  },
-  {
-    question: "How do I join KWT?",
-    answer: (
-      <>
-        Fill out the{" "}
-        <A href="https://tally.so/r/686aVB">membership form</A> — we review it
-        and you get added to the community and given access to sessions,
-        resources, and updates.
-      </>
-    ),
-  },
-  {
-    question: "Is membership free?",
-    answer: "Yes, KWT membership is completely free.",
-  },
-  {
-    question: "Do I need to work in tech already?",
-    answer:
-      "No. You can be a student, complete beginner, career-switcher, or simply curious about technology — no prior experience required.",
-  },
-  {
-    question: "What can I expect from KWT?",
-    answer:
-      "Community discussions, learning sessions and workshops (like our recent one on networking and professional outreach), opportunities shared by members and partners, resources, and a space to connect with other women in tech.",
-  },
-  {
-    question: "Can I participate remotely?",
-    answer:
-      "Yes — most sessions and community activities happen online, so you can join from anywhere.",
-  },
-  {
-    question: "How do I get more involved beyond just being a member?",
-    answer:
-      "We regularly open volunteer and contributor roles (community ops, content, partnerships, etc.) — keep an eye on group announcements, or message us directly if you don't see a role that fits but still want to contribute.",
-  },
-  {
-    question: "How should I reach out to KWT admins?",
-    answer:
-      "Always mention what you're reaching out about first, along with a quick intro of who you are — it helps us understand the context and respond faster.",
-  },
-];
+/**
+ * Answers are plain strings so the copy can live in the data layer. The one
+ * answer that needs a link marks its position with a `{link}` placeholder,
+ * which is swapped for an anchor here — keeping the markup in the component
+ * where it belongs, and the sentence intact in the data.
+ */
+function renderAnswer({ answer, link }: FaqItem) {
+  if (!link) return answer;
+  const [before, after = ""] = answer.split("{link}");
+  return (
+    <>
+      {before}
+      <A href={link.href}>{link.label}</A>
+      {after}
+    </>
+  );
+}
 
 export default function FAQ() {
   return (
@@ -92,7 +57,7 @@ export default function FAQ() {
                 />
               </summary>
               <dd className="mt-4 max-w-2xl text-[1.0625rem] leading-7 text-[var(--color-secondary)]">
-                {faq.answer}
+                {renderAnswer(faq)}
               </dd>
             </details>
           ))}

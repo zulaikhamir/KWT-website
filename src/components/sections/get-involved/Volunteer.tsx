@@ -1,29 +1,6 @@
-import { CalendarCheck, Megaphone, Lifebuoy, Books } from "@phosphor-icons/react";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import CtaLink from "@/components/shared/CtaLink";
-
-const areas = [
-  {
-    icon: CalendarCheck,
-    title: "Event Support",
-    body: "Help coordinate community sessions, communicate with speakers and participants, and support events before and during the session.",
-  },
-  {
-    icon: Megaphone,
-    title: "Content & Communications",
-    body: "Help create community announcements, opportunity posts, social media content, and other communications.",
-  },
-  {
-    icon: Lifebuoy,
-    title: "Community Support",
-    body: "Help welcome members, share useful resources, support discussions, and identify ways to make the community more useful.",
-  },
-  {
-    icon: Books,
-    title: "Research & Resources",
-    body: "Help identify, organise, and share research, learning resources, opportunities, and useful information for members.",
-  },
-];
+import { areas } from "@/data/get-involved";
 
 export default function Volunteer() {
   return (

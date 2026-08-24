@@ -1,32 +1,6 @@
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-
-const guidelines = [
-  {
-    title: "Respect everyone",
-    body: "Members span every level of experience and background. Challenge ideas, not people, harassment, discrimination, and personal attacks aren't welcome here.",
-  },
-  {
-    title: "No question is too basic",
-    body: "Whether you're writing your first line of code or leading a team, you belong. Help where you can, and it's always fine to say you don't know.",
-  },
-  {
-    title: "Keep it relevant",
-    body: "KWT is a space for tech, careers, and learning. Spam, unrelated promotion, and personal advertising crowd out what members actually come here for.",
-  },
-  {
-    title: "Protect each other's privacy",
-    body: "Don't share another member's contact details, messages, or personal information without their permission inside the community or beyond it.",
-  },
-  {
-    title: "Honor your commitments",
-    body: "If you register for a session or take on a role, follow through. Plans change just let organizers know as early as you can.",
-  },
-  {
-    title: "Speak up, privately",
-    body: "If something feels wrong, report it to KWT leadership directly rather than in the group. No one has to confront it alone.",
-  },
-];
+import { guidelines } from "@/data/about";
 
 const selfCheck = [
   "Is this respectful?",

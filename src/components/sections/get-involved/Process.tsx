@@ -1,20 +1,6 @@
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import SectionHeading from "@/components/shared/SectionHeading";
-
-const steps = [
-  {
-    title: "Reach out",
-    body: "Tell us who you are, what you're interested in, and how you'd like to get involved.",
-  },
-  {
-    title: "Connect with KWT",
-    body: "Our team will review your request and get back to you with the relevant next steps.",
-  },
-  {
-    title: "Get involved",
-    body: "Once connected, you can take part in community activities, contribute your skills, attend events, or explore opportunities to collaborate with KWT.",
-  },
-];
+import { steps } from "@/data/get-involved";
 
 export default function WhatHappensNext() {
   return (
