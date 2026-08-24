@@ -1,10 +1,20 @@
+import { useMemo } from "react";
+
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import SectionHeading from "@/components/shared/SectionHeading";
 import EventCard from "@/components/shared/EventCard";
-import { UPCOMING_EVENTS } from "@/data/events";
+import { ALL_EVENTS, isEventPast } from "@/data/events";
 
 export default function UpcomingEvents() {
-  if (UPCOMING_EVENTS.length === 0) {
+  const upcoming = useMemo(
+    () =>
+      ALL_EVENTS
+        .filter((e) => !isEventPast(e.dateISO))
+        .sort((a, b) => a.dateISO.localeCompare(b.dateISO)),
+    [],
+  );
+
+  if (upcoming.length === 0) {
     return (
       <SectionWrapper id="upcoming-events" divided>
         <SectionHeading
@@ -52,7 +62,7 @@ export default function UpcomingEvents() {
       />
 
       <ul className="grid gap-6 sm:grid-cols-2">
-        {UPCOMING_EVENTS.map((event) => (
+        {upcoming.map((event) => (
           <li key={event.dateISO + event.title}>
             <EventCard event={event} variant="upcoming" className="h-full" />
           </li>

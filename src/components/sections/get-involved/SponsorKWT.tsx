@@ -34,7 +34,9 @@ export default function SponsorKWT() {
         </div>
 
         <CtaLink
-          href="mailto:kashmiriwomenintech@gmail.com?subject=KWT%20sponsorship"
+          href="https://tally.so/r/kd8MrM"
+          target="_blank"
+          rel="noreferrer noopener"
           className="shrink-0"
         >
           Contact us to discuss

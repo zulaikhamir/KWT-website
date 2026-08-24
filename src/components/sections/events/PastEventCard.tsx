@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, RotateCcw } from "lucide-react";
+import { ArrowRight, RotateCcw } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import type { EventCardData } from "@/components/shared/EventCard";
@@ -147,31 +147,32 @@ export default function PastEventCard({ event, className }: PastEventCardProps) 
             </p>
 
             <div className="mt-5 flex flex-wrap gap-2">
-              <Link
-                to={event.href}
-                className={cn(
-                  ACTION_BASE,
-                  "border border-white/25 bg-white/5 text-white/85 backdrop-blur-sm",
-                  "hover:border-white/55 hover:bg-white/10 hover:text-white"
-                )}
-              >
-                View details
-                <ArrowRight size={11} strokeWidth={2.4} />
-              </Link>
-
-              {event.resourcesUrl && (
+              {event.href.startsWith("http") ? (
                 <a
-                  href={event.resourcesUrl}
+                  href={event.href}
                   target="_blank"
                   rel="noreferrer noopener"
                   className={cn(
                     ACTION_BASE,
-                    "bg-white text-navy-deep hover:bg-white/90"
+                    "border border-white/25 bg-white/5 text-white/85 backdrop-blur-sm",
+                    "hover:border-white/55 hover:bg-white/10 hover:text-white"
                   )}
                 >
-                  Session resources
-                  <ArrowUpRight size={11} strokeWidth={2.4} />
+                  View details
+                  <ArrowRight size={11} strokeWidth={2.4} />
                 </a>
+              ) : (
+                <Link
+                  to={event.href}
+                  className={cn(
+                    ACTION_BASE,
+                    "border border-white/25 bg-white/5 text-white/85 backdrop-blur-sm",
+                    "hover:border-white/55 hover:bg-white/10 hover:text-white"
+                  )}
+                >
+                  View details
+                  <ArrowRight size={11} strokeWidth={2.4} />
+                </Link>
               )}
             </div>
           </div>

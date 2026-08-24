@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
 import PageContainer from "@/components/layout/PageContainer";
+import SEO from "@/components/shared/SEO";
 
 export default function NotFound() {
   return (
     <PageContainer>
+      <SEO
+        title="404 - Page Not Found"
+        description="The page you're looking for doesn't exist or may have been moved."
+        noTitleSuffix
+      />
       <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4 px-6 py-16">
         <img
           src="/illustrations/404.png"
