@@ -9,6 +9,7 @@ import GetInvolved from "./pages/GetInvolved";
 import FAQ         from "./pages/FAQ";
 import Privacy     from "./pages/Privacy";
 import NotFound    from "./pages/NotFound";
+import WallOfGratitude from "./pages/WallOfGratitude";
 import ScrollToTop from "./components/shared/ScrollToTop";
 
 function App() {

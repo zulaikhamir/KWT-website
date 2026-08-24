@@ -7,10 +7,11 @@ import { useScrolledPastFirstSection } from "@/hooks/useScrolledPastFirstSection
 import headerLogo from "@/assets/images/header-logo.png";
 
 const navLinks = [
-  { label: "Home",   to: "/" },
-  { label: "About",  to: "/about" },
-  { label: "Events", to: "/events" },
-  { label: "FAQs",   to: "/faq" },
+  { label: "Home",              to: "/" },
+  { label: "About",             to: "/about" },
+  { label: "Events",            to: "/events" },
+  { label: "Wall of Gratitude", to: "/wall-of-gratitude" },
+  { label: "FAQs",              to: "/faq" },
 ];
 
 const COLLAPSE_TRANSITION =
