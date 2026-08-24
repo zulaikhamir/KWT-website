@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, CalendarDays, Lock, MapPin, Video } from "lucide-react";
 
 import PageContainer from "@/components/layout/PageContainer";
+import SEO from "@/components/shared/SEO";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import { findEventBySlug, isEventPast } from "@/data/events";
 import { cn } from "@/lib/utils";
@@ -100,6 +101,11 @@ export default function EventDetail() {
   if (!event) {
     return (
       <PageContainer>
+        <SEO
+          title="Event Not Found"
+          description="The event you're looking for doesn't exist or may have been removed."
+          url={`https://kwtcommunity.org/events/${slug}`}
+        />
         <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4 px-6 py-16 text-center">
           <h1 className="heading text-[var(--color-primary)]">Event not found</h1>
           <p className="lede text-[var(--color-secondary)]">
@@ -121,6 +127,18 @@ export default function EventDetail() {
 
   return (
     <PageContainer>
+      <SEO
+        title={event.title}
+        description={event.description}
+        url={`https://kwtcommunity.org/events/${event.slug}`}
+        type="article"
+        article={{
+          publishedTime: event.dateISO,
+          section: event.category,
+          tag: [event.category, event.format, "KWT Events", "Women in Tech"],
+        }}
+        keywords={`${event.title}, ${event.category}, ${event.format}, KWT events`}
+      />
       {/* ── Header ─────────────────────────────────────────────────────────── */}
       <SectionWrapper id="event-header" className="pt-16 sm:pt-24">
         {/* Back link */}

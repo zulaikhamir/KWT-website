@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 
 import Home        from "./pages/Home";
 import About       from "./pages/About";
@@ -12,19 +13,21 @@ import ScrollToTop from "./components/shared/ScrollToTop";
 
 function App() {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <Routes>
-        <Route path="/"              element={<Home />}        />
-        <Route path="/about"         element={<About />}       />
-        <Route path="/events"        element={<Events />}      />
-        <Route path="/events/:slug"  element={<EventDetail />} />
-        <Route path="/get-involved"  element={<GetInvolved />} />
-        <Route path="/faq"           element={<FAQ />}         />
-        <Route path="/privacy"       element={<Privacy />}     />
-        <Route path="*"              element={<NotFound />}    />
-      </Routes>
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/"              element={<Home />}        />
+          <Route path="/about"         element={<About />}       />
+          <Route path="/events"        element={<Events />}      />
+          <Route path="/events/:slug"  element={<EventDetail />} />
+          <Route path="/get-involved"  element={<GetInvolved />} />
+          <Route path="/faq"           element={<FAQ />}         />
+          <Route path="/privacy"       element={<Privacy />}     />
+          <Route path="*"              element={<NotFound />}    />
+        </Routes>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }
 

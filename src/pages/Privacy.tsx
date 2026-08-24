@@ -1,4 +1,5 @@
 import PageContainer from "@/components/layout/PageContainer";
+import SEO from "@/components/shared/SEO";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 
 /**
@@ -10,6 +11,11 @@ import SectionWrapper from "@/components/shared/SectionWrapper";
 export default function Privacy() {
   return (
     <PageContainer>
+      <SEO
+        title="Privacy Policy"
+        description="KWT Privacy Policy. Learn how we collect, use, and protect your personal information."
+        url="https://kwtcommunity.org/privacy"
+      />
       <SectionWrapper id="privacy-policy" className="pt-16 sm:pt-24">
         <div className="max-w-3xl">
           <p className="eyebrow">Legal</p>
