@@ -4,6 +4,8 @@ import { cn } from "@/lib/utils";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 export interface EventCardData {
+  /** URL-safe identifier used for the /events/:slug route */
+  slug?: string;
   /** e.g. "AUG 09" — used to render the date badge */
   dateShort: string;
   /** ISO date string for the <time> datetime attribute */
@@ -199,26 +201,6 @@ export default function EventCard({
             {isPast ? "View Details" : "Register"}
             <ArrowRight size={11} strokeWidth={2.4} />
           </Link>
-        )}
-
-        {/* Resources link — shown when a Google Drive / external URL is provided */}
-        {event.resourcesUrl && (
-          <a
-            href={event.resourcesUrl}
-            target="_blank"
-            rel="noreferrer noopener"
-            className={cn(
-              "inline-flex items-center gap-1.5 rounded-full px-5 py-2",
-              "text-xs font-medium tracking-[-0.005em]",
-              "border border-[var(--color-primary)]/20 text-[var(--color-primary)]",
-              "hover:border-[var(--color-primary)]/45 hover:bg-[var(--color-primary)]/[0.04]",
-              "active:scale-[0.98] transition-all duration-150",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/30",
-            )}
-          >
-            View Session Resources
-            <ArrowRight size={11} strokeWidth={2.4} />
-          </a>
         )}
       </div>
     </article>

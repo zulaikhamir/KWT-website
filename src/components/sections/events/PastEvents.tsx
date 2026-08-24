@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import SectionHeading from "@/components/shared/SectionHeading";
 import PastEventCard from "./PastEventCard";
-import { PAST_EVENTS } from "@/data/events";
+import { ALL_EVENTS, isEventPast } from "@/data/events";
 
 const VISIBLE_COUNT = 3;
 
@@ -13,7 +13,10 @@ export default function PastEvents() {
   const [showAll, setShowAll] = useState(false);
 
   const sorted = useMemo(
-    () => [...PAST_EVENTS].sort((a, b) => b.dateISO.localeCompare(a.dateISO)),
+    () =>
+      ALL_EVENTS
+        .filter((e) => isEventPast(e.dateISO))
+        .sort((a, b) => b.dateISO.localeCompare(a.dateISO)),
     [],
   );
 
