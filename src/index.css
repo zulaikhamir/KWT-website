@@ -182,7 +182,10 @@
     color: color-mix(in srgb, var(--color-primary) 55%, transparent);
   }
 
-  /* Page-level hero heading. */
+  /* Page-level hero heading. One size for every page hero — Home, About,
+     Events, Get Involved. The two-column heroes (Home, About) give their
+     text column ~1.3fr so this lands at the same ~18 characters a line the
+     full-width heroes get; changing those ratios will change the wrap. */
   .display {
     font-family: var(--font-heading);
     font-weight: 700;

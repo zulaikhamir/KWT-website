@@ -25,6 +25,7 @@ function App() {
           <Route path="/get-involved"  element={<GetInvolved />} />
           <Route path="/faq"           element={<FAQ />}         />
           <Route path="/privacy"       element={<Privacy />}     />
+          <Route path="wall-of-gratitude" element={<WallOfGratitude/>}/>
           <Route path="*"              element={<NotFound />}    />
         </Routes>
       </BrowserRouter>

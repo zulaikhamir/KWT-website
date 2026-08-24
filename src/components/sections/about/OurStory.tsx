@@ -28,44 +28,47 @@ export default function OurStory() {
   const bodyRef = useScrollReveal<HTMLDivElement>();
 
   return (
-    <SectionWrapper id="our-story" className="pt-16 sm:pt-24">
-      <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
-        <div>
-          <p className="eyebrow kwt-animate-fade-up" style={{ animationDelay: "0ms" }}>About KWT</p>
-          <h1
-            className="display mt-6 kwt-animate-fade-up"
-            style={{ animationDelay: "80ms" }}
-          >
-            Building a community for Kashmiri women in technology
-          </h1>
-          <p
-            className="lede mt-7 kwt-animate-fade-up"
-            style={{ animationDelay: "160ms" }}
-          >
-            Kashmiri Women in Tech (KWT) is a community created to connect Kashmiri women
-            interested in technology, science, engineering, research, and related fields. We are
-            creating a space where women can learn from one another, discover opportunities, build
-            meaningful professional connections, and contribute to a growing technology community.
-          </p>
+    <>
+      <section className="w-full">
+        <div className="mx-auto grid min-h-[calc(100svh-var(--nav-height))] max-w-6xl items-center gap-10 px-6 py-16 lg:grid-cols-[1.3fr_0.7fr] lg:gap-16 lg:px-8">
+          <div>
+            <p className="eyebrow kwt-animate-fade-up" style={{ animationDelay: "0ms" }}>About KWT</p>
+            <h1
+              className="display mt-6 kwt-animate-fade-up"
+              style={{ animationDelay: "80ms" }}
+            >
+              Building a community for Kashmiri women in technology
+            </h1>
+            <p
+              className="lede mt-7 kwt-animate-fade-up"
+              style={{ animationDelay: "160ms" }}
+            >
+              Kashmiri Women in Tech (KWT) is a community created to connect Kashmiri women
+              interested in technology, science, engineering, research, and related fields. We are
+              creating a space where women can learn from one another, discover opportunities, build
+              meaningful professional connections, and contribute to a growing technology community.
+            </p>
+          </div>
+
+          {/* Decorative — the heading carries the meaning, so no alt text. */}
+          <img
+            src="/illustrations/pencil.png"
+            alt=""
+            aria-hidden="true"
+            width={408}
+            height={408}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            className="kwt-animate-fade-up mx-auto h-auto w-full max-w-sm lg:max-w-md"
+            style={{ animationDelay: "120ms" }}
+          />
         </div>
+      </section>
 
-        {/* Decorative — the heading carries the meaning, so no alt text. */}
-        <img
-          src="/illustrations/pencil.png"
-          alt=""
-          aria-hidden="true"
-          width={408}
-          height={408}
-          loading="eager"
-          fetchPriority="high"
-          decoding="async"
-          className="kwt-animate-fade-up mx-auto h-auto w-full max-w-sm lg:max-w-md"
-          style={{ animationDelay: "120ms" }}
-        />
-      </div>
-
-      {/* Story body — scroll-revealed */}
-      <div ref={bodyRef} className="mt-20 grid gap-x-16 gap-y-12 lg:grid-cols-[1fr_1.15fr]">
+      <SectionWrapper id="our-story">
+        {/* Story body — scroll-revealed */}
+        <div ref={bodyRef} className="grid gap-x-16 gap-y-12 lg:grid-cols-[1fr_1.15fr]">
         <div className="kwt-reveal lg:sticky lg:top-32 lg:self-start">
           <h2 className="heading">Our story</h2>
           <dl className="mt-10 grid grid-cols-3 gap-6 border-t border-hairline pt-8">
@@ -105,8 +108,9 @@ export default function OurStory() {
               Author &amp; Yale Divinity Professor
             </figcaption>
           </figure>
+          </div>
         </div>
-      </div>
-    </SectionWrapper>
+      </SectionWrapper>
+    </>
   );
 }

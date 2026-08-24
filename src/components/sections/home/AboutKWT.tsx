@@ -1,43 +1,44 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpen, Users, TrendingUp, Heart } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { GraduationCap, UsersThree, Ladder, HandHeart } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import SectionHeading from "@/components/shared/SectionHeading";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-// ─── Pillars ──────────────────────────────────────────────────────────────────
 const PILLARS = [
   {
-    icon:  BookOpen,
+    icon:  GraduationCap,
     label: "Learn",
     desc:  "Workshops, talks, and curated resources spanning technology, engineering, research, and more.",
   },
   {
-    icon:  Users,
+    icon:  UsersThree,
     label: "Connect",
     desc:  "A community of Kashmiri women across disciplines, career stages, and geographies.",
   },
   {
-    icon:  TrendingUp,
+    icon:  Ladder,
     label: "Grow",
     desc:  "Mentorship, career opportunities, and a network that opens real doors across STEM fields.",
   },
   {
-    icon:  Heart,
+    icon:  HandHeart,
     label: "Give Back",
     desc:  "Contribute your expertise and experience to strengthen the next generation of Kashmiri women in TECH.",
   },
 ] as const;
 
-// ─── Pillar card — uses the shared surface-card design token ──────────────────
-function PillarCard({ icon: Icon, label, desc }: (typeof PILLARS)[number]) {
+type PillarCardProps = (typeof PILLARS)[number] & { className?: string };
+
+function PillarCard({ icon: Icon, label, desc, className }: PillarCardProps) {
   return (
-    <li className="surface-card surface-card-interactive flex flex-col p-7">
+    <li className={cn("surface-card surface-card-interactive flex flex-col p-7", className)}>
       <span
-        className="inline-flex size-11 items-center justify-center rounded-xl bg-[var(--color-accent-solid)]"
+        className="inline-flex size-11 items-center justify-center rounded-xl bg-[var(--color-accent)]"
         aria-hidden="true"
       >
-        <Icon className="size-[1.15rem] text-[var(--color-primary)]" strokeWidth={1.75} />
+        <Icon className="size-[1.3rem] text-[var(--color-primary)]" weight="duotone" />
       </span>
       <h3 className="subheading mt-6">{label}</h3>
       <p className="mt-3 text-[0.9375rem] leading-7 text-[var(--color-secondary)]">{desc}</p>
@@ -61,12 +62,11 @@ export default function AboutKWT() {
 
         <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {PILLARS.map((p, i) => (
-            <div
+            <PillarCard
               key={p.label}
+              {...p}
               className={cn("kwt-reveal", `kwt-stagger-${(i + 1) as 1 | 2 | 3 | 4}`)}
-            >
-              <PillarCard {...p} />
-            </div>
+            />
           ))}
         </ul>
 

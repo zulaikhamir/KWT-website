@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { ArrowRight, UserPlus, HeartHandshake, Building2, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { IdentificationBadge, Toolbox, Handshake, Gift } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import SectionWrapper from "@/components/shared/SectionWrapper";
@@ -15,14 +16,14 @@ type CardDef =
 
 const CARDS: CardDef[] = [
   {
-    icon:   UserPlus,
+    icon:   IdentificationBadge,
     title:  "Become a Member",
     body:   "KWT is open to all Kashmiri women in technology, engineering, science, and research — at any stage of their journey.",
     cta:    "Join the Community",
     action: "modal",
   },
   {
-    icon:   HeartHandshake,
+    icon:   Toolbox,
     title:  "Volunteer",
     body:   "Help with events, content, community operations, and more. Every contribution strengthens KWT.",
     cta:    "Start Volunteering",
@@ -30,7 +31,7 @@ const CARDS: CardDef[] = [
     href:   "https://tally.so/r/44leEO",
   },
   {
-    icon:   Building2,
+    icon:   Handshake,
     title:  "Partner With Us",
     body:   "Collaborate with KWT as a university, company, nonprofit, or community organisation.",
     cta:    "Partner with us",
@@ -38,7 +39,7 @@ const CARDS: CardDef[] = [
     href:   "/get-involved#partner",
   },
   {
-    icon:   Sparkles,
+    icon:   Gift,
     title:  "Sponsor KWT",
     body:   "Support KWT events and community initiatives. Help us build what matters.",
     cta:    "Sponsor KWT",
@@ -58,7 +59,15 @@ const ctaClasses = cn(
 );
 
 // ─── Card ─────────────────────────────────────────────────────────────────────
-function InvolvementCard({ card, onMemberClick }: { card: CardDef; onMemberClick: () => void }) {
+function InvolvementCard({
+  card,
+  onMemberClick,
+  className,
+}: {
+  card: CardDef;
+  onMemberClick: () => void;
+  className?: string;
+}) {
   const { icon: Icon, title, body, cta } = card;
 
   const ctaContent = (
@@ -90,12 +99,12 @@ function InvolvementCard({ card, onMemberClick }: { card: CardDef; onMemberClick
   }
 
   return (
-    <li className="surface-card surface-card-interactive flex flex-col p-7">
+    <li className={cn("surface-card surface-card-interactive flex flex-col p-7", className)}>
       <span
-        className="inline-flex size-11 items-center justify-center rounded-xl bg-[var(--color-accent-solid)]"
+        className="inline-flex size-11 items-center justify-center rounded-xl bg-[var(--color-accent)]"
         aria-hidden="true"
       >
-        <Icon className="size-[1.15rem] text-[var(--color-primary)]" strokeWidth={1.75} />
+        <Icon className="size-[1.3rem] text-[var(--color-primary)]" weight="duotone" />
       </span>
 
       <h3 className="subheading mt-6">{title}</h3>
@@ -125,14 +134,15 @@ export default function GetInvolved() {
           className="mb-12 kwt-reveal"
         />
 
+
         <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {CARDS.map((card, i) => (
-            <div
+            <InvolvementCard
               key={card.title}
+              card={card}
+              onMemberClick={() => setModalOpen(true)}
               className={cn("kwt-reveal", `kwt-stagger-${(i + 1) as 1 | 2 | 3 | 4}`)}
-            >
-              <InvolvementCard card={card} onMemberClick={() => setModalOpen(true)} />
-            </div>
+            />
           ))}
         </ul>
       </div>
