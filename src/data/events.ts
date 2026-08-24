@@ -11,7 +11,7 @@ export const UPCOMING_EVENTS: EventCardData[] = [
     format:      "Virtual", 
     // resourcesUrl: "[PLACEHOLDER — SESSION 03 RESOURCES]",
     // image: "[PLACEHOLDER — SESSION 03 PHOTO]",
-    href:        "#register",
+    href:        "https://tally.so/r/ja81gR",
   },
 ];
 

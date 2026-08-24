@@ -151,28 +151,55 @@ export default function EventCard({
 
       {/* Footer CTA */}
       <div className="flex flex-wrap items-center gap-2 px-5 pb-5">
-        <Link
-          to={event.href}
-          className={cn(
-            "inline-flex items-center gap-1.5 rounded-full px-5 py-2",
-            "text-xs font-medium tracking-[-0.005em]",
-            "active:scale-[0.98] transition-all duration-150",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/30",
-            isPast
-              ? [
-                  "border border-hairline text-[var(--color-secondary)]",
-                  "hover:border-[var(--color-primary)]/30 hover:text-[var(--color-primary)]",
-                ]
-              : [
-                  "bg-[var(--color-primary)] text-white",
-                  "hover:bg-[var(--color-primary)]/90",
-                  "hover:shadow-[0_8px_20px_-8px_rgba(27,42,82,0.45)]",
-                ],
-          )}
-        >
-          {isPast ? "View Details" : "Register"}
-          <ArrowRight size={11} strokeWidth={2.4} />
-        </Link>
+        {event.href.startsWith("http") ? (
+          <a
+            href={event.href}
+            target="_blank"
+            rel="noreferrer noopener"
+            className={cn(
+              "inline-flex items-center gap-1.5 rounded-full px-5 py-2",
+              "text-xs font-medium tracking-[-0.005em]",
+              "active:scale-[0.98] transition-all duration-150",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/30",
+              isPast
+                ? [
+                    "border border-hairline text-[var(--color-secondary)]",
+                    "hover:border-[var(--color-primary)]/30 hover:text-[var(--color-primary)]",
+                  ]
+                : [
+                    "bg-[var(--color-primary)] text-white",
+                    "hover:bg-[var(--color-primary)]/90",
+                    "hover:shadow-[0_8px_20px_-8px_rgba(27,42,82,0.45)]",
+                  ],
+            )}
+          >
+            {isPast ? "View Details" : "Register"}
+            <ArrowRight size={11} strokeWidth={2.4} />
+          </a>
+        ) : (
+          <Link
+            to={event.href}
+            className={cn(
+              "inline-flex items-center gap-1.5 rounded-full px-5 py-2",
+              "text-xs font-medium tracking-[-0.005em]",
+              "active:scale-[0.98] transition-all duration-150",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/30",
+              isPast
+                ? [
+                    "border border-hairline text-[var(--color-secondary)]",
+                    "hover:border-[var(--color-primary)]/30 hover:text-[var(--color-primary)]",
+                  ]
+                : [
+                    "bg-[var(--color-primary)] text-white",
+                    "hover:bg-[var(--color-primary)]/90",
+                    "hover:shadow-[0_8px_20px_-8px_rgba(27,42,82,0.45)]",
+                  ],
+            )}
+          >
+            {isPast ? "View Details" : "Register"}
+            <ArrowRight size={11} strokeWidth={2.4} />
+          </Link>
+        )}
 
         {/* Resources link — shown when a Google Drive / external URL is provided */}
         {event.resourcesUrl && (

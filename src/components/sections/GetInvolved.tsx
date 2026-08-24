@@ -22,8 +22,8 @@ const CARDS = [
     title: "Volunteer",
     body:  "Help with events, content, community operations, and more. Every contribution strengthens KWT.",
     cta:   "Start Volunteering",
-    href:  "/get-involved#volunteer",
-    external: false,
+    href:  "https://tally.so/r/44leEO",
+    external: true,
   },
   {
     icon:  Building2,
