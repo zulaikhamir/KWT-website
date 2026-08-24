@@ -1,30 +1,3 @@
-import { useState, useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { ChevronDown, Menu, X } from "lucide-react";
-import { cn } from "@/lib/utils";
-import logo from "@/assets/images/header-logo.png";
-
-// ─── Get Involved dropdown items ────────────────────────────────────────────
-const GET_INVOLVED_ITEMS = [
-  { label: "Volunteer", href: "/volunteer" },
-  { label: "Become a Mentor", href: "/mentorship" },
-  { label: "Partner With Us", href: "/partners" },
-  { label: "Sponsor KWT", href: "/sponsor" },
-  { label: "Donate", href: "/donate" },
-] as const;
-
-// ─── Primary nav links ───────────────────────────────────────────────────────
-const NAV_LINKS = [
-  { label: "About", href: "/about" },
-  { label: "Events", href: "/events" },
-  { label: "Wall of Gratitude", href: "/wall-of-gratitude" },
-] as const;
-
-// ─── Get Involved dropdown ───────────────────────────────────────────────────
-function GetInvolvedDropdown() {
-  const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-  const location = useLocation();
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { Menu, X, ArrowUpRight } from "lucide-react";
@@ -33,10 +6,11 @@ import { cn } from "@/lib/utils";
 import headerLogo from "@/assets/images/header-logo.png";
 
 const navLinks = [
-  { label: "Home",   to: "/" },
-  { label: "About",  to: "/about" },
-  { label: "Events", to: "/events" },
-  { label: "FAQs",   to: "/faq" },
+  { label: "Home",              to: "/" },
+  { label: "About",             to: "/about" },
+  { label: "Events",            to: "/events" },
+  { label: "Wall of Gratitude", to: "/wall-of-gratitude" },
+  { label: "FAQs",              to: "/faq" },
 ];
 
 export default function Navbar() {

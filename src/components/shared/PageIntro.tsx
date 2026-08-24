@@ -1,8 +1,6 @@
 // Separate feature-specific page intro from Home Hero.
 // Inner pages may share a calmer consistent introduction pattern.
 
-import PageContainer from "@/components/layout/PageContainer";
-
 type PageIntroProps = {
   eyebrow: string;
   title: string;
@@ -19,7 +17,7 @@ export default function PageIntro({
       aria-labelledby="page-intro-title"
       className="bg-[var(--color-background)] pt-16 pb-10 sm:pt-20 sm:pb-12"
     >
-      <PageContainer>
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-[var(--color-accent)] bg-[var(--color-accent)]/60 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-primary)]">
             <span
@@ -42,7 +40,7 @@ export default function PageIntro({
             </p>
           )}
         </div>
-      </PageContainer>
+      </div>
     </section>
   );
 }

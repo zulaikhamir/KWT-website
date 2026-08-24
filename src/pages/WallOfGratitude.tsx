@@ -3,6 +3,7 @@ import SponsorCard from "@/components/wall-of-gratitude/SponsorCard";
 import PageIntro from "@/components/shared/PageIntro";
 import SectionHeading from "@/components/shared/SectionHeading";
 import SectionWrapper from "@/components/shared/SectionWrapper";
+import PageContainer from "@/components/layout/PageContainer";
 import {
   contributors,
   mentors,
@@ -13,7 +14,7 @@ import {
 
 export default function WallOfGratitude() {
   return (
-    <main>
+    <PageContainer>
       {/* Page Introduction */}
       <PageIntro
         eyebrow="Wall of Gratitude"
@@ -22,10 +23,10 @@ export default function WallOfGratitude() {
       />
 
       {/* Mentors section */}
-      <SectionWrapper id="mentors" bg="surface">
+      <SectionWrapper id="mentors" tone="surface">
         <SectionHeading
-          heading="Mentors"
-          body="Experienced professionals who guide, support, and inspire our growing community."
+          title="Mentors"
+          description="Experienced professionals who guide, support, and inspire our growing community."
           align="center"
           className="mb-10"
         />
@@ -38,10 +39,10 @@ export default function WallOfGratitude() {
       </SectionWrapper>
 
       {/* Volunteers section */}
-      <SectionWrapper id="volunteers" bg="surface">
+      <SectionWrapper id="volunteers" tone="default">
         <SectionHeading
-          heading="Volunteers"
-          body="People who make KWT events, initiatives, and day-to-day activities possible."
+          title="Volunteers"
+          description="People who make KWT events, initiatives, and day-to-day activities possible."
           align="center"
           className="mb-10"
         />
@@ -54,10 +55,10 @@ export default function WallOfGratitude() {
       </SectionWrapper>
 
       {/* Speakers section */}
-      <SectionWrapper id="speakers" bg="surface">
+      <SectionWrapper id="speakers" tone="surface">
         <SectionHeading
-          heading="Speakers"
-          body="Experts and community members who generously share their knowledge and experiences."
+          title="Speakers"
+          description="Experts and community members who generously share their knowledge and experiences."
           align="center"
           className="mb-10"
         />
@@ -70,10 +71,10 @@ export default function WallOfGratitude() {
       </SectionWrapper>
 
       {/* Sponsors section */}
-      <SectionWrapper id="sponsors" bg="surface">
+      <SectionWrapper id="sponsors" tone="default">
         <SectionHeading
-          heading="Sponsors"
-          body="Organizations that support KWT's mission and help our community grow."
+          title="Sponsors"
+          description="Organizations that support KWT's mission and help our community grow."
           align="center"
           className="mb-10"
         />
@@ -86,10 +87,10 @@ export default function WallOfGratitude() {
       </SectionWrapper>
 
       {/* Contributors section */}
-      <SectionWrapper id="contributors" bg="surface">
+      <SectionWrapper id="contributors" tone="surface">
         <SectionHeading
-          heading="Community Contributors"
-          body="Everyone whose time, ideas, and efforts continue to strengthen the KWT community."
+          title="Community Contributors"
+          description="Everyone whose time, ideas, and efforts continue to strengthen the KWT community."
           align="center"
           className="mb-10"
         />
@@ -100,6 +101,6 @@ export default function WallOfGratitude() {
           ))}
         </div>
       </SectionWrapper>
-    </main>
+    </PageContainer>
   );
 }
