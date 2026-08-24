@@ -1,5 +1,5 @@
-import PersonCard from "@/components/wall-of-gratitude/PersonCard";
-import SponsorCard from "@/components/wall-of-gratitude/SponsorCard";
+import PersonCard from "@/components/sections/wall-of-gratitude/PersonCard";
+import SponsorCard from "@/components/sections/wall-of-gratitude/SponsorCard";
 import PageIntro from "@/components/shared/PageIntro";
 import SectionHeading from "@/components/shared/SectionHeading";
 import SectionWrapper from "@/components/shared/SectionWrapper";
