@@ -1,4 +1,3 @@
-import { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import footerLogo from "@/assets/images/logo-transparent.png";
@@ -29,86 +28,18 @@ const socials = [
   },
 ];
 
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const TALLY_URL = "https://tally.so/r/81b72x";
 
 function NewsletterForm() {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [errorMessage, setErrorMessage] = useState("");
-
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
-    if (!EMAIL_PATTERN.test(email)) {
-      setStatus("error");
-      setErrorMessage("Enter a valid email address.");
-      return;
-    }
-
-    setStatus("loading");
-    try {
-      // TODO: point this at your actual provider — Mailchimp, ConvertKit,
-      // Resend, a Supabase edge function, etc. This endpoint does not exist yet.
-      const res = await fetch("/api/newsletter", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-      if (!res.ok) throw new Error("Request failed");
-      setStatus("success");
-      setEmail("");
-    } catch {
-      setStatus("error");
-      setErrorMessage("Something went wrong. Try again.");
-    }
-  }
-
-  if (status === "success") {
-    return (
-      <p role="status" className="text-[0.9375rem] text-white/80">
-        You're subscribed. Watch for updates from KWT.
-      </p>
-    );
-  }
-
   return (
-    <form
-      onSubmit={handleSubmit}
-      noValidate
-      className="flex w-full max-w-sm flex-col gap-3 sm:flex-row sm:items-start sm:gap-2"
+    <a
+      href={TALLY_URL}
+      target="_blank"
+      rel="noreferrer noopener"
+      className="inline-flex shrink-0 items-center justify-center gap-1.5 rounded-full border border-white/25 px-5 py-2.5 text-sm font-medium transition-colors duration-200 hover:border-white/60 hover:bg-white/5"
     >
-      <div className="flex-1">
-        <label htmlFor="newsletter-email" className="sr-only">
-          Email address
-        </label>
-        <input
-          id="newsletter-email"
-          type="email"
-          required
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-            if (status === "error") setStatus("idle");
-          }}
-          placeholder="you@example.com"
-          aria-invalid={status === "error"}
-          aria-describedby={status === "error" ? "newsletter-error" : undefined}
-          className="w-full rounded-full border border-white/25 bg-transparent px-4 py-2.5 text-sm text-white placeholder:text-white/40 outline-none transition-colors duration-200 focus:border-white/60"
-        />
-        {status === "error" && (
-          <p id="newsletter-error" role="alert" className="mt-2 text-sm text-red-300">
-            {errorMessage}
-          </p>
-        )}
-      </div>
-      <button
-        type="submit"
-        disabled={status === "loading"}
-        className="inline-flex shrink-0 items-center justify-center gap-1.5 rounded-full border border-white/25 px-5 py-2.5 text-sm font-medium transition-colors duration-200 hover:border-white/60 hover:bg-white/5 disabled:cursor-not-allowed disabled:opacity-50"
-      >
-        {status === "loading" ? "Subscribing…" : "Subscribe"}
-      </button>
-    </form>
+      Subscribe to our newsletter
+    </a>
   );
 }
 
@@ -129,7 +60,7 @@ export default function Footer() {
             </p>
             <Link
               to="/get-involved"
-              className="group mt-6 inline-flex items-center gap-1 text-sm text-white/55 transition-colors duration-200 hover:text-white/90"
+              className="group mt-6 inline-flex items-center gap-1.5 rounded-full border border-white/25 px-5 py-2.5 text-sm font-medium text-white/75 transition-colors duration-200 hover:border-white/60 hover:bg-white/5 hover:text-white"
             >
               Join the community
               <ArrowUpRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -202,6 +133,7 @@ export default function Footer() {
           </p>
           <p className="text-sm text-white/50">Srinagar, Kashmir</p>
         </div>
+        
       </div>
     </footer>
   );

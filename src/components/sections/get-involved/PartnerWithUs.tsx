@@ -45,7 +45,9 @@ export default function PartnerWithUs() {
       </div>
 
       <CtaLink
-        href="mailto:kashmiriwomenintech@gmail.com?subject=KWT%20partnership"
+        href="https://tally.so/r/kd8MrM"
+        target="_blank"
+        rel="noreferrer noopener"
         variant="outline"
         className="mt-10"
       >

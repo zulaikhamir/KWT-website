@@ -44,9 +44,10 @@ export default function Volunteer() {
             and the areas you'd like to help with, and we'll reach out if a suitable role
             becomes available.
           </p>
-          {/* [PLACEHOLDER — VOLUNTEER FORM URL] — replace "#volunteer-form" with the real form URL */}
           <CtaLink
-            href="#volunteer-form"
+            href="https://tally.so/r/44leEO"
+            target="_blank"
+            rel="noreferrer noopener"
             variant="outline"
             className="mt-9"
           >
