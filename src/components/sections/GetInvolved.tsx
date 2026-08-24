@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
 import { ArrowRight, UserPlus, HeartHandshake, Building2, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import SectionHeading from "@/components/shared/SectionHeading";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+
+const MEMBERSHIP_URL = "https://tally.so/r/686aVB";
 
 // ─── Cards ────────────────────────────────────────────────────────────────────
 const CARDS = [
@@ -11,8 +13,9 @@ const CARDS = [
     icon:  UserPlus,
     title: "Become a Member",
     body:  "KWT is open to all Kashmiri women in technology, engineering, science, and research — at any stage of their journey.",
-    cta:   null,
-    href:  null,
+    cta:   "Join the Community",
+    href:  MEMBERSHIP_URL,
+    external: true,
   },
   {
     icon:  HeartHandshake,
@@ -20,6 +23,7 @@ const CARDS = [
     body:  "Help with events, content, community operations, and more. Every contribution strengthens KWT.",
     cta:   "Start Volunteering",
     href:  "/get-involved#volunteer",
+    external: false,
   },
   {
     icon:  Building2,
@@ -27,6 +31,7 @@ const CARDS = [
     body:  "Collaborate with KWT as a university, company, nonprofit, or community organisation.",
     cta:   "Partner with us",
     href:  "/get-involved#partner",
+    external: false,
   },
   {
     icon:  Sparkles,
@@ -34,8 +39,9 @@ const CARDS = [
     body:  "Support KWT events and community initiatives. Help us build what matters.",
     cta:   "Sponsor KWT",
     href:  "/get-involved#sponsor",
+    external: false,
   },
-] as const;
+];
 
 // ─── Involvement card — uses the shared surface-card design token ──────────────
 function InvolvementCard({
@@ -44,13 +50,24 @@ function InvolvementCard({
   body,
   cta,
   href,
+  external,
 }: {
   icon: (typeof CARDS)[number]["icon"];
   title: string;
   body: string;
-  cta: string | null;
-  href: string | null;
+  cta: string;
+  href: string;
+  external: boolean;
 }) {
+  const ctaClasses = cn(
+    "mt-6 self-start inline-flex items-center gap-1.5",
+    "text-[0.875rem] font-medium text-[var(--color-primary)]",
+    "border-b border-[var(--color-primary)]/30 pb-px",
+    "hover:border-[var(--color-primary)]",
+    "transition-colors duration-150",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/30",
+  );
+
   return (
     <li className="surface-card surface-card-interactive flex flex-col p-7">
       <span
@@ -65,18 +82,18 @@ function InvolvementCard({
         {body}
       </p>
 
-      {cta && href && (
-        <Link
-          to={href}
-          className={cn(
-            "mt-6 self-start inline-flex items-center gap-1.5",
-            "text-[0.875rem] font-medium text-[var(--color-primary)]",
-            "border-b border-[var(--color-primary)]/30 pb-px",
-            "hover:border-[var(--color-primary)]",
-            "transition-colors duration-150",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/30",
-          )}
+      {external ? (
+        <a
+          href={href}
+          target="_blank"
+          rel="noreferrer noopener"
+          className={ctaClasses}
         >
+          {cta}
+          <ArrowRight size={13} strokeWidth={2.2} aria-hidden="true" />
+        </a>
+      ) : (
+        <Link to={href} className={ctaClasses}>
           {cta}
           <ArrowRight size={13} strokeWidth={2.2} aria-hidden="true" />
         </Link>

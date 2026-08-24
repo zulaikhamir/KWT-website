@@ -24,9 +24,10 @@ export default function BecomeMember() {
             others, discover opportunities, learn from shared experiences, and take part in
             community activities.
           </p>
-          {/* [PLACEHOLDER — MEMBERSHIP FORM URL] — replace "#membership-form" with the real form URL */}
           <CtaLink
-            href="#membership-form"
+            href="https://tally.so/r/686aVB"
+            target="_blank"
+            rel="noreferrer noopener"
             className="mt-9"
           >
             Join the Community
