@@ -7,7 +7,7 @@ const exploreLinks = [
   { label: "About",          to: "/about" },
   { label: "Events",         to: "/events" },
   { label: "Get involved",   to: "/get-involved" },
-  // { label: "Privacy Policy", to: "/privacy" },
+  { label: "Privacy Policy", to: "/privacy" },
 ];
 
 const socials = [
@@ -38,7 +38,7 @@ function NewsletterForm() {
       rel="noreferrer noopener"
       className="inline-flex shrink-0 items-center justify-center gap-1.5 rounded-full border border-white/25 px-5 py-2.5 text-sm font-medium transition-colors duration-200 hover:border-white/60 hover:bg-white/5"
     >
-      Subscribe
+      Subscribe to our newsletter
     </a>
   );
 }
@@ -133,6 +133,7 @@ export default function Footer() {
           </p>
           <p className="text-sm text-white/50">Srinagar, Kashmir</p>
         </div>
+        
       </div>
     </footer>
   );

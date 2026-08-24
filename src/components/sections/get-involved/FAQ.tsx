@@ -1,26 +1,71 @@
 import { Plus } from "lucide-react";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 
-const faqs = [
+// ─── link helper ─────────────────────────────────────────────────────────────
+function A({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer noopener"
+      className="font-medium text-[var(--color-primary)] underline underline-offset-2 hover:opacity-70 transition-opacity"
+    >
+      {children}
+    </a>
+  );
+}
+
+// ─── FAQ data ─────────────────────────────────────────────────────────────────
+const faqs: { question: string; answer: React.ReactNode }[] = [
+  {
+    question: "What is KWT?",
+    answer:
+      "Kashmiri Women in Tech (KWT) is a community connecting Kashmiri women in technology to learn, network, share opportunities, and grow together.",
+  },
+  {
+    question: "Who is KWT for?",
+    answer:
+      "Students, aspiring tech professionals, working professionals, researchers, founders, and any woman interested in technology.",
+  },
   {
     question: "How do I join KWT?",
-    answer:
-      "You can join KWT by filling out our membership form, linked on the Get Involved page. Once your request is processed, you'll receive information about joining the community.",
+    answer: (
+      <>
+        Fill out the{" "}
+        <A href="https://tally.so/r/686aVB">membership form</A> — we review it
+        and you get added to the community and given access to sessions,
+        resources, and updates.
+      </>
+    ),
   },
   {
     question: "Is membership free?",
-    answer:
-      "Yes. KWT membership is currently free. Our goal is to make the community accessible to Kashmiri women at different stages of their technology and STEM journeys.",
+    answer: "Yes, KWT membership is completely free.",
   },
   {
     question: "Do I need to work in tech already?",
     answer:
-      "No. KWT is intended for Kashmiri women at different stages of their journey, including students, beginners, researchers, and professionals. You don't need to already be working in technology to participate.",
+      "No. You can be a student, complete beginner, career-switcher, or simply curious about technology — no prior experience required.",
   },
   {
-    question: "Can I take part remotely?",
+    question: "What can I expect from KWT?",
     answer:
-      "Yes. KWT includes online community activities, discussions, and sessions, while some activities may also take place in person. The format will depend on the specific event or initiative.",
+      "Community discussions, learning sessions and workshops (like our recent one on networking and professional outreach), opportunities shared by members and partners, resources, and a space to connect with other women in tech.",
+  },
+  {
+    question: "Can I participate remotely?",
+    answer:
+      "Yes — most sessions and community activities happen online, so you can join from anywhere.",
+  },
+  {
+    question: "How do I get more involved beyond just being a member?",
+    answer:
+      "We regularly open volunteer and contributor roles (community ops, content, partnerships, etc.) — keep an eye on group announcements, or message us directly if you don't see a role that fits but still want to contribute.",
+  },
+  {
+    question: "How should I reach out to KWT admins?",
+    answer:
+      "Always mention what you're reaching out about first, along with a quick intro of who you are — it helps us understand the context and respond faster.",
   },
 ];
 
