@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, CalendarDays, Lock, MapPin, Video } from "lucide-react";
 
 import PageContainer from "@/components/layout/PageContainer";
 import SEO from "@/components/shared/SEO";
 import SectionWrapper from "@/components/shared/SectionWrapper";
+import MembershipModal from "@/components/shared/MembershipModal";
 import { findEventBySlug, isEventPast } from "@/data/events";
 import { cn } from "@/lib/utils";
 
@@ -19,7 +21,13 @@ const FORMAT_ICON = {
  * The resourcesUrl is intentionally NOT rendered in the DOM when locked.
  * Wire `isMember` to a real auth check when membership auth is implemented.
  */
-function ResourcesSection({ resourcesUrl }: { resourcesUrl: string }) {
+function ResourcesSection({
+  resourcesUrl,
+  onJoinClick,
+}: {
+  resourcesUrl: string;
+  onJoinClick: () => void;
+}) {
   // TODO: replace with real membership auth check (e.g. context, cookie, JWT)
   const isMember = false;
 
@@ -69,10 +77,9 @@ function ResourcesSection({ resourcesUrl }: { resourcesUrl: string }) {
               Session resources are available exclusively to KWT members. Join the community
               to access slides, notes, and materials from all past sessions.
             </p>
-            <a
-              href="https://tally.so/r/686aVB"
-              target="_blank"
-              rel="noreferrer noopener"
+            <button
+              type="button"
+              onClick={onJoinClick}
               className={cn(
                 "mt-6 inline-flex items-center gap-1.5 rounded-full",
                 "border border-[var(--color-primary)]/20 px-5 py-2.5",
@@ -84,7 +91,7 @@ function ResourcesSection({ resourcesUrl }: { resourcesUrl: string }) {
             >
               Join KWT to access resources
               <ArrowUpRight size={14} strokeWidth={2.2} aria-hidden="true" />
-            </a>
+            </button>
           </div>
         )}
       </div>
@@ -96,6 +103,7 @@ function ResourcesSection({ resourcesUrl }: { resourcesUrl: string }) {
 export default function EventDetail() {
   const { slug } = useParams<{ slug: string }>();
   const event = slug ? findEventBySlug(slug) : undefined;
+  const [modalOpen, setModalOpen] = useState(false);
 
   // ── 404 state ──────────────────────────────────────────────────────────────
   if (!event) {
@@ -105,8 +113,7 @@ export default function EventDetail() {
           title="Event Not Found"
           description="The event you're looking for doesn't exist or may have been removed."
           url={`https://kwtcommunity.org/events/${slug}`}
-        />
-        <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4 px-6 py-16 text-center">
+        />        <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4 px-6 py-16 text-center">
           <h1 className="heading text-[var(--color-primary)]">Event not found</h1>
           <p className="lede text-[var(--color-secondary)]">
             This event doesn't exist or the link may have changed.
@@ -127,6 +134,7 @@ export default function EventDetail() {
 
   return (
     <PageContainer>
+      <MembershipModal open={modalOpen} onOpenChange={setModalOpen} />
       <SEO
         title={event.title}
         description={event.description}
@@ -281,7 +289,7 @@ export default function EventDetail() {
 
       {/* ── Session resources (member-only) ────────────────────────────────── */}
       {event.resourcesUrl && (
-        <ResourcesSection resourcesUrl={event.resourcesUrl} />
+        <ResourcesSection resourcesUrl={event.resourcesUrl} onJoinClick={() => setModalOpen(true)} />
       )}
     </PageContainer>
   );
