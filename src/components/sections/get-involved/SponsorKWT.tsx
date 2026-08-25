@@ -1,4 +1,4 @@
-import { Award } from "lucide-react";
+import { HandCoins } from "@phosphor-icons/react";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import SectionHeading from "@/components/shared/SectionHeading";
 import CtaLink from "@/components/shared/CtaLink";
@@ -15,9 +15,9 @@ export default function SponsorKWT() {
 
       <div className="mt-16 flex flex-col items-center gap-8 rounded-2xl border border-hairline bg-white p-9 text-center shadow-[0_32px_80px_-32px_rgba(27,42,82,0.18)] sm:flex-row sm:gap-10 sm:p-10 sm:text-left">
         <span className="flex size-14 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent)]">
-          <Award
+          <HandCoins
             className="size-6 text-[var(--color-primary)]"
-            strokeWidth={1.75}
+            weight="duotone"
             aria-hidden="true"
           />
         </span>

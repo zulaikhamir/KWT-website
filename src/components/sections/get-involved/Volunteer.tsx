@@ -1,10 +1,10 @@
-import { CalendarDays, Megaphone, Users, BookOpen } from "lucide-react";
+import { CalendarCheck, Megaphone, Lifebuoy, Books } from "@phosphor-icons/react";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import CtaLink from "@/components/shared/CtaLink";
 
 const areas = [
   {
-    icon: CalendarDays,
+    icon: CalendarCheck,
     title: "Event Support",
     body: "Help coordinate community sessions, communicate with speakers and participants, and support events before and during the session.",
   },
@@ -14,12 +14,12 @@ const areas = [
     body: "Help create community announcements, opportunity posts, social media content, and other communications.",
   },
   {
-    icon: Users,
+    icon: Lifebuoy,
     title: "Community Support",
     body: "Help welcome members, share useful resources, support discussions, and identify ways to make the community more useful.",
   },
   {
-    icon: BookOpen,
+    icon: Books,
     title: "Research & Resources",
     body: "Help identify, organise, and share research, learning resources, opportunities, and useful information for members.",
   },
@@ -64,8 +64,8 @@ export default function Volunteer() {
                 aria-hidden="true"
               >
                 <Icon
-                  className="size-[1.15rem] text-[var(--color-primary)]"
-                  strokeWidth={1.75}
+                  className="size-[1.3rem] text-[var(--color-primary)]"
+                  weight="duotone"
                 />
               </span>
               <h3 className="subheading mt-6">{title}</h3>

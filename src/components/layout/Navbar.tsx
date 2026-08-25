@@ -10,7 +10,7 @@ const navLinks = [
   { label: "Home",              to: "/" },
   { label: "About",             to: "/about" },
   { label: "Events",            to: "/events" },
-  { label: "Wall of Gratitude", to: "/wall-of-gratitude" },
+  // { label: "Wall of Gratitude", to: "/wall-of-gratitude" },
   { label: "FAQs",              to: "/faq" },
 ];
 
@@ -131,8 +131,6 @@ export default function Navbar() {
               className={cn(
                 "p-2 text-[var(--color-primary)] transition-[margin] md:hidden",
                 COLLAPSE_TRANSITION,
-                // Optically align with the row edge; the pill supplies its
-                // own padding, so the negative pull only applies when flush.
                 isCompact ? "-mr-1" : "-mr-2"
               )}
             >

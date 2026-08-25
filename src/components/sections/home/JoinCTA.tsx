@@ -10,7 +10,6 @@ export default function JoinCTA() {
     <section
       aria-labelledby="join-cta-heading"
       className="py-16 sm:py-20"
-      style={{ backgroundColor: "var(--color-accent)" }}
     >
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <div ref={ref} className="flex flex-col items-center gap-6 text-center kwt-reveal-fade">
@@ -63,7 +62,9 @@ export default function JoinCTA() {
                 "hover:bg-[var(--color-primary)]/90",
                 "hover:shadow-[0_10px_28px_-10px_rgba(27,42,82,0.45)]",
                 "active:scale-[0.98] transition-all duration-200",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-accent)]",
+                // Ring offset must match whatever sits behind the button —
+                // now the page base, not the accent fill this section used to paint.
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-base)]",
               )}
             >
               Join KWT

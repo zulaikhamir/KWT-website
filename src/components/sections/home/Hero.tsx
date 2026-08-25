@@ -12,7 +12,7 @@ export default function Hero() {
   return (
     <section aria-labelledby="hero-heading" className="relative overflow-hidden">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        <div className="grid items-center gap-12 py-16 sm:py-24 lg:grid-cols-2 lg:gap-16">
+        <div className="grid min-h-[calc(100svh-var(--nav-height))] items-center gap-12 py-16 lg:grid-cols-[1.3fr_0.7fr] lg:gap-16">
 
           {/* ── Text column ──────────────────────────────────────────── */}
           <div className="flex flex-col items-start">
