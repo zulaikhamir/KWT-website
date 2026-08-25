@@ -12,9 +12,10 @@ export default function Impact() {
       <div ref={ref}>
        <SectionHeading
           align="center"
+          eyebrow="By the numbers"
           title="Our community is growing"
           description="Built in Kashmir. Growing beyond it."
-          className="mb-8 kwt-reveal"
+          className="mb-10 kwt-reveal"
         />
 
         <div className="kwt-reveal kwt-stagger-2">
