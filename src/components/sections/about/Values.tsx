@@ -8,22 +8,22 @@ const values = [
   {
     icon: ChatsCircle,
     title: "Community",
-    body: "We believe meaningful communities are built through people supporting one another. KWT creates space for Kashmiri women to connect, share experiences, ask questions, and learn from each other.",
+    body: "We make space for people to connect, ask questions, share experiences, and help each other.",
   },
   {
     icon: Plant,
     title: "Growth",
-    body: "Everyone is at a different stage of their journey. KWT encourages continuous learning and helps members discover resources, opportunities, and experiences that support their personal and professional growth.",
+    body: "There is always something new to learn, and someone new to learn from.",
   },
   {
     icon: DoorOpen,
     title: "Inclusion",
-    body: "KWT welcomes Kashmiri women across different stages, backgrounds, fields, and levels of experience in technology and STEM. You do not need to already be an experienced professional to have a place here.",
+    body: "There is a place here for every Kashmiri woman, wherever she is in her journey.",
   },
   {
     icon: Lightning,
     title: "Empowerment",
-    body: "We want members to feel equipped to pursue their goals, speak about their work, seek opportunities, and contribute their knowledge to others. KWT is designed to help women build the confidence and connections to take ownership of their journeys.",
+    body: "We want women to have the knowledge, connections, and confidence to move forward.",
   },
 ];
 

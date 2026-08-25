@@ -4,15 +4,15 @@ import SectionHeading from "@/components/shared/SectionHeading";
 const steps = [
   {
     title: "Reach out",
-    body: "Tell us who you are, what you're interested in, and how you'd like to get involved.",
+    body: "Tell us who you are and how you'd like to get involved.",
   },
   {
     title: "Connect with KWT",
-    body: "Our team will review your request and get back to you with the relevant next steps.",
+    body: "We'll review your request and get back to you with the next steps.",
   },
   {
     title: "Get involved",
-    body: "Once connected, you can take part in community activities, contribute your skills, attend events, or explore opportunities to collaborate with KWT.",
+    body: "Join the community, contribute your skills, attend events, or explore ways to work with KWT.",
   },
 ];
 
@@ -22,7 +22,7 @@ export default function WhatHappensNext() {
       <SectionHeading
         eyebrow="The process"
         title="What happens next?"
-        description="Whether you are joining the community, volunteering, or exploring a partnership, we'll help you understand the next step and connect you with the right person."
+        description="Wherever you start, we'll help you find the right next step."
       />
 
       <ol className="relative mt-16 grid gap-10 sm:grid-cols-3 sm:gap-8">

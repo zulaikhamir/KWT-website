@@ -120,7 +120,7 @@ export default function Footer() {
           <div>
             <h2 className="eyebrow text-white/45">Newsletter</h2>
             <p className="mt-3 max-w-sm text-[0.9375rem] leading-7 text-white/65">
-              Event announcements and community updates, occasionally. No spam.
+              Event announcements, opportunities, and community updates. Occasionally.
             </p>
           </div>
           <NewsletterForm />
@@ -131,7 +131,7 @@ export default function Footer() {
           <p className="text-sm text-white/50">
             &copy; {new Date().getFullYear()} Kashmiri Women in Tech. All rights reserved.
           </p>
-          <p className="text-sm text-white/50">Srinagar, Kashmir</p>
+          <p className="text-sm text-white/50">Srinagar, Jammu and Kashmir</p>
         </div>
         
       </div>

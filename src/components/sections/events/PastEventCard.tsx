@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import type { EventCardData } from "@/components/shared/EventCard";
 
 const FALLBACK_IMAGE = "/images/hero-image.png";
+//create something nice and relevant for fallback which will actually work
 
 const ACTION_BASE = cn(
   "inline-flex items-center gap-1.5 rounded-full px-4 py-2",

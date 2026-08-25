@@ -42,7 +42,7 @@ export default function EventsHeader() {
             className="display mt-6 text-white kwt-animate-fade-up"
             style={{ animationDelay: "80ms" }}
           >
-            Where the KWT community connects and learns
+            Where the KWT community connects
           </h1>
 
           {/* Lede */}
@@ -50,9 +50,7 @@ export default function EventsHeader() {
             className="lede mt-7 max-w-xl text-white/75 kwt-animate-fade-up"
             style={{ animationDelay: "180ms" }}
           >
-            From research and technology discussions to professional development, networking,
-            and community sessions, KWT events create opportunities for Kashmiri women to learn
-            from one another, meet new people, and grow together.
+            From talks and workshops to mentorship, resume reviews, and career sessions, KWT creates spaces to learn, meet people, and move forward together.
           </p>
         </div>
       </div>

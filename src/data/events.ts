@@ -1,101 +1,161 @@
 import type { EventCardData } from "@/components/shared/EventCard";
 
+import welcomeSessionImage from "@/assets/images/events/welcome-session.png";
+import researchPublicationImage from "@/assets/images/events/research-publication.png";
+import aiCareerQaImage from "@/assets/images/events/ai-career-community-qa.png";
+import professionalNetworkingImage from "@/assets/images/events/professional-communication-networking.png";
+import resumeReviewImage from "@/assets/images/events/resume-review.png";
+
 /**
- * Returns true when an event's date is strictly before today (end-of-day).
- * An event on today's date is still considered upcoming so the Register CTA
- * remains live for the full day of the event.
+ * Returns true when an event's date is strictly before today.
+ *
+ * An event happening today is still considered upcoming so the Register CTA
+ * remains available for the full day.
  */
 export function isEventPast(dateISO: string): boolean {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
+
   const eventDate = new Date(dateISO + "T00:00:00");
+
   return eventDate < today;
 }
 
 /**
- * Look up a single event by its slug. Returns undefined for unknown slugs.
+ * Look up a single event by its slug.
  */
-export function findEventBySlug(slug: string): EventCardData | undefined {
-  return ALL_EVENTS.find((e) => e.slug === slug);
+export function findEventBySlug(
+  slug: string,
+): EventCardData | undefined {
+  return ALL_EVENTS.find((event) => event.slug === slug);
 }
 
 /**
  * Single source of truth for all KWT events.
+ *
  * UpcomingEvents and PastEvents derive their lists from this array at runtime
- * using isEventPast() — no manual splitting needed.
+ * using isEventPast(). No manual splitting needed.
  */
+
 export const ALL_EVENTS: EventCardData[] = [
   {
-    // Session 01 — KWT Inaugural & Welcome Session
-    slug:         "2026-08-02-kwt-inaugural-welcome-session",
-    dateShort:    "AUG 02",
-    dateISO:      "2026-08-02",
-    category:     "Community Session",
-    title:        "KWT Inaugural & Welcome Session",
+    // Event 01
+    slug: "2026-08-02-kwt-inaugural-welcome-session",
+    dateShort: "AUG 02",
+    dateISO: "2026-08-02",
+    category: "Community Session",
+    title: "KWT Inaugural & Welcome Session",
     description:
-      "The inaugural KWT session officially introduced the community and its mission to help Kashmiri women in technology learn, connect, support one another, and grow together. The session also featured a guest talk on getting started with research: from curiosity to publication.",
-    format:       "Virtual",
-    resourcesUrl: "https://drive.google.com/drive/folders/1ekm5LVYb42jkl4q1aE8nPEPNb8gJiRle",
-    href:         "/events/2026-08-02-kwt-inaugural-welcome-session",
+      "KWT's first community session introduced the community, its mission, and what members can expect. The session also featured a guest talk on getting started with research.",
+    format: "Virtual",
+    image: welcomeSessionImage,
+    people: [
+      {
+        name: "Speaker Name",
+        role: "Guest Speaker",
+        linkedin: "https://www.linkedin.com/in/speaker-name",
+      },
+    ],
+    resourcesUrl:
+      "https://drive.google.com/drive/folders/1ekm5LVYb42jkl4q1aE8nPEPNb8gJiRle",
+    href: "/events/2026-08-02-kwt-inaugural-welcome-session",
   },
+
   {
-    // Session 02 — From Concept to Research Publication
-    slug:         "2026-08-02-from-concept-to-research-publication",
-    dateShort:    "AUG 02",
-    dateISO:      "2026-08-02",
-    category:     "Community Session",
-    title:        "From Concept to Research Publication",
+    // Event 02
+    slug: "2026-08-02-from-concept-to-research-publication",
+    dateShort: "AUG 02",
+    dateISO: "2026-08-02",
+    category: "Research Session",
+    title: "From Concept to Research Publication",
     description:
-      "The inaugural KWT session officially introduced the community and its mission to help Kashmiri women in technology learn, connect, support one another, and grow together. The session also featured a guest talk on getting started with research: from curiosity to publication.",
-    format:       "Virtual",
-    resourcesUrl: "https://drive.google.com/drive/folders/1ekm5LVYb42jkl4q1aE8nPEPNb8gJiRle",
-    href:         "/events/2026-08-02-from-concept-to-research-publication",
+      "A practical introduction to research, from finding a question and developing an idea to writing, publishing, and getting started with research opportunities.",
+    format: "Virtual",
+    image: researchPublicationImage,
+    people: [
+      {
+        name: "Areeba Nisar",
+        role: "Guest Speaker",
+        linkedin: "https://www.linkedin.com/in/areeba-nisar",
+      },
+    ],
+    resourcesUrl:
+      "https://drive.google.com/drive/folders/1ekm5LVYb42jkl4q1aE8nPEPNb8gJiRle",
+    href: "/events/2026-08-02/from-concept-to-research-publication",
   },
+
   {
-    // Session 03 — AI Career & Community Q&A
-    slug:         "2026-08-09-ai-career-community-qa",
-    dateShort:    "AUG 09",
-    dateISO:      "2026-08-09",
-    category:     "Community Q&A",
-    title:        "AI Career & Community Q&A",
+    // Event 03
+    slug: "2026-08-09-ai-career-community-qa",
+    dateShort: "AUG 09",
+    dateISO: "2026-08-09",
+    category: "Community Q&A",
+    title: "AI Career & Community Q&A",
     description:
-      "An interactive Q&A session on AI career paths, breaking into tech as a non-CS student or beginner, building visible proof of work, and finding internships and research opportunities. Speaker: Uzma Hamid — Founder at DECRU & AI Engineer; Stanford University MS CS alumna.",
-    format:       "Virtual",
-    resourcesUrl: "https://drive.google.com/drive/folders/1ekm5LVYb42jkl4q1aE8nPEPNb8gJiRle",
-    href:         "/events/2026-08-09-ai-career-community-qa",
+      "An interactive Q&A on AI careers, getting started in tech, building proof of work, and finding internships and research opportunities.",
+    format: "Virtual",
+    image: aiCareerQaImage,
+    people: [
+      {
+        name: "Uzma Hamid",
+        role: "Speaker",
+        linkedin: "https://www.linkedin.com/in/uzma-hamid",
+      },
+    ],
+    resourcesUrl:
+      "https://drive.google.com/drive/folders/1ekm5LVYb42jkl4q1aE8nPEPNb8gJiRle",
+    href: "/events/2026-08-09-ai-career-community-qa",
   },
+
   {
-    // Session 04 — Professional Communication & Networking
-    slug:         "2026-08-23-professional-communication-networking",
-    dateShort:    "AUG 23",
-    dateISO:      "2026-08-23",
-    category:     "Community Session",
-    title:        "Professional Communication & Networking: Practice & Feedback",
+    // Event 04
+    slug: "2026-08-23-professional-communication-networking",
+    dateShort: "AUG 23",
+    dateISO: "2026-08-23",
+    category: "Community Workshop",
+    title: "Professional Communication & Networking",
     description:
-      "A practical KWT session focused on professional communication and networking. Participants practised introducing themselves, talking about their work and projects, approaching people on LinkedIn, asking for mentorship or advice, starting professional conversations, and asking for referrals.",
-    format:       "Virtual",
-    // resourcesUrl: "", // add once available
-    href:         "/events/2026-08-23-professional-communication-networking",
+      "A practical workshop on introducing yourself, networking, asking for advice or mentorship, and approaching professional conversations.",
+    format: "Virtual",
+    image: professionalNetworkingImage,
+    people: [
+      {
+        name: "Facilitator Name",
+        role: "Workshop Facilitator",
+        linkedin: "https://www.linkedin.com/in/facilitator-name",
+      },
+    ],
+    href: "/events/2026-08-23-professional-communication-networking",
   },
+
   {
-    // ─── TEST EVENT ───────────────────────────────────────────────────────
-    // This is a FAKE upcoming event for testing registration flow only.
-    // Remove or update once real upcoming events are scheduled.
-    // ──────────────────────────────────────────────────────────────────────
-    slug:         "2026-09-15-test-upcoming-workshop",
-    dateShort:    "SEP 15",
-    dateISO:      "2026-09-15",
-    category:     "Test Workshop",
-    title:        "[TEST] Upcoming Workshop — Testing Registration Flow",
+    // Upcoming Event
+    slug: "2026-09-20-resume-review-session",
+    dateShort: "SEP 20",
+    dateISO: "2026-09-20",
+    category: "Resume Review",
+    title: "Resume Review with KWT",
     description:
-      "This is a test event for development and testing purposes only. It allows testing the complete registration flow, upcoming event cards, and detail pages without affecting real event data. The Register CTA connects to the actual event registration form.",
-    format:       "Virtual",
-    time:         "6:00 PM IST",
-    href:         "https://tally.so/r/ja81gR",
+      "Bring your resume, get practical feedback, and learn how to present your experience more clearly for your next tech opportunity.",
+    format: "Virtual",
+    image: resumeReviewImage,
+    time: "6:00 PM IST",
+    people: [
+      {
+        name: "Reviewer Name",
+        role: "Resume Reviewer",
+        linkedin: "https://www.linkedin.com/in/reviewer-name",
+      },
+    ],
+    href: "https://tally.so/r/ja81gR",
   },
 ];
 
-
+/**
+ * Gallery images.
+ *
+ * These are the same event visuals used across the event cards.
+ */
 export interface GalleryImage {
   src: string;
   alt: string;
@@ -103,10 +163,29 @@ export interface GalleryImage {
 }
 
 export const GALLERY_IMAGES: GalleryImage[] = [
-  { src: "/images/hero-image.png", alt: "KWT community session", aspect: 4 / 5 },
-  { src: "/images/hero-image.png", alt: "KWT community session", aspect: 1     },
-  { src: "/images/hero-image.png", alt: "KWT community session", aspect: 4 / 3 },
-  { src: "/images/hero-image.png", alt: "KWT community session", aspect: 3 / 4 },
-  { src: "/images/hero-image.png", alt: "KWT community session", aspect: 4 / 3 },
-  { src: "/images/hero-image.png", alt: "KWT community session", aspect: 1     },
+  {
+    src: welcomeSessionImage,
+    alt: "KWT Inaugural and Welcome Session",
+    aspect: 4 / 5,
+  },
+  {
+    src: researchPublicationImage,
+    alt: "KWT research session",
+    aspect: 1,
+  },
+  {
+    src: aiCareerQaImage,
+    alt: "KWT AI Career and Community Q&A",
+    aspect: 4 / 3,
+  },
+  {
+    src: professionalNetworkingImage,
+    alt: "KWT professional communication and networking session",
+    aspect: 3 / 4,
+  },
+  {
+    src: resumeReviewImage,
+    alt: "KWT resume review session",
+    aspect: 4 / 3,
+  },
 ];

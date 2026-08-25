@@ -33,9 +33,7 @@ export default function Header() {
           <p className="eyebrow text-white/60">Get involved</p>
           <h1 className="display mt-6 text-white">There is a place for you in KWT</h1>
           <p className="lede mt-7 max-w-xl text-white/75">
-            Whether you want to join the community, volunteer your time, collaborate with us,
-            or support our work, there are different ways to contribute to KWT and help build
-            a stronger technology community for Kashmiri women.
+            Join the community, volunteer, collaborate, or support what we are building.
           </p>
 
           <nav aria-label="Ways to get involved" className="mt-10 flex flex-wrap gap-3">

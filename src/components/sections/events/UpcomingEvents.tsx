@@ -57,7 +57,7 @@ export default function UpcomingEvents() {
       <SectionHeading
         eyebrow="What's next"
         title="Upcoming events"
-        description="Register early, spots fill up fast."
+        description="See what's coming up in the KWT community."
         className="mb-12"
       />
 

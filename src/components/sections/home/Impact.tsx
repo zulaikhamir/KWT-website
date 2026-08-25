@@ -10,10 +10,10 @@ export default function Impact() {
   return (
     <SectionWrapper id="impact" divided>
       <div ref={ref}>
-        <SectionHeading
+       <SectionHeading
           align="center"
-          title="Our growing community"
-          description="KWT is an active and growing space for Kashmiri women across STEM and technology — here's where we are so far."
+          title="Our community is growing"
+          description="Built in Kashmir. Growing beyond it."
           className="mb-8 kwt-reveal"
         />
 
