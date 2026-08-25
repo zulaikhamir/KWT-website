@@ -118,12 +118,12 @@ function TeamCard({ member }: { member: TeamMember }) {
 export default function Team() {
   return (
     <SectionWrapper id="team" tone="surface" divided>
-      <SectionHeading
-        align="center"
-        eyebrow="The people"
-        title="Meet the team"
-        description="A community built by women, for women."
-      />
+     <SectionHeading 
+  align="center" 
+  eyebrow="The people" 
+  title="Meet the team" 
+  description="Meet the women building KWT." 
+/>
 
       <ul
         className={cn(

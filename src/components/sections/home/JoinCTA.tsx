@@ -32,12 +32,12 @@ export default function JoinCTA() {
             id="join-cta-heading"
             className="heading max-w-2xl text-[var(--color-primary)]"
           >
-            Ready to be part of KWT?
+            Find your place in KWT.
           </h2>
 
           {/* Subtext */}
           <p className="lede max-w-md text-[var(--color-primary)]/70">
-            Whether you're here to learn, connect, or give back — there's a place for you in the community.
+           Come to learn, meet people, find opportunities, or give back.
           </p>
 
           <img

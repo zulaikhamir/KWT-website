@@ -20,53 +20,51 @@ const faqs: { question: string; answer: React.ReactNode }[] = [
   {
     question: "What is KWT?",
     answer:
-      "Kashmiri Women in Tech (KWT) is a community connecting Kashmiri women in technology to learn, network, share opportunities, and grow together.",
+      "Kashmiri Women in Tech is a community for women in and around technology. We learn, share opportunities, meet people, and grow together.",
   },
   {
     question: "Who is KWT for?",
     answer:
-      "Students, aspiring tech professionals, working professionals, researchers, founders, and any woman interested in technology.",
+      "Students, aspiring tech professionals, working professionals, researchers, founders, and anyone curious about technology.",
   },
   {
     question: "How do I join KWT?",
     answer: (
       <>
         Fill out the{" "}
-        <A href="https://tally.so/r/686aVB">membership form</A> — we review it
-        and you get added to the community and given access to sessions,
-        resources, and updates.
+        <A href="https://tally.so/r/686aVB">membership form</A>. We review your application and send you the next steps.
       </>
     ),
   },
   {
     question: "Is membership free?",
-    answer: "Yes, KWT membership is completely free.",
+    answer: "Yes. KWT membership is free.",
   },
   {
     question: "Do I need to work in tech already?",
     answer:
-      "No. You can be a student, complete beginner, career-switcher, or simply curious about technology — no prior experience required.",
+      "No. You can be a student, beginner, career switcher, or simply curious about technology. You do not need prior experience.",
   },
   {
     question: "What can I expect from KWT?",
     answer:
-      "Community discussions, learning sessions and workshops (like our recent one on networking and professional outreach), opportunities shared by members and partners, resources, and a space to connect with other women in tech.",
+      "Sessions, workshops, community discussions, opportunities, resources, and people you can learn from and build with.",
   },
   {
     question: "Can I participate remotely?",
     answer:
-      "Yes — most sessions and community activities happen online, so you can join from anywhere.",
+      "Yes. Most KWT activities happen online, so you can join from anywhere.",
   },
   {
     question: "How do I get more involved beyond just being a member?",
     answer:
-      "We regularly open volunteer and contributor roles (community ops, content, partnerships, etc.) — keep an eye on group announcements, or message us directly if you don't see a role that fits but still want to contribute.",
+      "From time to time, we open volunteer and contributor roles across areas like community, content, partnerships, and events. Keep an eye on our announcements.",
   },
   {
-    question: "How should I reach out to KWT admins?",
+    question: "How should I contact KWT?",
     answer:
-      "Always mention what you're reaching out about first, along with a quick intro of who you are — it helps us understand the context and respond faster.",
-  },
+      "Fill out our [contact form] on the website and tell us what you are reaching out about. We will get back to you as soon as we can."
+  }
 ];
 
 export default function FAQ() {

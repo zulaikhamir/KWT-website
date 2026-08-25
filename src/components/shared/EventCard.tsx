@@ -22,6 +22,14 @@ export interface EventCardData {
   image?: string;
   /** Optional Google Drive / external URL for session resources. */
   resourcesUrl?: string;
+  /** Optional speakers, facilitators, or guests featured at this event. */
+  people?: {
+    name: string;
+    role?: string;
+    linkedin?: string;
+  }[];
+  /** Optional heading for the detail-page description section. */
+  aboutLabel?: string;
   /** URL for the register / details link */
   href: string;
 }

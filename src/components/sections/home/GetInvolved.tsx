@@ -18,14 +18,14 @@ const CARDS: CardDef[] = [
   {
     icon:   IdentificationBadge,
     title:  "Become a Member",
-    body:   "KWT is open to all Kashmiri women in technology, engineering, science, and research — at any stage of their journey.",
+    body:   "Join Kashmiri women in technology, engineering, science, and research at every stage of their journey.",
     cta:    "Join the Community",
     action: "modal",
   },
   {
     icon:   Toolbox,
     title:  "Volunteer",
-    body:   "Help with events, content, community operations, and more. Every contribution strengthens KWT.",
+    body:   "Help with events, content, community, partnerships, or operations.",
     cta:    "Start Volunteering",
     action: "external",
     href:   "https://tally.so/r/44leEO",
@@ -33,15 +33,15 @@ const CARDS: CardDef[] = [
   {
     icon:   Handshake,
     title:  "Partner With Us",
-    body:   "Collaborate with KWT as a university, company, nonprofit, or community organisation.",
-    cta:    "Partner with us",
+    body:   "Work with KWT through your university, company, nonprofit, or community.",
+    cta:    "Partner With Us",
     action: "internal",
     href:   "/get-involved#partner",
   },
   {
     icon:   Gift,
     title:  "Sponsor KWT",
-    body:   "Support KWT events and community initiatives. Help us build what matters.",
+    body:   "Support KWT events, programs, and the work we are building together.",
     cta:    "Sponsor KWT",
     action: "internal",
     href:   "/get-involved#sponsor",
@@ -127,12 +127,12 @@ export default function GetInvolved() {
       <MembershipModal open={modalOpen} onOpenChange={setModalOpen} />
 
       <div ref={ref}>
-        <SectionHeading
-          align="center"
-          title="Get involved with KWT"
-          description="KWT is built through community contribution. There are many ways to join and make an impact."
-          className="mb-12 kwt-reveal"
-        />
+       <SectionHeading
+  align="center"
+  title="Get involved with KWT"
+  description="Join the community, volunteer your time, share what you know, or help us build what comes next."
+  className="mb-12 kwt-reveal"
+/>
 
 
         <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">

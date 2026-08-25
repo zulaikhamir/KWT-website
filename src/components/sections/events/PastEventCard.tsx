@@ -5,8 +5,6 @@ import { ArrowRight, RotateCcw } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { EventCardData } from "@/components/shared/EventCard";
 
-const FALLBACK_IMAGE = "/images/hero-image.png";
-
 const ACTION_BASE = cn(
   "inline-flex items-center gap-1.5 rounded-full px-4 py-2",
   "text-xs font-medium tracking-[-0.005em]",
@@ -21,7 +19,7 @@ export interface PastEventCardProps {
 
 export default function PastEventCard({ event, className }: PastEventCardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
-  const image = event.image ?? FALLBACK_IMAGE;
+  const image = event.image;
   const handleBackClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if ((e.target as HTMLElement).closest("a, button")) return;
     if (window.getSelection()?.toString()) return;
@@ -55,13 +53,20 @@ export default function PastEventCard({ event, className }: PastEventCardProps) 
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/50 focus-visible:ring-offset-2"
           )}
         >
-          <img
-            src={image}
-            alt=""
-            aria-hidden="true"
-            loading="lazy"
-            className="absolute inset-0 size-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.06]"
-          />
+          {image ? (
+            <img
+              src={image}
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              className="absolute inset-0 size-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+            />
+          ) : (
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-[var(--color-primary)]/90"
+            />
+          )}
           <div
             aria-hidden="true"
             className="absolute inset-0 bg-linear-to-t from-navy-deep via-navy-deep/65 to-navy-deep/10"
@@ -111,13 +116,15 @@ export default function PastEventCard({ event, className }: PastEventCardProps) 
             "shadow-[0_14px_40px_-12px_rgba(27,42,82,0.4)]"
           )}
         >
-          <img
-            src={image}
-            alt=""
-            aria-hidden="true"
-            loading="lazy"
-            className="absolute inset-0 size-full scale-110 object-cover object-center opacity-20 blur-sm"
-          />
+          {image && (
+            <img
+              src={image}
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              className="absolute inset-0 size-full scale-110 object-cover object-center opacity-20 blur-sm"
+            />
+          )}
           <div aria-hidden="true" className="absolute inset-0 bg-navy-deep/80" />
 
           <div className="relative flex size-full flex-col p-6">

@@ -10,7 +10,7 @@ export default function EventGallery() {
         align="center"
         eyebrow="Community moments"
         title="Moments from KWT"
-        description="A look at the conversations, sessions, and people helping build the KWT community."
+        description="A few moments from the people, conversations, and sessions that make KWT."
         className="mb-12"
       />
 
@@ -50,7 +50,7 @@ export default function EventGallery() {
           </div>
 
           <p className="mt-6 text-center text-sm text-[var(--color-secondary)] opacity-60">
-            Photos from KWT community events — more coming soon.
+            A few moments from KWT events and sessions. More to come.
           </p>
         </>
       )}

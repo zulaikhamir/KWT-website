@@ -8,24 +8,24 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const PILLARS = [
   {
-    icon:  GraduationCap,
+    icon: GraduationCap,
     label: "Learn",
-    desc:  "Workshops, talks, and curated resources spanning technology, engineering, research, and more.",
+    desc: "Workshops, talks, resources, and ideas worth exploring.",
   },
   {
-    icon:  UsersThree,
+    icon: UsersThree,
     label: "Connect",
-    desc:  "A community of Kashmiri women across disciplines, career stages, and geographies.",
+    desc: "Meet Kashmiri women in tech across different fields and stages.",
   },
   {
-    icon:  Ladder,
+    icon: Ladder,
     label: "Grow",
-    desc:  "Mentorship, career opportunities, and a network that opens real doors across STEM fields.",
+    desc: "Find mentors, opportunities, and people who can help you move forward.",
   },
   {
-    icon:  HandHeart,
+    icon: HandHeart,
     label: "Give Back",
-    desc:  "Contribute your expertise and experience to strengthen the next generation of Kashmiri women in TECH.",
+    desc: "Share what you know and help the next woman find her way.",
   },
 ] as const;
 
@@ -55,8 +55,10 @@ export default function AboutKWT() {
       <div ref={ref}>
         <SectionHeading
           eyebrow="About KWT"
-          title="A community built by and for Kashmiri women in TECH."
-          description="KWT brings together Kashmiri women across technology, engineering, science, and research — at every stage of their journey — to learn, discover opportunities, build meaningful connections, and give back."
+          title="Built by Kashmiri women, for Kashmiri women in tech."
+
+          description="We are students, engineers, researchers, founders, and professionals at different stages of our journeys.
+          KWT is a place to learn from each other, share opportunities, ask questions, and build together."
           className="mb-12 kwt-reveal"
         />
 

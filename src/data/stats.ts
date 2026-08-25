@@ -10,7 +10,7 @@ export interface StatItem {
 }
 
 export const KWT_STATS: StatItem[] = [
-  { value: "160+", label: "Members",     context: "and growing"              },
-  { value: "3",    label: "Events held", context: "since founding"           },
-  { value: "2026", label: "Founded",     context: "Srinagar, Kashmir"        },
+  { value: "160+", label: "Members",   context: "and growing" },
+  { value: "3",    label: "Sessions",  context: "2 events · 1 workshop" },
+  { value: "6+",   label: "Countries", context: "across the world" },
 ];

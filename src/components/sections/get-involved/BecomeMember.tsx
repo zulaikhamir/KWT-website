@@ -4,12 +4,11 @@ import { ArrowUpRight, Check } from "lucide-react";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import MembershipModal from "@/components/shared/MembershipModal";
 import { cn } from "@/lib/utils";
-
 const benefits = [
-  "Learn from the community — access discussions, sessions, resources, and experiences shared by women working and learning across different areas of technology.",
-  "Discover opportunities — find relevant jobs, internships, events, research opportunities, and other resources shared within the community.",
-  "Build your network — connect with Kashmiri women studying, researching, and working across technology and related fields.",
-  "Contribute and grow — share your knowledge, participate in discussions, support others, and contribute to building the community.",
+  "Learn through discussions, sessions, and conversations with women across tech.",
+  "Discover jobs, internships, events, research opportunities, and useful resources.",
+  "Build your network with Kashmiri women studying, researching, and working in different fields.",
+  "Give back by sharing what you know, supporting others, and contributing to the community.",
 ];
 
 export default function BecomeMember() {
@@ -21,16 +20,14 @@ export default function BecomeMember() {
 
       <div className="grid gap-x-16 gap-y-10 lg:grid-cols-[0.9fr_1.1fr]">
         <div className="lg:sticky lg:top-32 lg:self-start">
-          <p className="eyebrow">For individuals</p>
-          <h2 className="heading mt-5">Become a member</h2>
-          <p className="lede mt-5">
-            KWT is for Kashmiri women who are interested in technology, science, engineering,
-            research, or related fields — whether you're a student, beginner, researcher, or
-            working professional. Joining the community gives you a space to connect with
-            others, discover opportunities, learn from shared experiences, and take part in
-            community activities.
-          </p>
+       <p className="eyebrow">For individuals</p>
 
+<h2 className="heading mt-5">Choose your path</h2>
+
+<p className="lede mt-5">
+  Whether you want to join KWT to learn and connect, or contribute your
+  time and skills, there is a place for you here.
+</p>
           <button
             type="button"
             onClick={() => setOpen(true)}

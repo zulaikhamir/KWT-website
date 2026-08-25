@@ -4,27 +4,27 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 const guidelines = [
   {
     title: "Respect everyone",
-    body: "Members span every level of experience and background. Challenge ideas, not people, harassment, discrimination, and personal attacks aren't welcome here.",
+    body: "Challenge ideas, not people. Harassment, discrimination, and personal attacks are not welcome.",
   },
   {
     title: "No question is too basic",
-    body: "Whether you're writing your first line of code or leading a team, you belong. Help where you can, and it's always fine to say you don't know.",
+    body: "Everyone is learning something. Ask questions freely, share what you know, and be willing to say, “I don't know.”",
   },
   {
     title: "Keep it relevant",
-    body: "KWT is a space for tech, careers, and learning. Spam, unrelated promotion, and personal advertising crowd out what members actually come here for.",
+    body: "Keep discussions focused on technology, careers, learning, and opportunities. No spam or unrelated promotion.",
   },
   {
     title: "Protect each other's privacy",
-    body: "Don't share another member's contact details, messages, or personal information without their permission inside the community or beyond it.",
+    body: "Do not share another member's contact details, messages, or personal information without their permission.",
   },
   {
     title: "Honor your commitments",
-    body: "If you register for a session or take on a role, follow through. Plans change just let organizers know as early as you can.",
+    body: "If you sign up for a session or take on a role, follow through. If plans change, let the organizers know.",
   },
   {
     title: "Speak up, privately",
-    body: "If something feels wrong, report it to KWT leadership directly rather than in the group. No one has to confront it alone.",
+    body: "If something feels wrong, contact KWT leadership directly. You do not have to handle it alone.",
   },
 ];
 
@@ -40,13 +40,16 @@ export default function CommunityGuidelines() {
 
   return (
     <SectionWrapper id="community-guidelines" divided>
-      <div ref={ref} className="grid gap-x-16 gap-y-10 lg:grid-cols-[0.8fr_1.2fr]">
+      <div
+        ref={ref}
+        className="grid gap-x-16 gap-y-10 lg:grid-cols-[0.8fr_1.2fr]"
+      >
         <div className="kwt-reveal lg:sticky lg:top-32 lg:self-start">
           <p className="eyebrow">How we show up</p>
           <h2 className="heading mt-5">Community guidelines</h2>
           <p className="lede mt-5">
-            KWT works because members look out for each other. These guidelines keep the
-            community welcoming, useful, and safe.
+            KWT works because members look out for each other. These guidelines
+            help keep it welcoming, useful, and safe.
           </p>
         </div>
 
@@ -60,6 +63,7 @@ export default function CommunityGuidelines() {
                 <span className="eyebrow pt-1">
                   {String(index + 1).padStart(2, "0")}
                 </span>
+
                 <div>
                   <h3 className="subheading">{guideline.title}</h3>
                   <p className="mt-2 text-[0.9375rem] leading-7 text-[var(--color-secondary)]">
@@ -72,6 +76,7 @@ export default function CommunityGuidelines() {
 
           <div className="mt-10 border-l-2 border-[var(--color-primary)] py-1 pl-7">
             <p className="eyebrow">Before you post or speak up</p>
+
             <ul className="mt-4 grid gap-2.5 sm:grid-cols-2">
               {selfCheck.map((question) => (
                 <li
@@ -82,8 +87,9 @@ export default function CommunityGuidelines() {
                 </li>
               ))}
             </ul>
+
             <p className="mt-4 text-[0.9375rem] leading-7 text-[var(--color-secondary)]">
-              If yes, you're contributing to the kind of community KWT is trying to build.
+              If yes, you're helping build the kind of community we want KWT to be.
             </p>
           </div>
         </div>
