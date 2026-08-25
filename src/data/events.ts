@@ -49,11 +49,12 @@ export const ALL_EVENTS: EventCardData[] = [
       "KWT's first community session introduced the community, its mission, and what members can expect. The session also featured a guest talk on getting started with research.",
     format: "Virtual",
     image: welcomeSessionImage,
+    aboutLabel: "About this session",
     people: [
       {
         name: "Speaker Name",
         role: "Guest Speaker",
-        linkedin: "https://www.linkedin.com/in/speaker-name",
+        linkedin: "https://www.linkedin.com/in/placeholder-speaker",
       },
     ],
     resourcesUrl:
@@ -72,6 +73,7 @@ export const ALL_EVENTS: EventCardData[] = [
       "A practical introduction to research, from finding a question and developing an idea to writing, publishing, and getting started with research opportunities.",
     format: "Virtual",
     image: researchPublicationImage,
+    aboutLabel: "About this session",
     people: [
       {
         name: "Areeba Nisar",
@@ -81,7 +83,7 @@ export const ALL_EVENTS: EventCardData[] = [
     ],
     resourcesUrl:
       "https://drive.google.com/drive/folders/1ekm5LVYb42jkl4q1aE8nPEPNb8gJiRle",
-    href: "/events/2026-08-02/from-concept-to-research-publication",
+    href: "/events/2026-08-02-from-concept-to-research-publication",
   },
 
   {
@@ -95,6 +97,7 @@ export const ALL_EVENTS: EventCardData[] = [
       "An interactive Q&A on AI careers, getting started in tech, building proof of work, and finding internships and research opportunities.",
     format: "Virtual",
     image: aiCareerQaImage,
+    aboutLabel: "About this Q&A",
     people: [
       {
         name: "Uzma Hamid",
@@ -118,11 +121,12 @@ export const ALL_EVENTS: EventCardData[] = [
       "A practical workshop on introducing yourself, networking, asking for advice or mentorship, and approaching professional conversations.",
     format: "Virtual",
     image: professionalNetworkingImage,
+    aboutLabel: "About this workshop",
     people: [
       {
         name: "Facilitator Name",
         role: "Workshop Facilitator",
-        linkedin: "https://www.linkedin.com/in/facilitator-name",
+        linkedin: "https://www.linkedin.com/in/placeholder-facilitator",
       },
     ],
     href: "/events/2026-08-23-professional-communication-networking",
@@ -140,11 +144,12 @@ export const ALL_EVENTS: EventCardData[] = [
     format: "Virtual",
     image: resumeReviewImage,
     time: "6:00 PM IST",
+    aboutLabel: "About this session",
     people: [
       {
         name: "Reviewer Name",
         role: "Resume Reviewer",
-        linkedin: "https://www.linkedin.com/in/reviewer-name",
+        linkedin: "https://www.linkedin.com/in/placeholder-reviewer",
       },
     ],
     href: "https://tally.so/r/ja81gR",
@@ -152,9 +157,9 @@ export const ALL_EVENTS: EventCardData[] = [
 ];
 
 /**
- * Gallery images.
+ * Community gallery images (photos, screenshots, videos).
  *
- * These are the same event visuals used across the event cards.
+ * Separate from event promotional artwork. Add real KWT community media here.
  */
 export interface GalleryImage {
   src: string;
@@ -162,30 +167,4 @@ export interface GalleryImage {
   aspect?: number;
 }
 
-export const GALLERY_IMAGES: GalleryImage[] = [
-  {
-    src: welcomeSessionImage,
-    alt: "KWT Inaugural and Welcome Session",
-    aspect: 4 / 5,
-  },
-  {
-    src: researchPublicationImage,
-    alt: "KWT research session",
-    aspect: 1,
-  },
-  {
-    src: aiCareerQaImage,
-    alt: "KWT AI Career and Community Q&A",
-    aspect: 4 / 3,
-  },
-  {
-    src: professionalNetworkingImage,
-    alt: "KWT professional communication and networking session",
-    aspect: 3 / 4,
-  },
-  {
-    src: resumeReviewImage,
-    alt: "KWT resume review session",
-    aspect: 4 / 3,
-  },
-];
+export const GALLERY_IMAGES: GalleryImage[] = [];

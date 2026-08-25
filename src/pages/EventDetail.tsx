@@ -6,6 +6,7 @@ import PageContainer from "@/components/layout/PageContainer";
 import SEO from "@/components/shared/SEO";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import MembershipModal from "@/components/shared/MembershipModal";
+import type { EventCardData } from "@/components/shared/EventCard";
 import { findEventBySlug, isEventPast } from "@/data/events";
 import { cn } from "@/lib/utils";
 
@@ -16,6 +17,86 @@ const FORMAT_ICON = {
   Hybrid:      <Video  size={15} strokeWidth={1.75} />,
 } as const;
 
+// ─── Event people ─────────────────────────────────────────────────────────────
+function EventPeople({
+  people,
+}: {
+  people: NonNullable<EventCardData["people"]>;
+}) {
+  if (people.length === 0) return null;
+
+  return (
+    <div className="mt-6">
+      <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[var(--color-secondary)]">
+        With
+      </p>
+      <ul className="mt-2 space-y-1.5">
+        {people.map((person) => (
+          <li
+            key={person.name}
+            className="flex flex-wrap items-center gap-x-1.5 text-sm text-[var(--color-secondary)]"
+          >
+            <span className="font-medium text-[var(--color-primary)]">{person.name}</span>
+            {person.role && (
+              <>
+                <span aria-hidden="true" className="text-[var(--color-secondary)]/40">
+                  ·
+                </span>
+                <span>{person.role}</span>
+              </>
+            )}
+            {person.linkedin && (
+              <>
+                <span aria-hidden="true" className="text-[var(--color-secondary)]/40">
+                  ·
+                </span>
+                <a
+                  href={person.linkedin}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label={`${person.name} on LinkedIn`}
+                  className="text-[var(--color-primary)] underline underline-offset-2 decoration-[var(--color-primary)]/30 hover:decoration-[var(--color-primary)] transition-colors"
+                >
+                  LinkedIn
+                </a>
+              </>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+// ─── Register CTA ─────────────────────────────────────────────────────────────
+function RegisterButton({ href }: { href: string }) {
+  const className = cn(
+    "inline-flex w-full items-center justify-center gap-1.5 rounded-full",
+    "bg-[var(--color-primary)] px-5 py-2.5",
+    "text-sm font-medium text-white",
+    "hover:bg-[var(--color-primary)]/90",
+    "hover:shadow-[0_8px_20px_-8px_rgba(27,42,82,0.45)]",
+    "active:scale-[0.98] transition-all duration-200",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/40 focus-visible:ring-offset-2",
+  );
+
+  if (href.startsWith("http")) {
+    return (
+      <a href={href} target="_blank" rel="noreferrer noopener" className={className}>
+        Register for this event
+        <ArrowUpRight size={14} strokeWidth={2.2} aria-hidden="true" />
+      </a>
+    );
+  }
+
+  return (
+    <Link to={href} className={className}>
+      Register for this event
+      <ArrowUpRight size={14} strokeWidth={2.2} aria-hidden="true" />
+    </Link>
+  );
+}
+
 // ─── Member-only resources section ───────────────────────────────────────────
 /**
  * The resourcesUrl is intentionally NOT rendered in the DOM when locked.
@@ -25,7 +106,7 @@ function ResourcesSection({
   resourcesUrl,
   onJoinClick,
 }: {
-  resourcesUrl: string;
+  resourcesUrl?: string;
   onJoinClick: () => void;
 }) {
   // TODO: replace with real membership auth check (e.g. context, cookie, JWT)
@@ -34,10 +115,10 @@ function ResourcesSection({
   return (
     <SectionWrapper id="session-resources" tone="surface" divided>
       <div className="max-w-2xl">
-        <p className="eyebrow">Session resources</p>
+        <p className="eyebrow">Session materials</p>
         <h2 className="heading mt-5">Materials from this session</h2>
 
-        {isMember ? (
+        {isMember && resourcesUrl ? (
           <div className="mt-8">
             <p className="lede mb-6 text-[var(--color-secondary)]">
               Access the slides, notes, and other materials shared during this session.
@@ -56,7 +137,7 @@ function ResourcesSection({
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/40 focus-visible:ring-offset-2",
               )}
             >
-              View session resources
+              View session materials
               <ArrowUpRight
                 className="size-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 aria-hidden="true"
@@ -72,10 +153,10 @@ function ResourcesSection({
                 aria-hidden="true"
               />
             </span>
-            <h3 className="subheading mt-5">Members only</h3>
+            <h3 className="subheading mt-5">KWT members only</h3>
             <p className="mt-3 max-w-md text-[0.9375rem] leading-7 text-[var(--color-secondary)]">
-              Session resources are available exclusively to KWT members. Join the community
-              to access slides, notes, and materials from all past sessions.
+              Session materials are available exclusively to KWT members. Join the community
+              to access slides, notes, and materials from KWT sessions.
             </p>
             <button
               type="button"
@@ -89,7 +170,7 @@ function ResourcesSection({
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/30 focus-visible:ring-offset-2",
               )}
             >
-              Join KWT to access resources
+              Join KWT
               <ArrowUpRight size={14} strokeWidth={2.2} aria-hidden="true" />
             </button>
           </div>
@@ -224,54 +305,30 @@ export default function EventDetail() {
                 </dd>
               </div>
             </dl>
+
+            {event.people && event.people.length > 0 && (
+              <EventPeople people={event.people} />
+            )}
           </div>
 
           {/* CTA card */}
           <div className="shrink-0 rounded-2xl border border-hairline bg-white p-6 shadow-[0_2px_12px_-4px_rgba(27,42,82,0.07)] lg:w-72">
             {isPast ? (
-              <>
-                <p className="text-sm font-medium text-[var(--color-primary)]">This event has passed.</p>
-                <p className="mt-1.5 text-[0.875rem] leading-6 text-[var(--color-secondary)]">
-                  Browse upcoming events or join KWT to be notified about future sessions.
-                </p>
-                <Link
-                  to="/events#upcoming-events"
-                  className={cn(
-                    "mt-5 inline-flex w-full items-center justify-center gap-1.5 rounded-full",
-                    "border border-[var(--color-primary)]/20 px-5 py-2.5",
-                    "text-sm font-medium text-[var(--color-primary)]",
-                    "hover:border-[var(--color-primary)]/45 hover:bg-[var(--color-primary)]/[0.04]",
-                    "active:scale-[0.98] transition-all duration-200",
-                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/30",
-                  )}
-                >
-                  See upcoming events
-                </Link>
-              </>
+              <Link
+                to="/events#upcoming-events"
+                className={cn(
+                  "inline-flex w-full items-center justify-center gap-1.5 rounded-full",
+                  "border border-[var(--color-primary)]/20 px-5 py-2.5",
+                  "text-sm font-medium text-[var(--color-primary)]",
+                  "hover:border-[var(--color-primary)]/45 hover:bg-[var(--color-primary)]/[0.04]",
+                  "active:scale-[0.98] transition-all duration-200",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/30",
+                )}
+              >
+                See upcoming events
+              </Link>
             ) : (
-              <>
-                <p className="text-sm font-medium text-[var(--color-primary)]">Spots are limited.</p>
-                <p className="mt-1.5 text-[0.875rem] leading-6 text-[var(--color-secondary)]">
-                  Register early to secure your place in this session.
-                </p>
-                <a
-                  href={event.href}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className={cn(
-                    "mt-5 inline-flex w-full items-center justify-center gap-1.5 rounded-full",
-                    "bg-[var(--color-primary)] px-5 py-2.5",
-                    "text-sm font-medium text-white",
-                    "hover:bg-[var(--color-primary)]/90",
-                    "hover:shadow-[0_8px_20px_-8px_rgba(27,42,82,0.45)]",
-                    "active:scale-[0.98] transition-all duration-200",
-                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/40 focus-visible:ring-offset-2",
-                  )}
-                >
-                  Register for this event
-                  <ArrowUpRight size={14} strokeWidth={2.2} aria-hidden="true" />
-                </a>
-              </>
+              <RegisterButton href={event.href} />
             )}
           </div>
         </div>
@@ -280,17 +337,18 @@ export default function EventDetail() {
       {/* ── Description ────────────────────────────────────────────────────── */}
       <SectionWrapper id="event-description" divided>
         <div className="max-w-2xl">
-          <p className="eyebrow">About this session</p>
+          <p className="eyebrow">{event.aboutLabel ?? "About this session"}</p>
           <p className="mt-5 text-[1.0625rem] leading-8 text-[var(--color-secondary)]">
             {event.description}
           </p>
         </div>
       </SectionWrapper>
 
-      {/* ── Session resources (member-only) ────────────────────────────────── */}
-      {event.resourcesUrl && (
-        <ResourcesSection resourcesUrl={event.resourcesUrl} onJoinClick={() => setModalOpen(true)} />
-      )}
+      {/* ── Session materials (member-only) ──────────────────────────────────── */}
+      <ResourcesSection
+        resourcesUrl={event.resourcesUrl}
+        onJoinClick={() => setModalOpen(true)}
+      />
     </PageContainer>
   );
 }
