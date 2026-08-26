@@ -47,9 +47,9 @@ export const ALL_EVENTS: EventCardData[] = [
     aboutLabel: "About this session",
     people: [
       {
-        name: "Speaker Name",
-        role: "Guest Speaker",
-        linkedin: "https://www.linkedin.com/in/placeholder-speaker",
+        name: "Zulaikha Ashiq",
+        role: "KWT Founder & Host",
+        linkedin: "https://www.linkedin.com/in/zulaikhaashiq/",
       },
     ],
     resourcesUrl:
@@ -73,7 +73,7 @@ export const ALL_EVENTS: EventCardData[] = [
       {
         name: "Areeba Nisar",
         role: "Guest Speaker",
-        linkedin: "https://www.linkedin.com/in/areeba-nisar",
+        linkedin: "https://www.linkedin.com/in/areeba-nisar-2908b225b/",
       },
     ],
     resourcesUrl:
@@ -97,7 +97,7 @@ export const ALL_EVENTS: EventCardData[] = [
       {
         name: "Uzma Hamid",
         role: "Speaker",
-        linkedin: "https://www.linkedin.com/in/uzma-hamid",
+        linkedin: "https://www.linkedin.com/in/uzmah/",
       },
     ],
     resourcesUrl:
@@ -107,24 +107,29 @@ export const ALL_EVENTS: EventCardData[] = [
 
   {
     // Event 04
-    slug: "2026-08-23-professional-communication-networking",
+    slug: "2026-08-23-introduce-yourself-network-and-ask-better",
     dateShort: "AUG 23",
     dateISO: "2026-08-23",
     category: "Community Workshop",
-    title: "Professional Communication & Networking",
+    title: "Introduce Yourself, Network & Ask Better",
     description:
-      "A practical workshop on introducing yourself, networking, asking for advice or mentorship, and approaching professional conversations.",
+      "A practical workshop on introducing yourself, talking about your work, networking, approaching people on LinkedIn, asking for mentorship or advice, and starting professional conversations.",
     format: "Virtual",
     image: professionalNetworkingImage,
     aboutLabel: "About this workshop",
     people: [
       {
-        name: "Facilitator Name",
+        name: "Zulaikha Ashiq",
         role: "Workshop Facilitator",
-        linkedin: "https://www.linkedin.com/in/placeholder-facilitator",
+        linkedin: "https://www.linkedin.com/in/zulaikhaashiq/",
+      },
+      {
+        name: "Uzma Hamid",
+        role: "Workshop Facilitator",
+        linkedin: "https://www.linkedin.com/in/uzmah/",
       },
     ],
-    href: "/events/2026-08-23-professional-communication-networking",
+    href: "/events/2026-08-23-introduce-yourself-network-and-ask-better",
   },
 
   {
@@ -135,7 +140,7 @@ export const ALL_EVENTS: EventCardData[] = [
     category: "Resume Review",
     title: "Resume Review with KWT",
     description:
-      "Bring your resume, get practical feedback, and learn how to present your experience more clearly for your next tech opportunity.",
+      "Get practical feedback on your resume and learn how to present your experience clearly for your next tech opportunity.",
     format: "Virtual",
     image: resumeReviewImage,
     time: "6:00 PM IST",
@@ -144,7 +149,8 @@ export const ALL_EVENTS: EventCardData[] = [
       {
         name: "Reviewer Name",
         role: "Resume Reviewer",
-        linkedin: "https://www.linkedin.com/in/placeholder-reviewer",
+        linkedin: "REPLACE_WITH_LINKEDIN_URL",
+        bio: "Experienced professional providing practical resume feedback and career guidance.",
       },
     ],
     href: "https://tally.so/r/ja81gR",

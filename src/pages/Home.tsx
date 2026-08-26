@@ -5,6 +5,7 @@ import Announcements from "@/components/sections/home/Announcements";
 import AboutKWT      from "@/components/sections/home/AboutKWT";
 import Impact      from "@/components/sections/home/Impact";
 import GetInvolved from "@/components/sections/home/GetInvolved";
+import MembershipPathsSection from "@/components/sections/shared/MembershipPathsSection";
 import JoinCTA     from "@/components/sections/home/JoinCTA";
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
       <AboutKWT />
       <Impact />
       <GetInvolved />
+      <MembershipPathsSection />
       <JoinCTA />
     </PageContainer>
   );

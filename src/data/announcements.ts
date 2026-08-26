@@ -37,37 +37,34 @@ export const ANNOUNCEMENTS: Announcement[] = [
     id: "resume-review-registration-open",
     dateISO: "2026-08-25",
     tag: "Event",
-    title: "Resume Review — registration is open",
-    body: "Bring your resume and get practical feedback. Saturday 20 September, 6:00 PM IST.",
+    title: "Resume Review with KWT",
+    body: "Registration is open for our resume review session on 20 September at 6:00 PM IST.",
     cta: {
       label: "Register",
       href: "/events/2026-09-20-resume-review-session",
     },
   },
+
   {
     id: "professional-communication-workshop-recap",
     dateISO: "2026-08-23",
     tag: "Recap",
-    title: "Professional Communication & Networking, recapped",
-    body: "Introducing yourself, networking, and asking for mentorship — session materials are up for members.",
-    cta: {
-      label: "See the session",
-      href: "/events/2026-08-23-professional-communication-networking",
-    },
+    title: "Introduce Yourself, Network & Ask Better",
+    body: "Session materials from our professional communication workshop are now available for members.",
   },
+
   {
     id: "community-milestone-160-members",
     dateISO: "2026-08-12",
     tag: "Milestone",
-    title: "160+ members across 6 countries and counting",
-    body: "Students, engineers, researchers, and professionals — there's room for you too.",
+    title: "160+ members across 6 countries and counting  ",
+    body: "Our community now brings together students, engineers, researchers, and professionals across 6+ countries.",
     cta: {
       label: "Get involved",
       href: "/get-involved",
     },
   },
 ];
-
 /**
  * Published announcements, newest first, capped at MAX_VISIBLE_ANNOUNCEMENTS.
  */

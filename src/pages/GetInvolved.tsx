@@ -1,7 +1,7 @@
 import PageContainer from "@/components/layout/PageContainer";
 import SEO from "@/components/shared/SEO";
 import Header from "@/components/sections/get-involved/Header";
-import BecomeMember from "@/components/sections/get-involved/BecomeMember";
+import MembershipPathsSection from "@/components/sections/shared/MembershipPathsSection";
 import Volunteer from "@/components/sections/get-involved/Volunteer";
 import PartnerWithUs from "@/components/sections/get-involved/PartnerWithUs";
 import SponsorKWT from "@/components/sections/get-involved/SponsorKWT";
@@ -18,7 +18,7 @@ export default function GetInvolved() {
         keywords="join KWT, become a member, volunteer opportunities, partnership, sponsorship, support women in tech"
       />
       <Header />
-      <BecomeMember />
+      <MembershipPathsSection />
       <Volunteer />
       <PartnerWithUs />
       <SponsorKWT />

@@ -18,9 +18,16 @@ export default function Impact() {
           className="mb-10 kwt-reveal"
         />
 
-        <div className="kwt-reveal kwt-stagger-2">
-          <StatsSection />
-        </div>
+        {/* Break out of the section container's horizontal padding so the
+            panel can stretch close to the viewport edges, while the heading
+            above stays aligned to the normal content width. */}
+      <div className="kwt-reveal kwt-stagger-2">
+  <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw]">
+    <div className="mx-auto max-w-[1400px]">
+      <StatsSection />
+    </div>
+  </div>
+</div>
       </div>
     </SectionWrapper>
   );

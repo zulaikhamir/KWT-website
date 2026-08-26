@@ -1,16 +1,14 @@
-import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { IdentificationBadge, Toolbox, Handshake, Gift } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import SectionHeading from "@/components/shared/SectionHeading";
-import MembershipModal from "@/components/shared/MembershipModal";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 // ─── Cards ────────────────────────────────────────────────────────────────────
 type CardDef =
-  | { icon: React.ElementType; title: string; body: string; cta: string; action: "modal" }
+  | { icon: React.ElementType; title: string; body: string; cta: string; action: "anchor"; href: string }
   | { icon: React.ElementType; title: string; body: string; cta: string; action: "external"; href: string }
   | { icon: React.ElementType; title: string; body: string; cta: string; action: "internal"; href: string };
 
@@ -20,7 +18,8 @@ const CARDS: CardDef[] = [
     title:  "Become a Member",
     body:   "Join Kashmiri women in technology, engineering, science, and research at every stage of their journey.",
     cta:    "Join the Community",
-    action: "modal",
+    action: "anchor",
+    href:   "#membership-paths",
   },
   {
     icon:   Toolbox,
@@ -61,11 +60,9 @@ const ctaClasses = cn(
 // ─── Card ─────────────────────────────────────────────────────────────────────
 function InvolvementCard({
   card,
-  onMemberClick,
   className,
 }: {
   card: CardDef;
-  onMemberClick: () => void;
   className?: string;
 }) {
   const { icon: Icon, title, body, cta } = card;
@@ -78,11 +75,11 @@ function InvolvementCard({
   );
 
   let ctaNode: React.ReactNode;
-  if (card.action === "modal") {
+  if (card.action === "anchor") {
     ctaNode = (
-      <button type="button" onClick={onMemberClick} className={ctaClasses}>
+      <a href={card.href} className={ctaClasses}>
         {ctaContent}
-      </button>
+      </a>
     );
   } else if (card.action === "external") {
     ctaNode = (
@@ -120,12 +117,9 @@ function InvolvementCard({
 // ─── Get Involved section ─────────────────────────────────────────────────────
 export default function GetInvolved() {
   const ref = useScrollReveal<HTMLDivElement>();
-  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <SectionWrapper tone="surface" divided id="get-involved">
-      <MembershipModal open={modalOpen} onOpenChange={setModalOpen} />
-
       <div ref={ref}>
        <SectionHeading
   align="center"
@@ -140,7 +134,6 @@ export default function GetInvolved() {
             <InvolvementCard
               key={card.title}
               card={card}
-              onMemberClick={() => setModalOpen(true)}
               className={cn("kwt-reveal", `kwt-stagger-${(i + 1) as 1 | 2 | 3 | 4}`)}
             />
           ))}

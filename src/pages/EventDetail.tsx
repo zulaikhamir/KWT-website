@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 import {
   ArrowLeft,
@@ -15,7 +15,6 @@ import { LinkedinLogoIcon } from "@phosphor-icons/react";
 import PageContainer from "@/components/layout/PageContainer";
 import SEO from "@/components/shared/SEO";
 import SectionWrapper from "@/components/shared/SectionWrapper";
-import MembershipModal from "@/components/shared/MembershipModal";
 import EventCard, { type EventCardData } from "@/components/shared/EventCard";
 import { ALL_EVENTS, findEventBySlug, isEventPast } from "@/data/events";
 import { cn } from "@/lib/utils";
@@ -293,10 +292,8 @@ function EventSummaryCard({
  */
 function ResourcesSection({
   resourcesUrl,
-  onJoinClick,
 }: {
   resourcesUrl?: string;
-  onJoinClick: () => void;
 }) {
   // TODO: replace with real membership auth check (e.g. context, cookie, JWT)
   const isMember = false;
@@ -349,9 +346,8 @@ function ResourcesSection({
                 community. Join to get access to this session and everything that comes
                 next.
               </p>
-              <button
-                type="button"
-                onClick={onJoinClick}
+              <Link
+                to="/#membership-paths"
                 className={cn(
                   "mt-6 inline-flex items-center gap-1.5 rounded-full",
                   "border border-[var(--color-primary)]/20 px-5 py-2.5",
@@ -363,7 +359,7 @@ function ResourcesSection({
               >
                 Join KWT
                 <ArrowUpRight size={14} strokeWidth={2.2} aria-hidden="true" />
-              </button>
+              </Link>
             </div>
           </div>
         )}
@@ -428,7 +424,6 @@ function MoreEvents({ currentSlug }: { currentSlug: string }) {
 export default function EventDetail() {
   const { slug } = useParams<{ slug: string }>();
   const event = slug ? findEventBySlug(slug) : undefined;
-  const [modalOpen, setModalOpen] = useState(false);
 
   // ── 404 state ──────────────────────────────────────────────────────────────
   if (!event) {
@@ -460,7 +455,6 @@ export default function EventDetail() {
 
   return (
     <PageContainer>
-      <MembershipModal open={modalOpen} onOpenChange={setModalOpen} />
       <SEO
         title={event.title}
         description={event.description}
@@ -562,7 +556,6 @@ export default function EventDetail() {
       {/* ── Session materials (member-only) ──────────────────────────────────── */}
       <ResourcesSection
         resourcesUrl={event.resourcesUrl}
-        onJoinClick={() => setModalOpen(true)}
       />
 
       {/* ── More events ──────────────────────────────────────────────────────── */}
