@@ -6,22 +6,36 @@ import { cn } from "@/lib/utils";
 export interface EventCardData {
   /** URL-safe identifier used for the /events/:slug route */
   slug?: string;
-  /** e.g. "AUG 09" — used to render the date badge */
+
+  /** e.g. "AUG 09" */
   dateShort: string;
+
   /** ISO date string for the <time> datetime attribute */
   dateISO: string;
+
   /** e.g. "Community Q&A" */
   category: string;
+
   title: string;
+
   description: string;
+
   format: "Virtual" | "In-Person" | "Hybrid";
+
   location?: string;
+
   /** Optional time string, e.g. "6:00 PM IST" */
   time?: string;
-  /** Optional image URL. Shown in "past" cards and the featured upcoming card. */
+
+  /** Optional image URL. */
   image?: string;
+
+  /** Controls how the event image fits inside its media area. */
+  imageFit?: "cover" | "contain";
+
   /** Optional Google Drive / external URL for session resources. */
   resourcesUrl?: string;
+
   /** Optional speakers, facilitators, or guests featured at this event. */
   people?: {
     name: string;
@@ -29,12 +43,13 @@ export interface EventCardData {
     linkedin?: string;
     bio?: string;
   }[];
+
   /** Optional heading for the detail-page description section. */
   aboutLabel?: string;
+
   /** URL for the register / details link */
   href: string;
 }
-
 export interface EventCardProps {
   event: EventCardData;
   /**
