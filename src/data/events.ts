@@ -6,12 +6,7 @@ import aiCareerQaImage from "@/assets/images/events/ai-career-community-qa.png";
 import professionalNetworkingImage from "@/assets/images/events/professional-communication-networking.png";
 import resumeReviewImage from "@/assets/images/events/resume-review.png";
 
-/**
- * Returns true when an event's date is strictly before today.
- *
- * An event happening today is still considered upcoming so the Register CTA
- * remains available for the full day.
- */
+
 export function isEventPast(dateISO: string): boolean {
   const today = new Date();
   today.setHours(0, 0, 0, 0);

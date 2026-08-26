@@ -104,54 +104,65 @@ export default function MembershipModal({
                   cta,
                   href,
                 }) => (
-                  <a
+               
+                  <article
                     key={href}
-                    href={href}
-                    target="_blank"
-                    rel="noreferrer noopener"
                     className={cn(
-                      "group flex flex-col gap-5 rounded-2xl border border-hairline bg-white p-6",
-                      "transition-all duration-200",
-                      "hover:border-[var(--color-primary)]/25",
-                      "hover:shadow-[0_8px_28px_-8px_rgba(27,42,82,0.14)]",
-                      "hover:-translate-y-0.5",
-                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/40 focus-visible:ring-offset-2",
+                      "flex flex-col overflow-hidden rounded-2xl border border-hairline bg-white",
+                      "shadow-[0_2px_10px_-4px_rgba(27,42,82,0.10)]",
+                      "transition-shadow duration-200",
+                      "hover:shadow-[0_12px_30px_-10px_rgba(27,42,82,0.20)]",
                     )}
                   >
-                    {/* Icon */}
-                    <span
-                      className="inline-flex size-11 items-center justify-center rounded-xl bg-[var(--color-accent)]"
-                      aria-hidden="true"
-                    >
-                      <Icon
-                        className="size-[1.1rem] text-[var(--color-primary)]"
-                        strokeWidth={1.75}
-                      />
-                    </span>
-
-                    {/* Text */}
-                    <div className="flex flex-col gap-1.5">
-                      <p className="eyebrow">{eyebrow}</p>
-
-                      <h3 className="subheading">{heading}</h3>
-
-                      <p className="mt-1 text-[0.9rem] leading-6 text-[var(--color-secondary)]">
-                        {description}
+                    {/* Label band */}
+                    <div className="border-b border-hairline bg-[var(--color-accent)] px-5 py-3 text-center">
+                      <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-[var(--color-primary)]/70">
+                        {eyebrow}
                       </p>
                     </div>
 
-                    {/* CTA row */}
-                    <div className="mt-auto inline-flex self-start items-center gap-1.5 border-b border-[var(--color-primary)]/25 pb-px text-sm font-medium text-[var(--color-primary)] transition-colors duration-150 group-hover:border-[var(--color-primary)]">
-                      {cta}
-
-                      <ArrowUpRight
-                        size={14}
-                        strokeWidth={2.2}
-                        className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    <div className="flex flex-1 flex-col items-center gap-4 px-6 py-7 text-center">
+                      <span
+                        className="inline-flex size-11 items-center justify-center rounded-xl bg-[var(--color-accent)]"
                         aria-hidden="true"
-                      />
+                      >
+                        <Icon
+                          className="size-[1.1rem] text-[var(--color-primary)]"
+                          strokeWidth={1.75}
+                        />
+                      </span>
+
+                      <h3 className="subheading">{heading}</h3>
+
+                      <p className="text-[0.9rem] leading-6 text-[var(--color-secondary)]">
+                        {description}
+                      </p>
+
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className={cn(
+                          "group mt-auto inline-flex items-center gap-1.5 rounded-full",
+                          "bg-[var(--color-primary)] px-5 py-2.5",
+                          "text-sm font-medium text-white",
+                          "transition-all duration-200 active:scale-[0.98]",
+                          "hover:bg-[var(--color-primary)]/90",
+                          "hover:shadow-[0_8px_20px_-8px_rgba(27,42,82,0.45)]",
+                          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/40 focus-visible:ring-offset-2",
+                        )}
+                      >
+                        {cta}
+
+                        <ArrowUpRight
+                          size={14}
+                          strokeWidth={2.2}
+                          className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                          aria-hidden="true"
+                        />
+                      </a>
                     </div>
-                  </a>
+                  </article>
                 ),
               )}
             </div>
