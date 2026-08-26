@@ -10,6 +10,13 @@ import { cn } from "@/lib/utils";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import SectionHeading from "@/components/shared/SectionHeading";
 
+import imgZulaikha  from "@/assets/team/zulaikha-founder.png";
+import imgUzma      from "@/assets/team/uzma-techlead.jpg";
+import imgSaatiya   from "@/assets/team/Saathiya-commex.png";
+import imgHazika    from "@/assets/team/Hazika-comm-op.png";
+import imgTuhoor    from "@/assets/team/Tahoor-social.png";
+import imgHadiya    from "@/assets/team/Hadiya-website.png";
+
 // ─── Team data ────────────────────────────────────────────────────────────────
 interface TeamMember {
   name:         string;
@@ -20,69 +27,79 @@ interface TeamMember {
   linkedinUrl?: string;
 }
 
+
 const team: TeamMember[] = [
   {
-    name:        "Zulaikha Ashiq",
-    role:        "Founder",
-    bio:         [
-      "Founded KWT to connect Kashmiri women across technology, research, and STEM",
+    name: "Zulaikha Ashiq",
+    role: "Founder",
+    bio: [
+      "Founded KWT to connect Kashmiri women across technology, research, and STEM.",
     ],
-    image:       "/team/zulaikha-founder.png",
+    image: imgZulaikha,
     linkedinUrl: "https://linkedin.com/in/zulaikhaashiq",
   },
   {
-    name:        "Uzma Hamid",
-    role:        "Technical Lead",
-    bio:         [
-      "Leads strategy and technical direction at KWT",
+    name: "Uzma Hamid",
+    role: "Technical Lead",
+    bio: [
+      "Helps shape KWT’s direction through ideas, collaboration, and key technical and community decisions.",
     ],
-    image:       "/team/uzma-techlead.jpg",
+    image: imgUzma,
     linkedinUrl: "https://linkedin.com/in/uzmah",
   },
   {
-    name:        "Tuhoor Fatima",
-    role:        "Social Media",
-    bio:         [
-      "Leads strategy and technical direction at KWT",
+    name: "Saatiya Shabeer",
+    role: "Community Experience",
+    bio: [
+      "Focuses on member experience, community engagement, and creating meaningful experiences for KWT members.",
     ],
-    image:       "/team/uzma-techlead.jpg",
+    image: imgSaatiya,
+    linkedinUrl: "https://www.linkedin.com/in/saatiya-shabeer-3b8111295",
+  },
+  {
+    name: "Hazika Shafi",
+    role: "Community Operations",
+    bio: [
+      "Supports KWT’s community operations, coordination, documentation, and day-to-day organization.",
+    ],
+    image: imgHazika,
+    linkedinUrl: "https://linkedin.com/in/hazika-shafi-170892321/",
+  },
+  {
+    name: "Tuhoor Fatima",
+    role: "Social Media",
+    bio: [
+      "Leads KWT’s social media presence, content planning, and communication across platforms.",
+    ],
+    image: imgTuhoor,
     linkedinUrl: "https://www.linkedin.com/in/tahoorfaatima",
   },
   {
-    name:        "Hadiya Mustaq",
-    role:        "Web Master",
-    bio:         [
-      "Leads strategy and technical direction at KWT",
+    name: "Hadiya Mustaq",
+    role: "Website",
+    bio: [
+      "Contributes to KWT’s website development, content organization, and digital presence.",
     ],
-    image:       "/team/uzma-techlead.jpg",
+    image: imgHadiya,
     linkedinUrl: "https://linkedin.com/in/hadiya-mushtaq-9379282a2",
-  },
-  {
-    name:        "Saatiya Shabeer",
-    role:        "Community Experience",
-    bio:         [
-      "Leads strategy and technical direction at KWT",
-    ],
-    image:       "/team/uzma-techlead.jpg",
-    linkedinUrl: "https://www.linkedin.com/in/saatiya-shabeer-3b8111295",
-  },
-  {
-    name:        "Hazika Shafi",
-    role:        "Community Operations",
-    bio:         [
-      "Leads strategy and technical direction at KWT",
-    ],
-    image:       "/team/uzma-techlead.jpg",
-    linkedinUrl: "https://www.linkedin.com/in/saatiya-shabeer-3b8111295",
   },
 ];
 
 // ─── TeamCard ─────────────────────────────────────────────────────────────────
 function TeamCard({ member }: { member: TeamMember }) {
   const description = member.note ?? member.bio?.filter(Boolean).join(" ");
+  const [imgFailed, setImgFailed] = useState(false);
 
   // Applied to everything that changes on hover, so one state drives them all.
   const onReveal = "transition-opacity duration-300 ease-out motion-reduce:transition-none";
+
+  // Initials from the member's name for the fallback avatar
+  const initials = member.name
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
 
   return (
     <li
@@ -94,26 +111,39 @@ function TeamCard({ member }: { member: TeamMember }) {
       <figure
         className={cn(
           "group relative aspect-[5/7] overflow-hidden rounded-3xl",
-          "bg-[var(--color-accent)] ring-1 ring-black/5",
+          "bg-[var(--color-primary)] ring-1 ring-black/5",
           "shadow-[0_14px_36px_-14px_rgba(27,42,82,0.28)]",
           "transition-shadow duration-300",
           "hover:shadow-[0_20px_48px_-16px_rgba(27,42,82,0.4)]",
         )}
       >
-        <img
-          src={member.image}
-          alt=""
-          aria-hidden="true"
-          loading="lazy"
-          width={416}
-          height={582}
-          className={cn(
-            "absolute inset-0 size-full object-cover object-top",
-            "transition duration-500 ease-out motion-reduce:transition-none",
-            "group-hover:scale-110 group-hover:blur-[6px] group-hover:brightness-[0.55]",
-            "group-focus-within:scale-110 group-focus-within:blur-[6px] group-focus-within:brightness-[0.55]",
-          )}
-        />
+        {imgFailed ? (
+          /* Placeholder avatar — shown when the image file is missing */
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 flex items-center justify-center bg-[var(--color-primary)]"
+          >
+            <span className="select-none font-heading text-5xl font-bold tracking-tight text-white/20">
+              {initials}
+            </span>
+          </div>
+        ) : (
+          <img
+            src={member.image}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            width={416}
+            height={582}
+            onError={() => setImgFailed(true)}
+            className={cn(
+              "absolute inset-0 size-full object-cover object-top",
+              "transition duration-500 ease-out motion-reduce:transition-none",
+              "group-hover:scale-110 group-hover:blur-[6px] group-hover:brightness-[0.55]",
+              "group-focus-within:scale-110 group-focus-within:blur-[6px] group-focus-within:brightness-[0.55]",
+            )}
+          />
+        )}
         <div
           aria-hidden="true"
           className={cn(

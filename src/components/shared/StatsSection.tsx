@@ -1,24 +1,15 @@
-import { CalendarCheck2, Globe, Plus, Users } from "lucide-react";
+import { CalendarCheck2, Globe, Users } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { KWT_STATS, type StatItem } from "@/data/stats";
 import { useCountUp, useInView } from "@/hooks/useCountUp";
 
 // ─── Icon map ─────────────────────────────────────────────────────────────────
-// Keyed off StatItem["icon"] so the data file stays free of component imports.
 const STAT_ICON = {
   members: Users,
   sessions: CalendarCheck2,
   countries: Globe,
 } as const satisfies Record<NonNullable<StatItem["icon"]>, typeof Users>;
-
-// Blueprint-style crosshairs, one per panel corner.
-const CORNER_POSITIONS = [
-  "left-3 top-3",
-  "right-3 top-3",
-  "left-3 bottom-3",
-  "right-3 bottom-3",
-] as const;
 
 // ─── Single stat ──────────────────────────────────────────────────────────────
 function Stat({ value, label, context, icon }: StatItem) {
@@ -30,47 +21,36 @@ function Stat({ value, label, context, icon }: StatItem) {
     <div
       ref={ref}
       className={cn(
-        "group relative flex flex-col items-center px-6 py-9 text-center",
-        "transition-colors duration-300 hover:bg-white/[0.035]",
+        "relative flex flex-col items-center justify-center px-6 py-10 text-center flex-1",
+        "transition-colors duration-300 hover:bg-white/[0.03]",
       )}
     >
-      {/* Accent hairline that lights up on hover */}
-      <span
-        aria-hidden="true"
-        className={cn(
-          "pointer-events-none absolute inset-x-8 top-0 h-px opacity-0",
-          "bg-linear-to-r from-transparent via-[var(--color-accent)]/70 to-transparent",
-          "transition-opacity duration-300 group-hover:opacity-100",
-        )}
-      />
-
       {Icon && (
         <span
           aria-hidden="true"
-          className={cn(
-            "mb-5 flex size-10 items-center justify-center rounded-xl",
-            "border border-white/10 bg-white/[0.06] text-[var(--color-accent)]",
-            "transition-colors duration-300",
-            "group-hover:border-[var(--color-accent)]/40 group-hover:bg-[var(--color-accent)]/10",
-          )}
+          className="mb-4 flex size-9 items-center justify-center rounded-lg bg-white/8 text-white/50 ring-1 ring-white/10"
         >
-          <Icon size={17} strokeWidth={1.75} />
+          <Icon size={16} strokeWidth={1.75} />
         </span>
       )}
 
       <span
         className={cn(
-          "font-heading text-[2.75rem] font-bold leading-none tracking-[-0.04em] tabular-nums",
-          "bg-linear-to-b from-white to-[var(--color-accent)] bg-clip-text text-transparent",
+          "font-heading text-[3rem] font-bold leading-none tracking-[-0.045em] tabular-nums text-white",
+          "sm:text-[3.5rem]",
         )}
       >
         {displayValue}
       </span>
 
-      <span className="mt-3 text-sm font-medium text-white">{label}</span>
-      <span className="mt-1 font-mono text-[11px] tracking-tight text-white/45">
-        {context}
+      <span className="mt-3 text-[0.8125rem] font-medium uppercase tracking-[0.08em] text-white/55">
+        {label}
       </span>
+      {context && (
+        <span className="mt-1.5 text-[11px] font-mono text-white/30 tracking-tight max-w-[14rem]">
+          {context}
+        </span>
+      )}
     </div>
   );
 }
@@ -80,54 +60,39 @@ export default function StatsSection() {
   return (
     <div
       className={cn(
-        "relative mx-auto max-w-3xl overflow-hidden rounded-3xl isolate",
-        "border border-white/10 bg-navy-deep",
-        "shadow-[0_2px_8px_-2px_rgba(27,42,82,0.18),0_28px_60px_-24px_rgba(17,28,58,0.55)]",
+        "relative w-full overflow-hidden",
+        "bg-navy-deep",
+        "ring-1 ring-white/10",
+        "shadow-[0_4px_6px_-2px_rgba(0,0,0,0.2),0_20px_48px_-16px_rgba(17,28,58,0.6)]",
       )}
     >
-      {/* Dot-grid texture */}
+      {/* Top-edge hairline highlight */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.55]"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, rgba(234,230,255,0.14) 1px, transparent 1px)",
-          backgroundSize: "22px 22px",
-        }}
-      />
-      {/* Lavender glow behind the numbers */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -top-24 left-1/2 -z-10 size-72 -translate-x-1/2 rounded-full"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(234,230,255,0.22) 0%, transparent 70%)",
-        }}
-      />
-      {/* Top edge highlight */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-white/25 to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-white/20 to-transparent"
       />
 
-      {/* Corner crosshairs */}
-      {CORNER_POSITIONS.map((position) => (
-        <Plus
-          key={position}
-          aria-hidden="true"
-          size={11}
-          strokeWidth={1.5}
-          className={cn("pointer-events-none absolute text-white/20", position)}
-        />
-      ))}
-
-
-      {/* Stats grid */}
-      <div className="grid grid-cols-1 divide-y divide-white/10 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-        {KWT_STATS.map((stat) => (
-          <Stat key={stat.label} {...stat} />
+      {/* Stats row with vertical dividers */}
+      <div className="flex flex-col sm:flex-row">
+        {KWT_STATS.map((stat, index) => (
+          <div key={stat.label} className="flex flex-1">
+            <Stat {...stat} />
+            {/* Vertical divider - show between items but not after last */}
+            {index < KWT_STATS.length - 1 && (
+              <div
+                aria-hidden="true"
+                className="hidden sm:block w-px bg-white/8"
+              />
+            )}
+          </div>
         ))}
       </div>
+
+      {/* Bottom-edge hairline */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-white/10 to-transparent"
+      />
     </div>
   );
 }

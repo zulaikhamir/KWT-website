@@ -60,10 +60,15 @@ const faqs: { question: string; answer: React.ReactNode }[] = [
     answer:
       "From time to time, we open volunteer and contributor roles across areas like community, content, partnerships, and events. Keep an eye on our announcements.",
   },
-  {
+
+   {
     question: "How should I contact KWT?",
-    answer:
-      "Fill out our [contact form] on the website and tell us what you are reaching out about. We will get back to you as soon as we can."
+    answer: (
+      <>
+        Fill out the{" "}
+        <A href="https://tally.so/r/kd8MrM">contact form</A> and tell us what you are reaching out about. We will get back to you as soon as we can.
+      </>
+    ),
   }
 ];
 

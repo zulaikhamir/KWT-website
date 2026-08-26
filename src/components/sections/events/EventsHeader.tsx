@@ -37,21 +37,24 @@ export default function EventsHeader() {
           </p>
 
           {/* Heading */}
-          <h1
-            id="events-heading"
-            className="display mt-6 text-white kwt-animate-fade-up"
-            style={{ animationDelay: "80ms" }}
-          >
-            Where the KWT community connects
-          </h1>
+       
+<h1
+  id="events-heading"
+  className="display mt-6 text-white kwt-animate-fade-up"
+  style={{ animationDelay: "80ms" }}
+>
+  Where the KWT community connects and learns
+</h1>
 
-          {/* Lede */}
-          <p
-            className="lede mt-7 max-w-xl text-white/75 kwt-animate-fade-up"
-            style={{ animationDelay: "180ms" }}
-          >
-            From talks and workshops to mentorship, resume reviews, and career sessions, KWT creates spaces to learn, meet people, and move forward together.
-          </p>
+{/* Lede */}
+<p
+  className="lede mt-7 max-w-xl text-white/75 kwt-animate-fade-up"
+  style={{ animationDelay: "180ms" }}
+>
+  From workshops and talks to mentorship, resume reviews, networking, and
+  career sessions, KWT creates opportunities for Kashmiri women to learn,
+  connect, and grow together.
+</p>
         </div>
       </div>
     </section>

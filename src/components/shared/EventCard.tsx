@@ -6,34 +6,50 @@ import { cn } from "@/lib/utils";
 export interface EventCardData {
   /** URL-safe identifier used for the /events/:slug route */
   slug?: string;
-  /** e.g. "AUG 09" — used to render the date badge */
+
+  /** e.g. "AUG 09" */
   dateShort: string;
+
   /** ISO date string for the <time> datetime attribute */
   dateISO: string;
+
   /** e.g. "Community Q&A" */
   category: string;
+
   title: string;
+
   description: string;
+
   format: "Virtual" | "In-Person" | "Hybrid";
+
   location?: string;
+
   /** Optional time string, e.g. "6:00 PM IST" */
   time?: string;
-  /** Optional image URL. Shown in "past" cards and the featured upcoming card. */
+
+  /** Optional image URL. */
   image?: string;
+
+  /** Controls how the event image fits inside its media area. */
+  imageFit?: "cover" | "contain";
+
   /** Optional Google Drive / external URL for session resources. */
   resourcesUrl?: string;
+
   /** Optional speakers, facilitators, or guests featured at this event. */
   people?: {
     name: string;
     role?: string;
     linkedin?: string;
+    bio?: string;
   }[];
+
   /** Optional heading for the detail-page description section. */
   aboutLabel?: string;
+
   /** URL for the register / details link */
   href: string;
 }
-
 export interface EventCardProps {
   event: EventCardData;
   /**
@@ -78,14 +94,24 @@ export default function EventCard({
         className,
       )}
     >
-      {/* Optional cover image (past cards + any card that supplies one) */}
+      {/* Image area — shown when event has an image */}
       {event.image && (
-        <div className="aspect-video w-full overflow-hidden bg-[var(--color-accent)]/30">
+        <div className="relative h-44 w-full overflow-hidden bg-[var(--color-accent)]/40">
+          {/* Subtle blurred background layer */}
           <img
             src={event.image}
-            alt={event.title}
+            alt=""
+            aria-hidden="true"
             loading="lazy"
-            className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
+            className="absolute inset-0 size-full object-cover object-center opacity-30 blur-md scale-110"
+          />
+          {/* Main contained image */}
+          <img
+            src={event.image}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            className="relative size-full object-contain object-center p-3 transition-transform duration-500 group-hover:scale-[1.04]"
           />
         </div>
       )}
@@ -93,7 +119,7 @@ export default function EventCard({
       {/* Date / category banner */}
       <div
         className={cn(
-          "flex items-center gap-4 px-5 py-4",
+          "flex items-center gap-3 px-5 py-4",
           "border-b border-hairline bg-[var(--color-background)]",
         )}
       >
@@ -159,7 +185,8 @@ export default function EventCard({
         </div>
       </div>
 
-      {/* Footer CTA */}
+      {/* Footer CTA — "View Details" hidden until event detail pages are ready */}
+      {!isPast && (
       <div className="flex flex-wrap items-center gap-2 px-5 pb-5">
         {event.href.startsWith("http") ? (
           <a
@@ -171,19 +198,12 @@ export default function EventCard({
               "text-xs font-medium tracking-[-0.005em]",
               "active:scale-[0.98] transition-all duration-150",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/30",
-              isPast
-                ? [
-                    "border border-hairline text-[var(--color-secondary)]",
-                    "hover:border-[var(--color-primary)]/30 hover:text-[var(--color-primary)]",
-                  ]
-                : [
-                    "bg-[var(--color-primary)] text-white",
-                    "hover:bg-[var(--color-primary)]/90",
-                    "hover:shadow-[0_8px_20px_-8px_rgba(27,42,82,0.45)]",
-                  ],
+              "bg-[var(--color-primary)] text-white",
+              "hover:bg-[var(--color-primary)]/90",
+              "hover:shadow-[0_8px_20px_-8px_rgba(27,42,82,0.45)]",
             )}
           >
-            {isPast ? "View Details" : "Register"}
+            Register
             <ArrowRight size={11} strokeWidth={2.4} />
           </a>
         ) : (
@@ -194,23 +214,17 @@ export default function EventCard({
               "text-xs font-medium tracking-[-0.005em]",
               "active:scale-[0.98] transition-all duration-150",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/30",
-              isPast
-                ? [
-                    "border border-hairline text-[var(--color-secondary)]",
-                    "hover:border-[var(--color-primary)]/30 hover:text-[var(--color-primary)]",
-                  ]
-                : [
-                    "bg-[var(--color-primary)] text-white",
-                    "hover:bg-[var(--color-primary)]/90",
-                    "hover:shadow-[0_8px_20px_-8px_rgba(27,42,82,0.45)]",
-                  ],
+              "bg-[var(--color-primary)] text-white",
+              "hover:bg-[var(--color-primary)]/90",
+              "hover:shadow-[0_8px_20px_-8px_rgba(27,42,82,0.45)]",
             )}
           >
-            {isPast ? "View Details" : "Register"}
+            Register
             <ArrowRight size={11} strokeWidth={2.4} />
           </Link>
         )}
       </div>
+      )}
     </article>
   );
 }
