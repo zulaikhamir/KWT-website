@@ -19,7 +19,14 @@ export default function MissionVision() {
   return (
     <SectionWrapper id="mission-vision" tone="surface" divided>
       <div ref={ref} className="grid gap-x-16 gap-y-10 lg:grid-cols-[0.8fr_1.2fr]">
-        <h2 className="heading kwt-reveal">Mission &amp; vision</h2>
+        {/* Left column flows with the section; only the inner block is sticky,
+            so the heading rides the page scroll, holds below the navbar while
+            the statements scroll past, then leaves with the section. */}
+        <div>
+          <div className="kwt-reveal lg:sticky lg:top-32">
+            <h2 className="heading">Mission &amp; vision</h2>
+          </div>
+        </div>
 
         <div className="divide-y divide-hairline border-y border-hairline kwt-reveal kwt-stagger-2">
           {statements.map((statement) => (
