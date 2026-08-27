@@ -50,11 +50,17 @@ export default function Footer() {
         <div className="grid gap-14 lg:grid-cols-[1.4fr_1fr_1fr]">
           {/* Brand column */}
           <div className="max-w-sm">
-            <img
-              src={footerLogo}
-              alt="KWT — Kashmiri Women in Tech"
-              className="h-12 w-auto sm:h-14"
-            />
+            <Link
+              to="/"
+              aria-label="KWT home"
+              className="inline-block rounded-sm transition-opacity duration-200 hover:opacity-75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-navy-deep)]"
+            >
+              <img
+                src={footerLogo}
+                alt="KWT — Kashmiri Women in Tech"
+                className="h-12 w-auto sm:h-14"
+              />
+            </Link>
             <p className="mt-6 text-[0.9375rem] leading-7 text-white/65">
               Connecting Kashmiri women in technology to learn, grow, share opportunities, and build together.
             </p>
