@@ -12,7 +12,7 @@ export default function NotFound() {
       />
       <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4 px-6 py-16">
         <img
-          src="/illustrations/404.png"
+          src="/illustrations/404.webp"
           alt=""
           aria-hidden="true"
           width={572}

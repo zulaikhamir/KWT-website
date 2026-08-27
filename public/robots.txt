@@ -1,0 +1,8 @@
+# robots.txt — https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Not shipping publicly yet
+Disallow: /wall-of-gratitude
+
+Sitemap: https://kwtcommunity.org/sitemap.xml

@@ -29,7 +29,7 @@ export default function SectionWrapper({
     <section
   id={id}
   className={cn(
-    "w-full overflow-x-hidden",   // ← add overflow-x-hidden here
+    "w-full overflow-x-clip",   // clip, not hidden, so sticky descendants aren't trapped in a scroll container
     tone === "surface" && "bg-[var(--color-bg-surface)]",
     divided && "border-t border-hairline"
   )}
