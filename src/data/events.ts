@@ -52,8 +52,6 @@ export const ALL_EVENTS: EventCardData[] = [
         linkedin: "https://www.linkedin.com/in/zulaikhaashiq/",
       },
     ],
-    resourcesUrl:
-      "https://drive.google.com/drive/folders/1ekm5LVYb42jkl4q1aE8nPEPNb8gJiRle",
     href: "/events/2026-08-02-kwt-inaugural-welcome-session",
   },
 
@@ -76,8 +74,6 @@ export const ALL_EVENTS: EventCardData[] = [
         linkedin: "https://www.linkedin.com/in/areeba-nisar-2908b225b/",
       },
     ],
-    resourcesUrl:
-      "https://drive.google.com/drive/folders/1ekm5LVYb42jkl4q1aE8nPEPNb8gJiRle",
     href: "/events/2026-08-02-from-concept-to-research-publication",
   },
 
@@ -100,8 +96,6 @@ export const ALL_EVENTS: EventCardData[] = [
         linkedin: "https://www.linkedin.com/in/uzmah/",
       },
     ],
-    resourcesUrl:
-      "https://drive.google.com/drive/folders/1ekm5LVYb42jkl4q1aE8nPEPNb8gJiRle",
     href: "/events/2026-08-09-ai-career-community-qa",
   },
 
