@@ -31,6 +31,7 @@ export default function SectionHeading({
       <Title className={cn(as === "h1" ? "display" : "heading", eyebrow && "mt-5")}>
         {title}
       </Title>
+
       {description && <p className="lede mt-5">{description}</p>}
     </div>
   );

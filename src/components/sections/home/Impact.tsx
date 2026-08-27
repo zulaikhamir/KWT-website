@@ -10,13 +10,16 @@ export default function Impact() {
   return (
     <SectionWrapper id="impact" divided>
       <div ref={ref}>
-        <SectionHeading
+       <SectionHeading
           align="center"
-          title="Our growing community"
-          description="KWT is an active and growing space for Kashmiri women across STEM and technology — here's where we are so far."
-          className="mb-8 kwt-reveal"
+          eyebrow="By the numbers"
+          title="Our community is growing"
+          description="Built in Kashmir. Growing beyond it."
+          className="mb-10 kwt-reveal"
         />
 
+        {/* Spans the section's content width — same left and right edges as
+            the heading above and every other section on the page. */}
         <div className="kwt-reveal kwt-stagger-2">
           <StatsSection />
         </div>

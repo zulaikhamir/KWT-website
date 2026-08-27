@@ -1,17 +1,14 @@
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import SectionHeading from "@/components/shared/SectionHeading";
 import EventCard from "@/components/shared/EventCard";
-import { UPCOMING_EVENTS } from "@/data/events";
+import { ALL_EVENTS, isEventPast } from "@/data/events";
 
-/**
- * EVT-02 — Upcoming Events.
- *
- * Renders the next scheduled KWT events.
- * Cards come from the static UPCOMING_EVENTS array in src/data/events.ts —
- * swap that for an API/CMS call when real event data is available.
- */
 export default function UpcomingEvents() {
-  if (UPCOMING_EVENTS.length === 0) {
+  const upcoming = ALL_EVENTS
+    .filter((event) => !isEventPast(event.dateISO))
+    .sort((a, b) => a.dateISO.localeCompare(b.dateISO));
+
+  if (upcoming.length === 0) {
     return (
       <SectionWrapper id="upcoming-events" divided>
         <SectionHeading
@@ -19,10 +16,12 @@ export default function UpcomingEvents() {
           title="Upcoming events"
           className="mb-12"
         />
+
         <div className="rounded-2xl border border-hairline bg-[var(--color-background)] px-8 py-16 text-center">
           <p className="lede">
-            No upcoming events scheduled right now — check back soon.
+            No upcoming events scheduled right now. Check back soon.
           </p>
+
           <p className="mt-2 text-sm text-[var(--color-secondary)]">
             Follow us on{" "}
             <a
@@ -54,14 +53,18 @@ export default function UpcomingEvents() {
       <SectionHeading
         eyebrow="What's next"
         title="Upcoming events"
-        description="Register early — spots fill up fast."
+        description="See what's coming up in the KWT community."
         className="mb-12"
       />
 
       <ul className="grid gap-6 sm:grid-cols-2">
-        {UPCOMING_EVENTS.map((event) => (
+        {upcoming.map((event) => (
           <li key={event.dateISO + event.title}>
-            <EventCard event={event} variant="upcoming" className="h-full" />
+            <EventCard
+              event={event}
+              variant="upcoming"
+              className="h-full"
+            />
           </li>
         ))}
       </ul>

@@ -182,7 +182,10 @@
     color: color-mix(in srgb, var(--color-primary) 55%, transparent);
   }
 
-  /* Page-level hero heading. */
+  /* Page-level hero heading. One size for every page hero — Home, About,
+     Events, Get Involved. The two-column heroes (Home, About) give their
+     text column ~1.3fr so this lands at the same ~18 characters a line the
+     full-width heroes get; changing those ratios will change the wrap. */
   .display {
     font-family: var(--font-heading);
     font-weight: 700;
@@ -228,6 +231,152 @@
     line-height: 1.75;
     color: var(--color-secondary);
     text-wrap: pretty;
+  }
+
+  /* ─── Prose styling for long-form content (Privacy Policy, etc.) ───────── */
+  .prose-kwt {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--color-secondary);
+  }
+
+  .prose-kwt h2 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.875rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--color-primary);
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    text-wrap: balance;
+  }
+
+  .prose-kwt h3 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.375rem;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--color-primary);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    text-wrap: balance;
+  }
+
+  .prose-kwt h4 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.125rem;
+    line-height: 1.4;
+    color: var(--color-primary);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .prose-kwt p {
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .prose-kwt ul,
+  .prose-kwt ol {
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    padding-left: 1.625rem;
+  }
+
+  .prose-kwt li {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding-left: 0.375rem;
+  }
+
+  .prose-kwt ul > li {
+    position: relative;
+  }
+
+  .prose-kwt ul > li::marker {
+    color: var(--color-primary);
+  }
+
+  .prose-kwt ol > li::marker {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  .prose-kwt strong {
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .prose-kwt em {
+    font-style: italic;
+  }
+
+  .prose-kwt a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: opacity 150ms ease;
+  }
+
+  .prose-kwt a:hover {
+    opacity: 0.7;
+  }
+
+  .prose-kwt blockquote {
+    border-left: 3px solid var(--color-primary);
+    padding-left: 1.5rem;
+    margin-left: 0;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    color: var(--color-secondary);
+  }
+
+  .prose-kwt code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.875em;
+    background-color: var(--color-accent);
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+    color: var(--color-primary);
+  }
+
+  .prose-kwt hr {
+    border: 0;
+    border-top: 1px solid var(--color-hairline);
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .prose-kwt table {
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+  }
+
+  .prose-kwt thead {
+    border-bottom: 2px solid var(--color-hairline);
+  }
+
+  .prose-kwt th {
+    text-align: left;
+    font-weight: 600;
+    color: var(--color-primary);
+    padding: 0.75rem 1rem;
+  }
+
+  .prose-kwt td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--color-hairline);
+  }
+
+  .prose-kwt tbody tr:last-child td {
+    border-bottom: none;
   }
 
   /* ─── Global page background treatment ────────────────────────────────────

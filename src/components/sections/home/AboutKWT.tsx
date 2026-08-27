@@ -1,43 +1,44 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpen, Users, TrendingUp, Heart } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { GraduationCap, UsersThree, Ladder, HandHeart } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import SectionHeading from "@/components/shared/SectionHeading";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-// ─── Pillars ──────────────────────────────────────────────────────────────────
 const PILLARS = [
   {
-    icon:  BookOpen,
+    icon: GraduationCap,
     label: "Learn",
-    desc:  "Workshops, talks, and curated resources spanning technology, engineering, research, and more.",
+    desc: "Workshops, talks, resources, and ideas worth exploring.",
   },
   {
-    icon:  Users,
+    icon: UsersThree,
     label: "Connect",
-    desc:  "A community of Kashmiri women across disciplines, career stages, and geographies.",
+    desc: "Meet Kashmiri women in tech across different fields and stages.",
   },
   {
-    icon:  TrendingUp,
+    icon: Ladder,
     label: "Grow",
-    desc:  "Mentorship, career opportunities, and a network that opens real doors across STEM fields.",
+    desc: "Find mentors, opportunities, and people who can help you move forward.",
   },
   {
-    icon:  Heart,
+    icon: HandHeart,
     label: "Give Back",
-    desc:  "Contribute your expertise and experience to strengthen the next generation of Kashmiri women in TECH.",
+    desc: "Share what you know and help the next woman find her way.",
   },
 ] as const;
 
-// ─── Pillar card — uses the shared surface-card design token ──────────────────
-function PillarCard({ icon: Icon, label, desc }: (typeof PILLARS)[number]) {
+type PillarCardProps = (typeof PILLARS)[number] & { className?: string };
+
+function PillarCard({ icon: Icon, label, desc, className }: PillarCardProps) {
   return (
-    <li className="surface-card surface-card-interactive flex flex-col p-7">
+    <li className={cn("surface-card surface-card-interactive flex flex-col p-7", className)}>
       <span
-        className="inline-flex size-11 items-center justify-center rounded-xl bg-[var(--color-accent-solid)]"
+        className="inline-flex size-11 items-center justify-center rounded-xl bg-[var(--color-accent)]"
         aria-hidden="true"
       >
-        <Icon className="size-[1.15rem] text-[var(--color-primary)]" strokeWidth={1.75} />
+        <Icon className="size-[1.3rem] text-[var(--color-primary)]" weight="duotone" />
       </span>
       <h3 className="subheading mt-6">{label}</h3>
       <p className="mt-3 text-[0.9375rem] leading-7 text-[var(--color-secondary)]">{desc}</p>
@@ -54,19 +55,20 @@ export default function AboutKWT() {
       <div ref={ref}>
         <SectionHeading
           eyebrow="About KWT"
-          title="A community built by and for Kashmiri women in TECH."
-          description="KWT brings together Kashmiri women across technology, engineering, science, and research — at every stage of their journey — to learn, discover opportunities, build meaningful connections, and give back."
+          title="Built by Kashmiri women, for Kashmiri women in tech."
+
+          description="We are students, engineers, researchers, founders, and professionals at different stages of our journeys.
+          KWT is a place to learn from each other, share opportunities, ask questions, and build together."
           className="mb-12 kwt-reveal"
         />
 
         <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {PILLARS.map((p, i) => (
-            <div
+            <PillarCard
               key={p.label}
+              {...p}
               className={cn("kwt-reveal", `kwt-stagger-${(i + 1) as 1 | 2 | 3 | 4}`)}
-            >
-              <PillarCard {...p} />
-            </div>
+            />
           ))}
         </ul>
 

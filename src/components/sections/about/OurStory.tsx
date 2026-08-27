@@ -4,7 +4,6 @@ import { KWT_STATS } from "@/data/stats";
 import { useCountUp, useInView } from "@/hooks/useCountUp";
 
 // ─── AnimatedStat ─────────────────────────────────────────────────────────────
-// Fits the existing sticky-column dl layout — preserves font/spacing tokens.
 function AnimatedStat({ value, label }: { value: string; label: string }) {
   const { ref, inView } = useInView<HTMLDivElement>();
   const displayValue = useCountUp(value, inView);
@@ -29,29 +28,60 @@ export default function OurStory() {
   const bodyRef = useScrollReveal<HTMLDivElement>();
 
   return (
-    <SectionWrapper id="our-story" className="pt-16 sm:pt-24">
-      {/* Hero text — above the fold, use load animation */}
-      <div className="max-w-3xl">
-        <p className="eyebrow kwt-animate-fade-up" style={{ animationDelay: "0ms" }}>About KWT</p>
-        <h1
-          className="display mt-6 kwt-animate-fade-up"
-          style={{ animationDelay: "80ms" }}
-        >
-          Building a community for Kashmiri women in technology
-        </h1>
-        <p
-          className="lede mt-7 max-w-2xl kwt-animate-fade-up"
-          style={{ animationDelay: "160ms" }}
-        >
-          Kashmiri Women in Tech (KWT) is a community created to connect Kashmiri women
-          interested in technology, science, engineering, research, and related fields. We are
-          creating a space where women can learn from one another, discover opportunities, build
-          meaningful professional connections, and contribute to a growing technology community.
-        </p>
-      </div>
+    <>
+      <section className="w-full">
+        <div className="mx-auto grid min-h-[calc(100svh-var(--nav-height))] max-w-6xl items-center gap-10 px-6 py-16 lg:grid-cols-[1.3fr_0.7fr] lg:gap-16 lg:px-8">
+          <div>
+  <p
+    className="eyebrow kwt-animate-fade-up"
+    style={{ animationDelay: "0ms" }}
+  >
+    About KWT
+  </p>
 
-      {/* Story body — scroll-revealed */}
-      <div ref={bodyRef} className="mt-20 grid gap-x-16 gap-y-12 lg:grid-cols-[1fr_1.15fr]">
+  <h1
+    className="display mt-6 kwt-animate-fade-up"
+    style={{ animationDelay: "80ms" }}
+  >
+    Building a community for Kashmiri women in technology
+  </h1>
+
+  <p
+    className="lede mt-7 kwt-animate-fade-up"
+    style={{ animationDelay: "160ms" }}
+  >
+    KWT brings together Kashmiri women who are learning, working, researching,
+    and building in technology.
+  </p>
+
+  <p
+    className="lede mt-5 kwt-animate-fade-up"
+    style={{ animationDelay: "240ms" }}
+  >
+    We created KWT because good opportunities, conversations, and connections
+    should not depend on where you are. Here, we learn from each other, share
+    what we find, and make space for more women to grow in tech.
+  </p>
+</div>
+          {/* Decorative — the heading carries the meaning, so no alt text. */}
+          <img
+            src="/illustrations/pencil.png"
+            alt=""
+            aria-hidden="true"
+            width={408}
+            height={408}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            className="kwt-animate-fade-up mx-auto h-auto w-full max-w-sm lg:max-w-md"
+            style={{ animationDelay: "120ms" }}
+          />
+        </div>
+      </section>
+
+      <SectionWrapper id="our-story">
+        {/* Story body — scroll-revealed */}
+        <div ref={bodyRef} className="grid gap-x-16 gap-y-12 lg:grid-cols-[1fr_1.15fr]">
         <div className="kwt-reveal lg:sticky lg:top-32 lg:self-start">
           <h2 className="heading">Our story</h2>
           <dl className="mt-10 grid grid-cols-3 gap-6 border-t border-hairline pt-8">
@@ -63,36 +93,32 @@ export default function OurStory() {
 
         <div className="space-y-6 kwt-reveal kwt-stagger-2">
           <p className="body-copy text-[1.0625rem]">
-            KWT began from a simple need: creating a space where Kashmiri women in technology
-            could find one another, share opportunities, ask questions, and learn together.
-            Instead of relying on scattered networks and conversations, KWT was created as a
-            dedicated community for women at different stages of their technology journeys —
-            from students and beginners to researchers and working professionals.
+            KWT began with a simple idea: Kashmiri women in technology should be able to find one another.
           </p>
           <p className="body-copy text-[1.0625rem]">
-            Since its beginning, KWT has been growing as a community focused on practical
-            learning, professional development, research, networking, and opportunities. Through
-            community discussions, events, guest sessions, and shared resources, KWT aims to
-            make it easier for members to learn from people around them and build connections
-            that continue beyond individual events.
+           A place to ask questions. Share opportunities. Learn from someone a little further ahead. And eventually, give back.
           </p>
+            <p className="body-copy text-[1.0625rem]">
+          What started as a small community is growing into a space for students, engineers, researchers, and professionals to learn, connect, and build together.
+          </p>
+
 
           <figure className="!mt-12 border-l-2 border-[var(--color-primary)] pl-7">
             <blockquote>
-              <p className="font-heading text-xl leading-[1.5] tracking-[-0.02em] text-[var(--color-primary)] sm:text-2xl">
-                &ldquo;No one can whistle a symphony. It takes a whole orchestra to play it.&rdquo;
-              </p>
-            </blockquote>
-            <figcaption className="mt-5 text-sm text-[var(--color-secondary)]">
-              <span className="font-medium text-[var(--color-primary)]">
-                H. E. Luccock
-              </span>
-              {" · "}
-              Author &amp; Yale Divinity Professor
-            </figcaption>
+  <p className="font-heading text-xl leading-[1.5] tracking-[-0.02em] text-[var(--color-primary)] sm:text-2xl">
+    &ldquo;Alone we can do so little; together we can do so much.&rdquo;
+  </p>
+</blockquote>
+
+<figcaption className="mt-5 text-sm text-[var(--color-secondary)]">
+  <span className="font-medium text-[var(--color-primary)]">
+    Helen Keller
+  </span>
+</figcaption>
           </figure>
+          </div>
         </div>
-      </div>
-    </SectionWrapper>
+      </SectionWrapper>
+    </>
   );
 }

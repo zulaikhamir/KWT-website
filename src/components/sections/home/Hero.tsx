@@ -1,22 +1,25 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import heroImage from "@/assets/images/hero-image.png";
 
-const ROLE_TAGS = ["students", "engineers", "researchers", "professionals"] as const;
+const ROLE_TAGS = ["Students", "Engineers", "Researchers", "Professionals"] as const;
 
-// Single source of truth for stagger timing. Add/reorder items here only.
 const FADE_DELAYS_MS = [0, 80, 160, 260, 340] as const;
 
-// Custom CSS properties aren't in React.CSSProperties by default —
-// extend the type instead of casting keys to `string`.
 type CSSVars = React.CSSProperties & { "--kwt-fade-scale"?: string };
 
-export default function Hero() {
+type HeroProps = {
+  /** Reveals the membership paths section further down the page. */
+  onJoinClick: () => void;
+  /** Whether that section is currently open — drives aria-expanded. */
+  isPathsOpen: boolean;
+};
+
+export default function Hero({ onJoinClick, isPathsOpen }: HeroProps) {
   return (
     <section aria-labelledby="hero-heading" className="relative overflow-hidden">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        <div className="grid items-center gap-12 py-16 sm:py-24 lg:grid-cols-2 lg:gap-16">
+        <div className="grid min-h-[calc(100svh-var(--nav-height))] items-center gap-12 py-16 lg:grid-cols-[1.3fr_0.7fr] lg:gap-16">
 
           {/* ── Text column ──────────────────────────────────────────── */}
           <div className="flex flex-col items-start">
@@ -30,25 +33,25 @@ export default function Hero() {
               className="display mt-6 kwt-animate-fade-up"
               style={{ animationDelay: `${FADE_DELAYS_MS[1]}ms` }}
             >
-              Where Kashmiri women in technology learn, connect, and grow.
+             A community for Kashmiri women in technology.
             </h1>
 
             <p
               className="lede mt-7 max-w-xl kwt-animate-fade-up"
               style={{ animationDelay: `${FADE_DELAYS_MS[2]}ms` }}
             >
-              KWT is a community bringing together Kashmiri women across
-              technology, science, engineering, and research — creating space
-              to learn from one another, build meaningful connections, discover
-              opportunities, and give back.
+              Learn from each other. Find opportunities. Meet people who understand the journey. Build together.
             </p>
 
             <div
               className="kwt-animate-fade-up mt-10 flex flex-wrap items-center gap-3"
               style={{ animationDelay: `${FADE_DELAYS_MS[3]}ms` }}
             >
-              <Link
-                to="/get-involved"
+              <button
+                type="button"
+                onClick={onJoinClick}
+                aria-expanded={isPathsOpen}
+                aria-controls="membership-paths"
                 className={cn(
                   "inline-flex items-center gap-2",
                   "rounded-full bg-[var(--color-primary)] px-6 py-3",
@@ -61,7 +64,7 @@ export default function Hero() {
               >
                 Join KWT
                 <ArrowRight size={15} strokeWidth={2.2} aria-hidden="true" />
-              </Link>
+              </button>
 
               <Link
                 to="/events"
@@ -83,9 +86,9 @@ export default function Hero() {
               style={{ animationDelay: `${FADE_DELAYS_MS[4]}ms` }}
               aria-label="KWT welcomes students, engineers, researchers, and professionals"
             >
-              <span className="text-xs text-[var(--color-secondary)] opacity-60 select-none">
+              {/* <span className="text-xs text-[var(--color-secondary)] opacity-60 select-none">
                 For
-              </span>
+              </span> */}
               {ROLE_TAGS.map((role, i) => (
                 <span key={role} className="flex items-center gap-3">
                   <span className="text-xs font-medium text-[var(--color-secondary)] opacity-80">
@@ -101,30 +104,22 @@ export default function Hero() {
               ))}
             </div>
           </div>
-
-          {/* ── Image column ─────────────────────────────────────────── */}
-          {/* order-first on mobile: image leads, text follows.
-              lg:order-last restores the original left-text/right-image layout. */}
           <div
             className="kwt-animate-fade-up relative flex items-center order-first lg:order-last"
             style={{ animationDelay: "120ms", "--kwt-fade-scale": "0.98" } as CSSVars}
           >
-            <div className="relative w-full overflow-hidden rounded-2xl ring-1 ring-hairline shadow-[0_24px_64px_-24px_rgba(27,42,82,0.18)]">
-              <img
-                src={heroImage}
-                alt="Kashmiri Women in Tech community"
-                width={680}
-                height={520}
-                className="h-full w-full object-cover object-center"
-                style={{ maxHeight: "520px" }}
-              />
-              <div
-                className="absolute inset-x-0 bottom-0 h-24 pointer-events-none"
-                style={{
-                  background: "linear-gradient(to top, rgba(248,247,253,0.5) 0%, transparent 100%)",
-                }}
-              />
-            </div>
+      
+            <img
+              src="/illustrations/home-hero.png"
+              alt=""
+              aria-hidden="true"
+              width={394}
+              height={400}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              className="mx-auto h-auto w-full max-w-md lg:max-w-lg"
+            />
           </div>
 
         </div>

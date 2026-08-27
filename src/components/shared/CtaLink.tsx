@@ -2,7 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-type CtaLinkProps = {
+type CtaLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
   href: string;
   children: string;
   variant?: "solid" | "outline";
@@ -14,6 +14,7 @@ export default function CtaLink({
   children,
   variant = "solid",
   className,
+  ...anchorProps
 }: CtaLinkProps) {
   return (
     <a
@@ -26,6 +27,7 @@ export default function CtaLink({
           : "border border-[var(--color-primary)]/20 text-[var(--color-primary)] hover:border-[var(--color-primary)]/45 hover:bg-[var(--color-primary)]/[0.04]",
         className
       )}
+      {...anchorProps}
     >
       {children}
       <ArrowUpRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

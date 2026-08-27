@@ -1,6 +1,7 @@
 import PageContainer from "@/components/layout/PageContainer";
+import SEO from "@/components/shared/SEO";
 import Header from "@/components/sections/get-involved/Header";
-import BecomeMember from "@/components/sections/get-involved/BecomeMember";
+import MembershipPathsSection from "@/components/sections/shared/MembershipPathsSection";
 import Volunteer from "@/components/sections/get-involved/Volunteer";
 import PartnerWithUs from "@/components/sections/get-involved/PartnerWithUs";
 import SponsorKWT from "@/components/sections/get-involved/SponsorKWT";
@@ -10,8 +11,14 @@ import FAQ from "@/components/sections/get-involved/FAQ";
 export default function GetInvolved() {
   return (
     <PageContainer>
+      <SEO
+        title="Get Involved"
+        description="Join KWT as a member, volunteer, partner, or sponsor. Help us empower Kashmiri women in technology through mentorship, networking, and career opportunities."
+        url="https://kwtcommunity.org/get-involved"
+        keywords="join KWT, become a member, volunteer opportunities, partnership, sponsorship, support women in tech"
+      />
       <Header />
-      <BecomeMember />
+      <MembershipPathsSection />
       <Volunteer />
       <PartnerWithUs />
       <SponsorKWT />

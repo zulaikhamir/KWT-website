@@ -1,27 +1,27 @@
-import { CalendarDays, Megaphone, Users, BookOpen } from "lucide-react";
+import { CalendarCheck, Megaphone, Lifebuoy, Books } from "@phosphor-icons/react";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import CtaLink from "@/components/shared/CtaLink";
 
 const areas = [
   {
-    icon: CalendarDays,
+    icon: CalendarCheck,
     title: "Event Support",
-    body: "Help coordinate community sessions, communicate with speakers and participants, and support events before and during the session.",
+    body: "Help plan and run KWT sessions, coordinate with speakers, and support attendees.",
   },
   {
     icon: Megaphone,
     title: "Content & Communications",
-    body: "Help create community announcements, opportunity posts, social media content, and other communications.",
+    body: "Create announcements, opportunity posts, social media content, and community updates.",
   },
   {
-    icon: Users,
+    icon: Lifebuoy,
     title: "Community Support",
-    body: "Help welcome members, share useful resources, support discussions, and identify ways to make the community more useful.",
+    body: "Welcome members, share resources, support discussions, and help improve the member experience.",
   },
   {
-    icon: BookOpen,
+    icon: Books,
     title: "Research & Resources",
-    body: "Help identify, organise, and share research, learning resources, opportunities, and useful information for members.",
+    body: "Find, organise, and share research, learning resources, opportunities, and useful information.",
   },
 ];
 
@@ -31,22 +31,24 @@ export default function Volunteer() {
       <div className="grid gap-x-16 gap-y-10 lg:grid-cols-[0.9fr_1.1fr]">
         {/* Left column */}
         <div className="lg:sticky lg:top-32 lg:self-start">
-          <p className="eyebrow">For individuals</p>
-          <h2 className="heading mt-5">Volunteer with KWT</h2>
-          <p className="lede mt-5">
-            KWT is built through community contribution. Volunteers can help us organise events,
-            create resources, support community activities, share opportunities, and contribute
-            their skills to projects that help the community grow.
-          </p>
-          <p className="mt-5 text-[0.9375rem] leading-7 text-[var(--color-secondary)]">
-            KWT volunteer opportunities are posted as they open. If nothing is currently listed,
-            you can still express interest — fill out our volunteer form and tell us your skills
-            and the areas you'd like to help with, and we'll reach out if a suitable role
-            becomes available.
-          </p>
-          {/* [PLACEHOLDER — VOLUNTEER FORM URL] — replace "#volunteer-form" with the real form URL */}
+         <p className="eyebrow">For individuals</p>
+
+<h2 className="heading mt-5">Volunteer with KWT</h2>
+
+<p className="lede mt-5">
+  KWT grows through the people who give their time, skills, and ideas.
+  Volunteers help with events, content, community, research, and more.
+</p>
+
+<p className="mt-5 text-[0.9375rem] leading-7 text-[var(--color-secondary)]">
+  Volunteer roles are shared as they open. If you do not see a role that fits,
+  you can still fill out the volunteer form and tell us what you would like to
+  contribute.
+</p>
           <CtaLink
-            href="#volunteer-form"
+            href="https://tally.so/r/44leEO"
+            target="_blank"
+            rel="noreferrer noopener"
             variant="outline"
             className="mt-9"
           >
@@ -63,8 +65,8 @@ export default function Volunteer() {
                 aria-hidden="true"
               >
                 <Icon
-                  className="size-[1.15rem] text-[var(--color-primary)]"
-                  strokeWidth={1.75}
+                  className="size-[1.3rem] text-[var(--color-primary)]"
+                  weight="duotone"
                 />
               </span>
               <h3 className="subheading mt-6">{title}</h3>

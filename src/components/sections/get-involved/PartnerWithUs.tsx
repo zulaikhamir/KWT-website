@@ -6,17 +6,17 @@ const partnerships = [
   {
     index: "01",
     title: "Co-hosted events",
-    body: "Work with KWT to organise workshops, panels, talks, networking sessions, and other community events around topics relevant to our members.",
+    body: "Bring workshops, talks, panels, networking sessions, and other learning experiences to the KWT community.",
   },
   {
     index: "02",
-    title: "Mentorship programs",
-    body: "Collaborate with KWT to connect members with experienced professionals who can share knowledge, guidance, and practical career insights.",
+    title: "Mentorship",
+    body: "Connect our members with professionals who can offer guidance, share experience, and help them navigate their careers.",
   },
   {
     index: "03",
     title: "Hiring & opportunities",
-    body: "Partner with KWT to share relevant jobs, internships, projects, and other professional opportunities with women in our community.",
+    body: "Share relevant jobs, internships, projects, research opportunities, and other opportunities with our members.",
   },
 ];
 
@@ -24,10 +24,10 @@ export default function PartnerWithUs() {
   return (
     <SectionWrapper id="partner-with-us" divided>
       <SectionHeading
-        eyebrow="For organizations"
-        title="Partner with us"
-        description="We welcome organisations, companies, researchers, educators, and other communities that want to support opportunities for Kashmiri women in technology. Partnerships can help us create meaningful learning, networking, research, and career opportunities for our members."
-      />
+  eyebrow="For organizations"
+  title="Partner with us"
+  description="We work with organisations, companies, universities, researchers, and communities that want to create better opportunities for Kashmiri women in tech."
+/>
 
       <div className="mt-16 grid gap-5 sm:grid-cols-3">
         {partnerships.map((partnership) => (
@@ -45,7 +45,9 @@ export default function PartnerWithUs() {
       </div>
 
       <CtaLink
-        href="mailto:kashmiriwomenintech@gmail.com?subject=KWT%20partnership"
+        href="https://tally.so/r/kd8MrM"
+        target="_blank"
+        rel="noreferrer noopener"
         variant="outline"
         className="mt-10"
       >
