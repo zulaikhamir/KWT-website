@@ -10,12 +10,12 @@ import { cn } from "@/lib/utils";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import SectionHeading from "@/components/shared/SectionHeading";
 
-import imgZulaikha  from "@/assets/team/zulaikha-founder.png";
-import imgUzma      from "@/assets/team/uzma-techlead.jpg";
-import imgSaatiya   from "@/assets/team/Saathiya-commex.png";
-import imgHazika    from "@/assets/team/Hazika-comm-op.png";
-import imgTuhoor    from "@/assets/team/Tahoor-social.png";
-import imgHadiya    from "@/assets/team/Hadiya-website.png";
+import imgZulaikha  from "@/assets/team/zulaikha-founder.webp";
+import imgUzma      from "@/assets/team/uzma-techlead.webp";
+import imgSaatiya   from "@/assets/team/Saathiya-commex.webp";
+import imgHazika    from "@/assets/team/Hazika-comm-op.webp";
+import imgTuhoor    from "@/assets/team/Tahoor-social.webp";
+import imgHadiya    from "@/assets/team/Hadiya-website.webp";
 
 // ─── Team data ────────────────────────────────────────────────────────────────
 interface TeamMember {

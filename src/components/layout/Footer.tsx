@@ -58,6 +58,7 @@ export default function Footer() {
               <img
                 src={footerLogo}
                 alt="KWT — Kashmiri Women in Tech"
+                loading="lazy"
                 className="h-12 w-auto sm:h-14"
               />
             </Link>

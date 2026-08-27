@@ -65,7 +65,7 @@ export default function OurStory() {
 </div>
           {/* Decorative — the heading carries the meaning, so no alt text. */}
           <img
-            src="/illustrations/pencil.png"
+            src="/illustrations/pencil.webp"
             alt=""
             aria-hidden="true"
             width={408}

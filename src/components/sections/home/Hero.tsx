@@ -110,7 +110,7 @@ export default function Hero({ onJoinClick, isPathsOpen }: HeroProps) {
           >
       
             <img
-              src="/illustrations/home-hero.png"
+              src="/illustrations/home-hero.webp"
               alt=""
               aria-hidden="true"
               width={394}

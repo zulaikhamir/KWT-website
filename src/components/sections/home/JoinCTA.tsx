@@ -47,7 +47,7 @@ export default function JoinCTA({ onJoinClick, isPathsOpen }: JoinCTAProps) {
           </p>
 
           <img
-            src="/illustrations/community.png"
+            src="/illustrations/community.webp"
             alt=""
             aria-hidden="true"
             width={396}

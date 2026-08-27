@@ -1,10 +1,10 @@
 import type { EventCardData } from "@/components/shared/EventCard";
 
-import welcomeSessionImage from "@/assets/images/events/welcome-session.png";
-import researchPublicationImage from "@/assets/images/events/research-publication.png";
-import aiCareerQaImage from "@/assets/images/events/ai-career-community-qa.png";
-import professionalNetworkingImage from "@/assets/images/events/professional-communication-networking.png";
-import resumeReviewImage from "@/assets/images/events/resume-review.png";
+import welcomeSessionImage from "@/assets/images/events/welcome-session.webp";
+import researchPublicationImage from "@/assets/images/events/research-publication.webp";
+import aiCareerQaImage from "@/assets/images/events/ai-career-community-qa.webp";
+import professionalNetworkingImage from "@/assets/images/events/professional-communication-networking.webp";
+import resumeReviewImage from "@/assets/images/events/resume-review.webp";
 
 
 export function isEventPast(dateISO: string): boolean {
