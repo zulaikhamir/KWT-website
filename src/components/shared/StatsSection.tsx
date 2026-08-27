@@ -60,7 +60,7 @@ export default function StatsSection() {
   return (
     <div
       className={cn(
-        "relative w-full overflow-hidden",
+        "relative w-full overflow-hidden rounded-3xl",
         "bg-navy-deep",
         "ring-1 ring-white/10",
         "shadow-[0_4px_6px_-2px_rgba(0,0,0,0.2),0_20px_48px_-16px_rgba(17,28,58,0.6)]",

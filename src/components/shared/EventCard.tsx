@@ -94,66 +94,88 @@ export default function EventCard({
         className,
       )}
     >
-      {/* Image area — shown when event has an image */}
-      {event.image && (
-        <div className="relative h-44 w-full overflow-hidden bg-[var(--color-accent)]/40">
-          {/* Subtle blurred background layer */}
+      {/* Cover image with the date and category laid over it. The artwork is
+          portrait, so it fills a landscape frame by cropping — no letterboxing
+          against a blurred copy of itself. */}
+      {event.image ? (
+        <div className="relative aspect-[16/10] w-full overflow-hidden bg-[var(--color-accent)]/40">
           <img
             src={event.image}
             alt=""
             aria-hidden="true"
             loading="lazy"
-            className="absolute inset-0 size-full object-cover object-center opacity-30 blur-md scale-110"
+            className="size-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.04]"
           />
-          {/* Main contained image */}
-          <img
-            src={event.image}
-            alt=""
+
+          {/* Scrim — keeps the overlaid pills readable over any photo */}
+          <div
             aria-hidden="true"
-            loading="lazy"
-            className="relative size-full object-contain object-center p-3 transition-transform duration-500 group-hover:scale-[1.04]"
+            className="absolute inset-0 bg-linear-to-t from-navy-deep/75 via-navy-deep/15 to-navy-deep/25"
           />
+
+          <time
+            dateTime={event.dateISO}
+            className={cn(
+              "absolute left-4 top-4 flex size-12 flex-col items-center justify-center",
+              "rounded-xl bg-white/95 text-[var(--color-primary)] shadow-sm backdrop-blur-sm",
+            )}
+          >
+            <span className="text-[9px] font-bold uppercase leading-none tracking-widest opacity-70">
+              {month}
+            </span>
+            <span className="mt-0.5 text-lg font-bold leading-none">
+              {day ?? month}
+            </span>
+          </time>
+
+          <span
+            className={cn(
+              "absolute bottom-4 left-4 inline-flex items-center rounded-full",
+              "border border-white/25 bg-white/15 px-2.5 py-1 backdrop-blur-md",
+              "text-[10px] font-semibold uppercase tracking-[0.14em] text-white",
+            )}
+          >
+            {event.category}
+          </span>
+        </div>
+      ) : (
+        /* No artwork — fall back to the date / category banner */
+        <div
+          className={cn(
+            "flex items-center gap-3 px-5 py-4",
+            "border-b border-hairline bg-[var(--color-background)]",
+          )}
+        >
+          <time
+            dateTime={event.dateISO}
+            className={cn(
+              "flex flex-col items-center justify-center w-11 h-11 rounded-xl flex-shrink-0",
+              isPast
+                ? "bg-[var(--color-secondary)]/15 text-[var(--color-secondary)]"
+                : "bg-[var(--color-primary)] text-white",
+            )}
+          >
+            <span className="text-[9px] font-bold tracking-widest uppercase leading-none opacity-70">
+              {month}
+            </span>
+            <span className="text-lg font-bold leading-none mt-0.5">
+              {day ?? month}
+            </span>
+          </time>
+
+          <span
+            className={cn(
+              "inline-flex items-center rounded-full border px-2.5 py-0.5",
+              "text-[10px] font-semibold tracking-[0.14em] uppercase",
+              isPast
+                ? "border-hairline bg-[var(--color-background)] text-[var(--color-secondary)]"
+                : "border-[var(--color-accent)] bg-[var(--color-accent)]/60 text-[var(--color-primary)]",
+            )}
+          >
+            {event.category}
+          </span>
         </div>
       )}
-
-      {/* Date / category banner */}
-      <div
-        className={cn(
-          "flex items-center gap-3 px-5 py-4",
-          "border-b border-hairline bg-[var(--color-background)]",
-        )}
-      >
-        {/* Date badge */}
-        <time
-          dateTime={event.dateISO}
-          className={cn(
-            "flex flex-col items-center justify-center w-11 h-11 rounded-xl flex-shrink-0",
-            isPast
-              ? "bg-[var(--color-secondary)]/15 text-[var(--color-secondary)]"
-              : "bg-[var(--color-primary)] text-white",
-          )}
-        >
-          <span className="text-[9px] font-bold tracking-widest uppercase leading-none opacity-70">
-            {month}
-          </span>
-          <span className="text-lg font-bold leading-none mt-0.5">
-            {day ?? month}
-          </span>
-        </time>
-
-        {/* Category pill */}
-        <span
-          className={cn(
-            "inline-flex items-center rounded-full border px-2.5 py-0.5",
-            "text-[10px] font-semibold tracking-[0.14em] uppercase",
-            isPast
-              ? "border-hairline bg-[var(--color-background)] text-[var(--color-secondary)]"
-              : "border-[var(--color-accent)] bg-[var(--color-accent)]/60 text-[var(--color-primary)]",
-          )}
-        >
-          {event.category}
-        </span>
-      </div>
 
       {/* Body */}
       <div className="flex flex-col flex-1 px-5 py-5 gap-3">
