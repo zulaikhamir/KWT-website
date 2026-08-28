@@ -4,19 +4,18 @@ import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import SectionHeading from "@/components/shared/SectionHeading";
-import PastEventCard from "./PastEventCard";
+import EventFlipCard from "@/components/shared/EventFlipCard";
 import { ALL_EVENTS, isEventPast } from "@/data/events";
 
 const VISIBLE_COUNT = 3;
 
 export default function PastEvents() {
   const [showAll, setShowAll] = useState(false);
-
   const sorted = useMemo(
     () =>
       ALL_EVENTS
         .filter((e) => isEventPast(e.dateISO))
-        .sort((a, b) => b.dateISO.localeCompare(a.dateISO)),
+        .sort((a, b) => a.dateISO.localeCompare(b.dateISO)),
     [],
   );
 
@@ -37,7 +36,7 @@ export default function PastEvents() {
       <ul id="past-events-list" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {visible.map((event) => (
           <li key={event.dateISO + event.title}>
-            <PastEventCard event={event} />
+            <EventFlipCard event={event} variant="past" />
           </li>
         ))}
       </ul>

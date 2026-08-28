@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { ArrowUpRight, Check } from "lucide-react";
-
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import MembershipModal from "@/components/shared/MembershipModal";
 import { cn } from "@/lib/utils";
