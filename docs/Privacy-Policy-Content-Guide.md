@@ -100,7 +100,7 @@ Replace with actual contact details:
 ```tsx
 <p>
   <strong className="font-medium text-[var(--color-primary)]">Email:</strong>
-  {" "}<a href="mailto:privacy@kwtcommunity.org">privacy@kwtcommunity.org</a>
+  {" "}<a href="mailto:kashmiriwomenintech@gmail.com">kashmiriwomenintech@gmail.com</a>
 </p>
 <p>
   <strong className="font-medium text-[var(--color-primary)]">Website:</strong>

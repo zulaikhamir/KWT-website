@@ -3,7 +3,7 @@ import SEO from "@/components/shared/SEO";
 
 export default function Privacy() {
   return (
-    <PageContainer>
+    <PageContainer plain>
       <SEO
         title="Privacy Policy"
         description="KWT Privacy Policy. Learn how we collect, use, and protect your personal information."
@@ -18,7 +18,7 @@ export default function Privacy() {
           <h1 className="display">Privacy Policy</h1>
           <p className="mt-4 text-sm text-[var(--color-secondary)]">
             Last updated:{" "}
-            <time dateTime="2026-08-24">August 24, 2026</time>
+            <time dateTime="2026-08-28">August 28, 2026</time>
           </p>
         </header>
 
@@ -27,12 +27,15 @@ export default function Privacy() {
 
           <p>
             Kashmiri Women in Tech ("KWT", "we", "us", or "our") respects your privacy
-            and is committed to handling your personal information responsibly.
+            and is committed to handling your personal information responsibly. This
+            Privacy Policy describes how we collect, use, share, and protect your
+            information when you visit our website, join our community, register for
+            events, volunteer, or subscribe to our communications.
           </p>
           <p>
-            This Privacy Policy explains what information we may collect when you interact
-            with the KWT website, community forms, events, and related services, how we use
-            that information, and the choices available to you.
+            By using the KWT website or submitting information through our forms, you
+            agree to the practices described in this policy. If you do not agree, please
+            do not use the website or submit personal information to us.
           </p>
 
           <h2>1. Information We Collect</h2>
@@ -114,14 +117,16 @@ export default function Privacy() {
 
           <h2>4. Newsletter and Communications</h2>
           <p>
-            If you subscribe to KWT newsletters or communications, we may use the
-            information you provide to send you community updates, event announcements,
-            opportunities, and other information related to KWT.
+           If you subscribe to KWT newsletters or communications, we may use the information you provide to send you community updates, event announcements, opportunities, and other information related to KWT.
+
+You may request to stop receiving KWT communications at any time by contacting us at kashmiriwomenintech@gmail.com.
+
+We will process such requests within a reasonable timeframe.
           </p>
-          <p>
+          {/* <p>
             You may request to stop receiving such communications at any time by using the
             available unsubscribe mechanism or by contacting us.
-          </p>
+          </p> */}
 
           <h2>5. How We Share Information</h2>
           <p>We do not intend to sell or rent your personal information.</p>
@@ -220,28 +225,18 @@ export default function Privacy() {
 
           <h2>12. Contact Us</h2>
           <p>
-            If you have questions, concerns, or requests relating to this Privacy Policy or
-            your personal information, please contact KWT at:
-          </p>
-          <p>
-            <strong>Email:</strong>{" "}
-            {/* ── Replace with actual contact email when confirmed ── */}
-            [INSERT KWT PRIVACY/CONTACT EMAIL]
+            If you have questions, concerns, or requests relating to this Privacy Policy
+            or your personal information, you can reach us at:
           </p>
           <p>
             <strong>Kashmiri Women in Tech (KWT)</strong>
             <br />
-            {/* ── Replace with any additional contact information ── */}
-            [INSERT ANY ADDITIONAL CONTACT INFORMATION YOU WANT TO PUBLISH]
+            <strong>Email:</strong>{" "}
+            <a href="mailto:kashmiriwomenintech@gmail.com">kashmiriwomenintech@gmail.com</a>
           </p>
-
-          <hr />
-
           <p>
-            This Privacy Policy is intended to provide general information about KWT's
-            current privacy practices. It should be reviewed and updated if KWT's data
-            collection, membership system, newsletter provider, event-registration process,
-            or other services change.
+            We will do our best to respond to your request within a reasonable
+            timeframe and in accordance with applicable law.
           </p>
 
         </div>
