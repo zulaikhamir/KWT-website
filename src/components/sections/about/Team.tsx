@@ -4,6 +4,7 @@ import {
   CaretLeftIcon,
   CaretRightIcon,
   LinkedinLogoIcon,
+  UserIcon,
 } from "@phosphor-icons/react";
 
 import { cn } from "@/lib/utils";
@@ -14,7 +15,6 @@ import imgZulaikha  from "@/assets/team/zulaikha-founder.webp";
 import imgUzma      from "@/assets/team/uzma-techlead.webp";
 import imgSaatiya   from "@/assets/team/Saathiya-commex.webp";
 import imgHazika    from "@/assets/team/Hazika-comm-op.webp";
-import imgTuhoor    from "@/assets/team/Tahoor-social.webp";
 import imgHadiya    from "@/assets/team/Hadiya-website.webp";
 
 // ─── Team data ────────────────────────────────────────────────────────────────
@@ -22,8 +22,8 @@ interface TeamMember {
   name:         string;
   role:         string;
   note?:        string;
-  bio?:         string[];  
-  image:        string;
+  bio?:         string[];
+  image?:       string;
   linkedinUrl?: string;
 }
 
@@ -71,7 +71,7 @@ const team: TeamMember[] = [
     bio: [
       "Leads KWT’s social media presence, content planning, and communication across platforms.",
     ],
-    image: imgTuhoor,
+    // No photo yet — the card renders the ghost avatar.
     linkedinUrl: "https://www.linkedin.com/in/tahoorfaatima",
   },
   {
@@ -117,13 +117,27 @@ function TeamCard({ member }: { member: TeamMember }) {
           "hover:shadow-[0_20px_48px_-16px_rgba(27,42,82,0.4)]",
         )}
       >
-        {imgFailed ? (
-          /* Placeholder avatar — shown when the image file is missing */
+        {!member.image || imgFailed ? (
+          /* Ghost avatar — no photo supplied yet, or the file failed to load */
           <div
             aria-hidden="true"
-            className="absolute inset-0 flex items-center justify-center bg-[var(--color-primary)]"
+            className={cn(
+              "absolute inset-0 flex flex-col items-center justify-center gap-3",
+              "bg-linear-to-b from-[var(--color-primary)] to-[#0E1730]",
+              // Recede on hover the way a photo does, so the bio reads cleanly
+              "transition-opacity duration-500 ease-out motion-reduce:transition-none",
+              "group-hover:opacity-40 group-focus-within:opacity-40",
+            )}
           >
-            <span className="select-none font-heading text-5xl font-bold tracking-tight text-white/20">
+            <span
+              className={cn(
+                "flex size-24 items-center justify-center rounded-full",
+                "border border-white/10 bg-white/[0.06]",
+              )}
+            >
+              <UserIcon className="size-11 text-white/25" weight="fill" />
+            </span>
+            <span className="select-none font-heading text-2xl font-bold tracking-tight text-white/20">
               {initials}
             </span>
           </div>

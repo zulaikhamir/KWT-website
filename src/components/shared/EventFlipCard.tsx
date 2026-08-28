@@ -1,18 +1,32 @@
 import { useState } from "react";
-import { ArrowRight, RotateCcw } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Clock, MapPin, RotateCcw, Video } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import type { EventCardData } from "@/components/shared/EventCard";
 
-export interface PastEventCardProps {
+const FORMAT_ICON: Record<EventCardData["format"], typeof Video> = {
+  Virtual: Video,
+  "In-Person": MapPin,
+  Hybrid: Video,
+};
+
+export interface EventFlipCardProps {
   event: EventCardData;
+  variant?: "past" | "upcoming";
   className?: string;
 }
 
-export default function PastEventCard({ event, className }: PastEventCardProps) {
+export default function EventFlipCard({
+  event,
+  variant = "past",
+  className,
+}: EventFlipCardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
   const image = event.image;
   const imageFit = event.imageFit ?? "cover";
+  const isUpcoming = variant === "upcoming";
+  const FormatIcon = FORMAT_ICON[event.format];
+
   const handleBackClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if ((e.target as HTMLElement).closest("a, button")) return;
     if (window.getSelection()?.toString()) return;
@@ -24,7 +38,7 @@ export default function PastEventCard({ event, className }: PastEventCardProps) 
       onKeyDown={(e) => {
         if (e.key === "Escape" && isFlipped) setIsFlipped(false);
       }}
-      className={cn("group relative h-[26rem] perspective-[1400px]", className)}
+      className={cn("group relative h-[27rem] perspective-[1400px]", className)}
     >
       <div
         className={cn(
@@ -77,6 +91,18 @@ export default function PastEventCard({ event, className }: PastEventCardProps) 
                 className="absolute inset-0 bg-gradient-to-br from-[var(--color-accent)] to-[var(--color-accent)]/60"
               />
             )}
+
+            {/* Upcoming events get a status pill so they read apart from past ones */}
+            {isUpcoming && (
+              <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-[var(--color-primary)]/85 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-sm">
+                <span
+                  aria-hidden="true"
+                  className="size-1.5 rounded-full bg-[var(--color-accent)] kwt-pulse-soft"
+                />
+                Upcoming
+              </span>
+            )}
+
             {/* Flip affordance icon */}
             <span
               aria-hidden="true"
@@ -101,8 +127,7 @@ export default function PastEventCard({ event, className }: PastEventCardProps) 
               </time>
             </div>
 
-            {/* Title */}
-            <h3 className="text-lg font-semibold leading-snug tracking-[-0.01em] text-[var(--color-primary)] mb-4">
+            <h3 className="line-clamp-2 text-lg font-semibold leading-snug tracking-[-0.01em] text-[var(--color-primary)] mb-4">
               {event.title}
             </h3>
 
@@ -112,7 +137,7 @@ export default function PastEventCard({ event, className }: PastEventCardProps) 
                 <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[var(--color-secondary)]/60 mb-1.5">
                   With
                 </p>
-                <p className="text-sm text-[var(--color-secondary)] leading-relaxed">
+                <p className="line-clamp-1 text-sm text-[var(--color-secondary)] leading-relaxed">
                   {event.people.map((person, idx) => (
                     <span key={idx}>
                       {person.linkedin ? (
@@ -140,15 +165,30 @@ export default function PastEventCard({ event, className }: PastEventCardProps) 
               </div>
             )}
 
-            {/* Spacer to push Read more to bottom */}
+            {/* Spacer to push the CTA hint to the bottom */}
             <div className="flex-1" />
 
-            {/* Read more CTA */}
+            {/* Format / time — only meaningful while the event is still ahead */}
+            {isUpcoming && (
+              <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-medium text-[var(--color-secondary)]">
+                <span className="flex items-center gap-1.5">
+                  <FormatIcon size={12} strokeWidth={2} className="opacity-60" />
+                  {event.format}
+                </span>
+                {event.time && (
+                  <span className="flex items-center gap-1.5">
+                    <Clock size={11} strokeWidth={2} className="opacity-60" />
+                    {event.time}
+                  </span>
+                )}
+              </div>
+            )}
+
             <span
               aria-hidden="true"
               className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--color-secondary)] transition-colors duration-200 group-hover:text-[var(--color-primary)]"
             >
-              Read more
+              {isUpcoming ? "Details & register" : "Read more"}
               <ArrowRight size={11} strokeWidth={2.4} />
             </span>
           </div>
@@ -242,10 +282,32 @@ export default function PastEventCard({ event, className }: PastEventCardProps) 
               </div>
             )}
 
-            {/* View details CTA section (hidden until event detail pages are live) */}
-            <div className="mt-5 flex flex-wrap gap-2">
-              {/* View details links hidden until event detail pages are live */}
-            </div>
+            {/* CTA — past events have no live detail page yet, so only
+                upcoming events show one. */}
+            {isUpcoming && (
+              <div className="mt-5 flex flex-wrap gap-2">
+                <a
+                  href={event.href}
+                  {...(event.href.startsWith("http")
+                    ? { target: "_blank", rel: "noreferrer noopener" }
+                    : {})}
+                  onClick={(e) => e.stopPropagation()}
+                  className={cn(
+                    "inline-flex items-center gap-1.5 rounded-full px-5 py-2",
+                    "bg-white text-xs font-semibold tracking-[-0.005em] text-[var(--color-primary)]",
+                    "transition-all duration-150 hover:bg-white/90 active:scale-[0.98]",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60",
+                  )}
+                >
+                  Register
+                  {event.href.startsWith("http") ? (
+                    <ArrowUpRight size={12} strokeWidth={2.4} aria-hidden="true" />
+                  ) : (
+                    <ArrowRight size={12} strokeWidth={2.4} aria-hidden="true" />
+                  )}
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </div>
