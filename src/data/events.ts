@@ -141,7 +141,7 @@ export const ALL_EVENTS: EventCardData[] = [
     aboutLabel: "About this session",
     people: [
       {
-        name: "Reviewer Name",
+        name: "soon to be revealed",
         role: "Resume Reviewer",
         linkedin: "REPLACE_WITH_LINKEDIN_URL",
         bio: "Experienced professional providing practical resume feedback and career guidance.",
