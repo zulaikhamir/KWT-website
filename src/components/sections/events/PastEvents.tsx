@@ -15,7 +15,7 @@ export default function PastEvents() {
     () =>
       ALL_EVENTS
         .filter((e) => isEventPast(e.dateISO))
-        .sort((a, b) => a.dateISO.localeCompare(b.dateISO)),
+        .sort((a, b) => b.dateISO.localeCompare(a.dateISO)),
     [],
   );
 
