@@ -1,6 +1,6 @@
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import SectionHeading from "@/components/shared/SectionHeading";
-import EventCard from "@/components/shared/EventCard";
+import EventFlipCard from "@/components/shared/EventFlipCard";
 import { ALL_EVENTS, isEventPast } from "@/data/events";
 
 export default function UpcomingEvents() {
@@ -57,14 +57,10 @@ export default function UpcomingEvents() {
         className="mb-12"
       />
 
-      <ul className="grid gap-6 sm:grid-cols-2">
+      <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {upcoming.map((event) => (
           <li key={event.dateISO + event.title}>
-            <EventCard
-              event={event}
-              variant="upcoming"
-              className="h-full"
-            />
+            <EventFlipCard event={event} variant="upcoming" />
           </li>
         ))}
       </ul>

@@ -8,14 +8,7 @@ const FADE_DELAYS_MS = [0, 80, 160, 260, 340] as const;
 
 type CSSVars = React.CSSProperties & { "--kwt-fade-scale"?: string };
 
-type HeroProps = {
-  /** Reveals the membership paths section further down the page. */
-  onJoinClick: () => void;
-  /** Whether that section is currently open — drives aria-expanded. */
-  isPathsOpen: boolean;
-};
-
-export default function Hero({ onJoinClick, isPathsOpen }: HeroProps) {
+export default function Hero() {
   return (
     <section aria-labelledby="hero-heading" className="relative overflow-hidden">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
@@ -47,11 +40,8 @@ export default function Hero({ onJoinClick, isPathsOpen }: HeroProps) {
               className="kwt-animate-fade-up mt-10 flex flex-wrap items-center gap-3"
               style={{ animationDelay: `${FADE_DELAYS_MS[3]}ms` }}
             >
-              <button
-                type="button"
-                onClick={onJoinClick}
-                aria-expanded={isPathsOpen}
-                aria-controls="membership-paths"
+              <Link
+                to="/get-involved"
                 className={cn(
                   "inline-flex items-center gap-2",
                   "rounded-full bg-[var(--color-primary)] px-6 py-3",
@@ -64,7 +54,7 @@ export default function Hero({ onJoinClick, isPathsOpen }: HeroProps) {
               >
                 Join KWT
                 <ArrowRight size={15} strokeWidth={2.2} aria-hidden="true" />
-              </button>
+              </Link>
 
               <Link
                 to="/events"
@@ -110,7 +100,7 @@ export default function Hero({ onJoinClick, isPathsOpen }: HeroProps) {
           >
       
             <img
-              src="/illustrations/home-hero.png"
+              src="/illustrations/home-hero.webp"
               alt=""
               aria-hidden="true"
               width={394}

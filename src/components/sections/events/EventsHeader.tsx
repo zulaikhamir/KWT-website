@@ -1,4 +1,4 @@
-const heroImage = "/images/hero-image.png";
+const heroImage = "/images/hero-image.webp";
 
 export default function EventsHeader() {
   return (

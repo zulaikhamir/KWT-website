@@ -1,10 +1,10 @@
 import type { EventCardData } from "@/components/shared/EventCard";
 
-import welcomeSessionImage from "@/assets/images/events/welcome-session.png";
-import researchPublicationImage from "@/assets/images/events/research-publication.png";
-import aiCareerQaImage from "@/assets/images/events/ai-career-community-qa.png";
-import professionalNetworkingImage from "@/assets/images/events/professional-communication-networking.png";
-import resumeReviewImage from "@/assets/images/events/resume-review.png";
+import welcomeSessionImage from "@/assets/images/events/welcome-session.webp";
+import researchPublicationImage from "@/assets/images/events/research-publication.webp";
+import aiCareerQaImage from "@/assets/images/events/ai-career-community-qa.webp";
+import professionalNetworkingImage from "@/assets/images/events/professional-communication-networking.webp";
+import resumeReviewImage from "@/assets/images/events/resume-review.webp";
 
 
 export function isEventPast(dateISO: string): boolean {
@@ -52,8 +52,6 @@ export const ALL_EVENTS: EventCardData[] = [
         linkedin: "https://www.linkedin.com/in/zulaikhaashiq/",
       },
     ],
-    resourcesUrl:
-      "https://drive.google.com/drive/folders/1ekm5LVYb42jkl4q1aE8nPEPNb8gJiRle",
     href: "/events/2026-08-02-kwt-inaugural-welcome-session",
   },
 
@@ -76,8 +74,6 @@ export const ALL_EVENTS: EventCardData[] = [
         linkedin: "https://www.linkedin.com/in/areeba-nisar-2908b225b/",
       },
     ],
-    resourcesUrl:
-      "https://drive.google.com/drive/folders/1ekm5LVYb42jkl4q1aE8nPEPNb8gJiRle",
     href: "/events/2026-08-02-from-concept-to-research-publication",
   },
 
@@ -100,8 +96,6 @@ export const ALL_EVENTS: EventCardData[] = [
         linkedin: "https://www.linkedin.com/in/uzmah/",
       },
     ],
-    resourcesUrl:
-      "https://drive.google.com/drive/folders/1ekm5LVYb42jkl4q1aE8nPEPNb8gJiRle",
     href: "/events/2026-08-09-ai-career-community-qa",
   },
 
@@ -135,7 +129,7 @@ export const ALL_EVENTS: EventCardData[] = [
   {
     // Upcoming Event
     slug: "2026-09-20-resume-review-session",
-    dateShort: "SEP 20",
+    dateShort: "SEP 20, 2026",
     dateISO: "2026-09-20",
     category: "Resume Review",
     title: "Resume Review with KWT",
@@ -144,10 +138,12 @@ export const ALL_EVENTS: EventCardData[] = [
     format: "Virtual",
     image: resumeReviewImage,
     time: "6:00 PM IST",
+    duration: "1 hour",
+    note: "Register to receive the joining details before the event.",
     aboutLabel: "About this session",
     people: [
       {
-        name: "Reviewer Name",
+        name: "Name(soon to be revealed)",
         role: "Resume Reviewer",
         linkedin: "REPLACE_WITH_LINKEDIN_URL",
         bio: "Experienced professional providing practical resume feedback and career guidance.",

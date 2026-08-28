@@ -19,7 +19,7 @@ export default function EventGallery() {
         <div className="rounded-2xl border border-hairline bg-[var(--color-background)] px-8 py-16 text-center">
           <p className="text-sm text-[var(--color-secondary)] opacity-60">
             {/* [PLACEHOLDER — EVENT PHOTO] */}
-            Event photos coming soon.
+            Photos from upcoming sessions will be shared here.
           </p>
         </div>
       ) : (

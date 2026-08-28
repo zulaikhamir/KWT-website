@@ -76,9 +76,14 @@ export default function FAQ() {
   return (
     <SectionWrapper id="faq" tone="surface" divided>
       <div className="grid gap-x-16 gap-y-10 lg:grid-cols-[0.8fr_1.2fr]">
-        <div className="lg:sticky lg:top-32 lg:self-start">
-          <p className="eyebrow">Questions</p>
-          <h2 className="heading mt-5">Frequently asked</h2>
+        {/* Left column flows with the section; only the inner block is sticky,
+            so the heading rides the page scroll, holds below the navbar while
+            the questions scroll past, then leaves with the section. */}
+        <div>
+          <div className="lg:sticky lg:top-32">
+            <p className="eyebrow">Questions</p>
+            <h2 className="heading mt-5">Frequently asked</h2>
+          </div>
         </div>
 
         <dl className="divide-y divide-hairline border-y border-hairline">

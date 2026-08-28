@@ -27,6 +27,12 @@ export interface EventCardData {
   /** Optional time string, e.g. "6:00 PM IST" */
   time?: string;
 
+  /** Optional duration string, e.g. "1 hour" */
+  duration?: string;
+
+  /** Optional short note shown on upcoming event cards, e.g. registration guidance. */
+  note?: string;
+
   /** Optional image URL. */
   image?: string;
 

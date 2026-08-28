@@ -1,7 +1,7 @@
-const heroImage = "/images/hero-image.png";
+const heroImage = "/images/hero-image.webp";
 
 const paths = [
-  { label: "Become a member", href: "#become-member" },
+  { label: "Become a member", href: "#membership-paths" },
   { label: "Volunteer",       href: "#volunteer"      },
   { label: "Partner with us", href: "#partner-with-us" },
   { label: "Sponsor KWT",     href: "#sponsor-kwt"    },
