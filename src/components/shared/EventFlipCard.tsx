@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowRight, ArrowUpRight, Clock, MapPin, RotateCcw, Video } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Clock, Hourglass, MapPin, RotateCcw, Video } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import type { EventCardData } from "@/components/shared/EventCard";
@@ -181,6 +181,12 @@ export default function EventFlipCard({
                     {event.time}
                   </span>
                 )}
+                {event.duration && (
+                  <span className="flex items-center gap-1.5">
+                    <Hourglass size={11} strokeWidth={2} className="opacity-60" />
+                    {event.duration}
+                  </span>
+                )}
               </div>
             )}
 
@@ -285,7 +291,13 @@ export default function EventFlipCard({
             {/* CTA — past events have no live detail page yet, so only
                 upcoming events show one. */}
             {isUpcoming && (
-              <div className="mt-5 flex flex-wrap gap-2">
+              <div className="mt-5">
+                {event.note && (
+                  <p className="mb-3 text-[11px] leading-5 text-white/60">
+                    {event.note}
+                  </p>
+                )}
+                <div className="flex flex-wrap gap-2">
                 <a
                   href={event.href}
                   {...(event.href.startsWith("http")
@@ -306,6 +318,7 @@ export default function EventFlipCard({
                     <ArrowRight size={12} strokeWidth={2.4} aria-hidden="true" />
                   )}
                 </a>
+                </div>
               </div>
             )}
           </div>
