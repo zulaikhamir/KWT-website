@@ -1,15 +1,9 @@
+import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-type JoinCTAProps = {
-  /** Reveals the membership paths section further down the page. */
-  onJoinClick: () => void;
-  /** Whether that section is currently open — drives aria-expanded. */
-  isPathsOpen: boolean;
-};
-
-export default function JoinCTA({ onJoinClick, isPathsOpen }: JoinCTAProps) {
+export default function JoinCTA() {
   const ref = useScrollReveal<HTMLDivElement>();
 
   return (
@@ -59,11 +53,8 @@ export default function JoinCTA({ onJoinClick, isPathsOpen }: JoinCTAProps) {
 
           {/* CTA */}
           <div>
-            <button
-              type="button"
-              onClick={onJoinClick}
-              aria-expanded={isPathsOpen}
-              aria-controls="membership-paths"
+            <Link
+              to="/get-involved"
               className={cn(
                 "group inline-flex items-center gap-1.5",
                 "rounded-full bg-[var(--color-primary)] px-7 py-3",
@@ -81,7 +72,7 @@ export default function JoinCTA({ onJoinClick, isPathsOpen }: JoinCTAProps) {
                 className="size-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 aria-hidden="true"
               />
-            </button>
+            </Link>
           </div>
         </div>
       </div>

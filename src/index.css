@@ -401,6 +401,12 @@
     isolation: isolate;
   }
 
+  /* Plain variant — solid page fill, no dotted texture or decorative orbs.
+     Used for dense, text-heavy pages such as legal documents. */
+  .kwt-page-plain {
+    background-color: var(--color-bg-base);
+  }
+
   /* Top-right orb */
   .kwt-page-bg::before {
     content: "";

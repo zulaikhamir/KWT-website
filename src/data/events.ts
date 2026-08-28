@@ -129,7 +129,7 @@ export const ALL_EVENTS: EventCardData[] = [
   {
     // Upcoming Event
     slug: "2026-09-20-resume-review-session",
-    dateShort: "SEP 20",
+    dateShort: "SEP 20, 2026",
     dateISO: "2026-09-20",
     category: "Resume Review",
     title: "Resume Review with KWT",
@@ -138,10 +138,12 @@ export const ALL_EVENTS: EventCardData[] = [
     format: "Virtual",
     image: resumeReviewImage,
     time: "6:00 PM IST",
+    duration: "1 hour",
+    note: "Register to receive the joining details before the event.",
     aboutLabel: "About this session",
     people: [
       {
-        name: "Reviewer Name",
+        name: "Name(soon to be revealed)",
         role: "Resume Reviewer",
         linkedin: "REPLACE_WITH_LINKEDIN_URL",
         bio: "Experienced professional providing practical resume feedback and career guidance.",
