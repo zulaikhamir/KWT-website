@@ -104,7 +104,7 @@ Replace with actual contact details:
 </p>
 <p>
   <strong className="font-medium text-[var(--color-primary)]">Website:</strong>
-  {" "}<a href="https://kwtcommunity.org/contact">Contact Form</a>
+  {" "}<a href="https://kashmiriwomenintech.org/contact">Contact Form</a>
 </p>
 ```
 

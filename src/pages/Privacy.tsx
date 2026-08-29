@@ -1,5 +1,6 @@
 import PageContainer from "@/components/layout/PageContainer";
 import SEO from "@/components/shared/SEO";
+import { siteUrl } from "@/config/site";
 
 export default function Privacy() {
   return (
@@ -7,7 +8,7 @@ export default function Privacy() {
       <SEO
         title="Privacy Policy"
         description="KWT Privacy Policy. Learn how we collect, use, and protect your personal information."
-        url="https://kwtcommunity.org/privacy"
+        url={siteUrl("/privacy")}
       />
 
       <div className="mx-auto max-w-3xl px-6 py-16 sm:py-24 lg:px-8">
