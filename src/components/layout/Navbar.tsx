@@ -10,7 +10,7 @@ const navLinks = [
   { label: "Home",              to: "/" },
   { label: "About",             to: "/about" },
   { label: "Events",            to: "/events" },
-  // { label: "Wall of Gratitude", to: "/wall-of-gratitude" },
+  { label: "Wall of Gratitude", to: "/wall-of-gratitude" },
   { label: "FAQs",              to: "/faq" },
 ];
 
