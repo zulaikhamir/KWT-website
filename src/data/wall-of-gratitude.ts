@@ -1,6 +1,6 @@
 // for person card data
 import imgSaatiya from "@/assets/team/Saathiya-commex.webp";
-import imgZulaikha from "@/assets/team/Zulaikha-founder.webp";
+import imgZulaikha from "@/assets/team/zulaikha-founder.webp";
 
 export type GratitudePerson = {
   id: string;
