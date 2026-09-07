@@ -5,4 +5,4 @@ Allow: /
 # Not shipping publicly yet
 Disallow: /wall-of-gratitude
 
-Sitemap: https://kwtcommunity.org/sitemap.xml
+Sitemap: https://kashmiriwomenintech.org/sitemap.xml
