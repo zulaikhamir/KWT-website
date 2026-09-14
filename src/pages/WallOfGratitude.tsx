@@ -3,7 +3,7 @@ import CommunitySponsorCard from "@/components/sections/wall-of-gratitude/Commun
 import MentorCard from "@/components/sections/wall-of-gratitude/MentorCard";
 import RecognitionCarousel from "@/components/sections/wall-of-gratitude/RecognitionCarousel";
 import SpeakerCard from "@/components/sections/wall-of-gratitude/SpeakerCard";
-import VolunteerCard from "@/components/sections/wall-of-gratitude/VolunteerCard";
+import MemberSpotlight from "@/components/sections/wall-of-gratitude/MemberSpotlight";
 import WallOfGratitudeHero from "@/components/sections/wall-of-gratitude/WallOfGratitudeHero";
 import SEO from "@/components/shared/SEO";
 import SectionHeading from "@/components/shared/SectionHeading";
@@ -14,7 +14,7 @@ import {
   mentors,
   speakers,
   sponsors,
-  volunteers,
+  memberSpotlights,
 } from "@/data/wall-of-gratitude";
 
 export default function WallOfGratitude() {
@@ -22,7 +22,7 @@ export default function WallOfGratitude() {
     <PageContainer>
       <SEO
         title="Wall of Gratitude"
-        description="Meet the mentors, volunteers, speakers, sponsors, and contributors whose time and generosity help KWT grow."
+        description="Meet the mentors, members, speakers, sponsors, and contributors whose time and generosity help KWT grow."
         url="https://kwtcommunity.org/wall-of-gratitude"
       />
       <WallOfGratitudeHero />
@@ -39,30 +39,20 @@ export default function WallOfGratitude() {
         <RecognitionCarousel
           items={mentors}
           ariaLabel="Mentors"
-          itemClassName="w-full sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.5rem)/3)]"
+          itemClassName="w-[74%] sm:w-[calc((100%-2.5rem)/3)] lg:w-[calc((100%-5rem)/5)]"
           renderItem={(person) => <MentorCard person={person} />}
-          trackGapClassName="gap-8"
         />
       </SectionWrapper>
 
-      {/* Volunteers section */}
-      <SectionWrapper id="volunteers" tone="default">
+      {/* Member spotlight section */}
+      <SectionWrapper id="member-spotlight" tone="default">
         <SectionHeading
-          title="Volunteers"
-          description="People who make KWT events, initiatives, and day-to-day activities possible."
+          title="Member Spotlight"
+          description="Message from the members of KWT."
           align="center"
           className="mb-10"
         />
-
-        <RecognitionCarousel
-          items={volunteers}
-          ariaLabel="Volunteers"
-          itemClassName="w-[88%] sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-3.75rem)/4)]"
-          renderItem={(person) => <VolunteerCard person={person} />}
-          controls="sides"
-          circular
-          sideControlsTopClassName="top-[38%]"
-        />
+        <MemberSpotlight items={memberSpotlights} />
       </SectionWrapper>
 
       {/* Speakers section */}
@@ -77,7 +67,7 @@ export default function WallOfGratitude() {
         <RecognitionCarousel
           items={speakers}
           ariaLabel="Speakers"
-          itemClassName="w-[88%] sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-3.75rem)/4)]"
+          itemClassName="w-[74%] sm:w-[calc((100%-2.5rem)/3)] lg:w-[calc((100%-5rem)/5)]"
           renderItem={(person) => <SpeakerCard person={person} />}
         />
       </SectionWrapper>
@@ -94,11 +84,8 @@ export default function WallOfGratitude() {
         <RecognitionCarousel
           items={sponsors}
           ariaLabel="Sponsors"
-          itemClassName="w-[88%] sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-3.75rem)/4)]"
+          itemClassName="w-[74%] sm:w-[calc((100%-2.5rem)/3)] lg:w-[calc((100%-5rem)/5)]"
           renderItem={(sponsor) => <CommunitySponsorCard sponsor={sponsor} />}
-          controls="sides"
-          circular
-          sideControlClassName="border-[var(--color-accent)] bg-[var(--color-accent)]/65 text-[var(--color-primary)] hover:bg-[var(--color-accent)] hover:text-[var(--color-primary)]"
         />
       </SectionWrapper>
 
