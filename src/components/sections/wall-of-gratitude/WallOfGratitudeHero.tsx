@@ -1,4 +1,3 @@
-import { HeartHandshake } from "lucide-react";
 
 /**
  * Page-specific hero. Its structure deliberately mirrors the Home and About
@@ -29,15 +28,17 @@ export default function WallOfGratitudeHero() {
             </p>
           </div>
 
-          <div
-            className="kwt-animate-fade-up relative mx-auto flex aspect-square w-full max-w-sm items-center justify-center rounded-full bg-[var(--color-accent)]/65 sm:max-w-md"
-            style={{ animationDelay: "120ms" }}
+          <img
+            src="/illustrations/wall-of-gratitude-hero.png"
+            alt=""
             aria-hidden="true"
-          >
-            <div className="absolute inset-7 rounded-full border border-[var(--color-primary)]/10" />
-            <div className="absolute inset-14 rounded-full border border-[var(--color-primary)]/10" />
-            <HeartHandshake className="size-24 text-[var(--color-primary)] sm:size-32" strokeWidth={1.25} />
-          </div>
+            width={408}
+            height={408}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            className="kwt-animate-fade-up mx-auto h-auto w-full max-w-sm lg:max-w-md"
+          />
         </div>
       </div>
     </section>
