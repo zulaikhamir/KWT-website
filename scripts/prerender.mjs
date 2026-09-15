@@ -21,10 +21,8 @@
  * route, so it is our real <NotFound> page (Navbar + illustration + Footer) and
  * still boots the SPA.
  *
- * EXCLUDED — see EXCLUDED_ROUTES below. /wall-of-gratitude is a dev-only route
- * (gated by import.meta.env.DEV in src/routes.tsx); it is not in the production
- * bundle at all, so there is nothing to prerender and a prod request for it
- * falls through to dist/404.html like any other unmatched path.
+ * Wall of Gratitude is preview-only. It receives a static HTML file only when
+ * Vercel is building a Preview deployment.
  *
  * The rendered <body> markup is discarded: this stays a client-rendered SPA,
  * and the goal is correct meta for non-JS scrapers (Slack, WhatsApp, iMessage,
@@ -44,17 +42,21 @@ const template = await readFile(path.join(distDir, "index.html"), "utf8");
 
 /**
  * Static routes to prerender besides "/". Keep in sync with src/routes.tsx —
- * every declared <Route> with a fixed path EXCEPT those in EXCLUDED_ROUTES and
- * the wildcard "*". Dynamic /events/:slug is expanded from ALL_EVENTS below.
+ * every declared <Route> with a fixed path except the wildcard "*". The
+ * preview-only Wall of Gratitude route is added below when VERCEL_ENV=preview.
+ * Dynamic /events/:slug is expanded from ALL_EVENTS below.
  */
-const STATIC_ROUTES = ["/about", "/events", "/get-involved", "/faq", "/privacy"];
+const STATIC_ROUTES = [
+  "/about",
+  "/events",
+  "/get-involved",
+  "/faq",
+  "/privacy",
+];
 
-/**
- * Routes that must NEVER receive a static file. /wall-of-gratitude is dev-only
- * (see src/routes.tsx) and absent from the production build; listed here
- * explicitly by path — not just omitted — and enforced by the guard below.
- */
-const EXCLUDED_ROUTES = ["/wall-of-gratitude"];
+if (process.env.VERCEL_ENV === "preview") {
+  STATIC_ROUTES.push("/wall-of-gratitude");
+}
 
 /**
  * A path that matches no real route, so <StaticRouter> falls to the "*" route
@@ -81,15 +83,6 @@ const routes = [
   })),
   { url: NOT_FOUND_PROBE, out: "404.html", body: true },
 ];
-
-// Guard: refuse to run if an excluded route ever leaks into the list.
-const leaked = routes.filter((r) => EXCLUDED_ROUTES.includes(r.url));
-if (leaked.length > 0) {
-  console.error(
-    `prerender: excluded route(s) present in list: ${leaked.map((r) => r.url).join(", ")} - aborting.`,
-  );
-  process.exit(1);
-}
 
 /** Pull the SEO head tags out of the server-rendered markup for one route. */
 function extractHead(html) {
