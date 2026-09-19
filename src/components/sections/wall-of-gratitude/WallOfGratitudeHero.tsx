@@ -37,7 +37,7 @@ export default function WallOfGratitudeHero() {
             loading="eager"
             fetchPriority="high"
             decoding="async"
-            className="kwt-animate-fade-up mx-auto h-auto w-full max-w-sm lg:max-w-md"
+            className="kwt-animate-fade-up mx-auto h-auto w-full max-w-sm opacity-80 lg:max-w-md"
           />
         </div>
       </div>

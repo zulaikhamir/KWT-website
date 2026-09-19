@@ -15,7 +15,7 @@ function safeWebsite(value?: string) {
   }
 }
 
-/** Logo-led card for organisations supporting the community. */
+/** Floating logo for organisations supporting the community. */
 export default function CommunitySponsorCard({ sponsor }: CommunitySponsorCardProps) {
   const website = safeWebsite(sponsor.website);
   const logo = sponsor.logo ? (
@@ -31,23 +31,19 @@ export default function CommunitySponsorCard({ sponsor }: CommunitySponsorCardPr
   );
 
   return (
-    <article className="surface-card surface-card-interactive group relative flex min-h-52 flex-col items-center overflow-hidden bg-linear-to-br from-white to-[var(--color-accent)]/25 p-5 text-center">
-      <div aria-hidden="true" className="absolute -right-8 -top-8 size-24 rounded-full bg-[var(--color-accent)]/45" />
-      <div aria-hidden="true" className="absolute inset-x-0 top-4 flex items-center justify-center">
-        <span className="h-px w-3/5 bg-linear-to-r from-transparent via-[var(--color-primary)]/18 to-transparent" />
-      </div>
+    <article className="group flex min-h-52 flex-col items-center justify-center p-5 text-center">
       {website ? (
         <a
           href={website}
           target="_blank"
           rel="noreferrer noopener"
           aria-label={`Visit ${sponsor.name} website`}
-          className="relative mt-3 flex h-28 w-28 items-center justify-center rounded-2xl border border-[var(--color-primary)]/10 bg-white p-5 shadow-[0_10px_24px_-14px_rgba(27,42,82,0.32)] transition-transform duration-300 group-hover:-translate-y-1 group-hover:rotate-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/30 motion-reduce:transition-none"
+          className="relative flex h-28 w-40 items-center justify-center p-3 transition-transform duration-300 group-hover:-translate-y-1 group-hover:rotate-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/30 motion-reduce:transition-none"
         >
           {logo}
         </a>
       ) : (
-        <div className="relative mt-3 flex h-28 w-28 items-center justify-center rounded-2xl border border-[var(--color-primary)]/10 bg-white p-5 shadow-[0_10px_24px_-14px_rgba(27,42,82,0.32)]">
+        <div className="relative flex h-28 w-40 items-center justify-center p-3">
           {logo}
         </div>
       )}

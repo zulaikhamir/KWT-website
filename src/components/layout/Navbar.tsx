@@ -10,7 +10,9 @@ const navLinks = [
   { label: "Home",              to: "/" },
   { label: "About",             to: "/about" },
   { label: "Events",            to: "/events" },
-  { label: "Wall of Gratitude", to: "/wall-of-gratitude" },
+  ...(import.meta.env.DEV || import.meta.env.VITE_VERCEL_ENV === "preview"
+    ? [{ label: "Wall of Gratitude", to: "/wall-of-gratitude" }]
+    : []),
   { label: "FAQs",              to: "/faq" },
 ];
 
