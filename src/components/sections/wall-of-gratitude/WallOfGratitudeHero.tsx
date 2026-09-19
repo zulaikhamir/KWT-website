@@ -29,7 +29,7 @@ export default function WallOfGratitudeHero() {
           </div>
 
           <img
-            src="/illustrations/wall-of-gratitude-hero.png"
+            src="/illustrations/wall-of-gratitude-hero.webp"
             alt=""
             aria-hidden="true"
             width={408}
