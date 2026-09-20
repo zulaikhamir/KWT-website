@@ -129,7 +129,7 @@ export const ALL_EVENTS: EventCardData[] = [
     dateShort: "OCT 10, 2026",
     dateISO: "2026-10-10",
     category: "Resume Review",
-    title: "Resume Review with KWT",
+    title: "Make Your Resume Stand Out",
     description:
       "Get practical feedback on your resume and learn how to present your experience clearly for your next tech opportunity.",
     format: "Virtual",
