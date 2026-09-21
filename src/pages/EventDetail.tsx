@@ -17,6 +17,7 @@ import SEO from "@/components/shared/SEO";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import EventCard, { type EventCardData } from "@/components/shared/EventCard";
 import { ALL_EVENTS, findEventBySlug, isEventPast } from "@/data/events";
+import { siteUrl } from "@/config/site";
 import { cn } from "@/lib/utils";
 
 // ─── Format icon map (mirrors EventCard) ─────────────────────────────────────
@@ -432,7 +433,7 @@ export default function EventDetail() {
         <SEO
           title="Event Not Found"
           description="The event you're looking for doesn't exist or may have been removed."
-          url={`https://kwtcommunity.org/events/${slug}`}
+          url={siteUrl(`/events/${slug}`)}
         />
         <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4 px-6 py-16 text-center">
           <h1 className="heading text-[var(--color-primary)]">Event not found</h1>
@@ -458,7 +459,8 @@ export default function EventDetail() {
       <SEO
         title={event.title}
         description={event.description}
-        url={`https://kwtcommunity.org/events/${event.slug}`}
+        url={siteUrl(`/events/${event.slug}`)}
+        image={event.image}
         type="article"
         article={{
           publishedTime: event.dateISO,

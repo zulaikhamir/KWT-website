@@ -1,5 +1,7 @@
 import { Helmet } from "react-helmet-async";
 
+import { SITE_ORIGIN } from "@/config/site";
+
 export interface SEOProps {
   /**
    * Page title. Will be appended with " | KWT" unless `noTitleSuffix` is true.
@@ -68,7 +70,7 @@ export interface SEOProps {
  * <SEO
  *   title="About Us"
  *   description="Learn about KWT's mission to empower Kashmiri women in technology."
- *   url="https://kwtcommunity.org/about"
+ *   url="https://kashmiriwomenintech.org/about"
  * />
  * ```
  */
@@ -87,10 +89,11 @@ export default function SEO({
   const defaultKeywords = "Kashmiri women in tech, women in technology, tech community, Kashmir, mentorship, jobs, internships, networking";
   const finalKeywords = keywords ? `${keywords}, ${defaultKeywords}` : defaultKeywords;
 
-  // Ensure image URL is absolute
-  const absoluteImageUrl = image.startsWith("http") 
-    ? image 
-    : `${window.location.origin}${image}`;
+  // Ensure image URL is absolute. Uses a fixed origin (not window.location)
+  // so the value is identical at build-time prerender and in the browser.
+  const absoluteImageUrl = image.startsWith("http")
+    ? image
+    : `${SITE_ORIGIN}${image}`;
 
   return (
     <Helmet>

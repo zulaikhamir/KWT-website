@@ -71,7 +71,7 @@ export default function MyPage() {
       <SEO
         title="My Page"
         description="A description of my page for search engines."
-        url="https://kwtcommunity.org/my-page"
+        url="https://kashmiriwomenintech.org/my-page"
       />
       {/* Page content */}
     </>
@@ -84,7 +84,7 @@ export default function MyPage() {
 <SEO
   title={event.title}
   description={event.description}
-  url={`https://kwtcommunity.org/events/${event.slug}`}
+  url={`https://kashmiriwomenintech.org/events/${event.slug}`}
   type="article"
   article={{
     publishedTime: event.dateISO,
@@ -187,7 +187,7 @@ Then use any of the above methods on the preview server.
    - Server-Side Rendering (SSR) with a framework like Next.js
    - Static Site Generation (SSG)
    - Pre-rendering service like Prerender.io
-3. **Production URLs:** Update all `https://kwtcommunity.org` URLs when deploying to production
+3. **Production URLs:** Update all `https://kashmiriwomenintech.org` URLs when deploying to production
 4. **OG Image Requirements:**
    - Recommended size: 1200x630px
    - Format: PNG or JPG
