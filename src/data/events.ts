@@ -6,7 +6,6 @@ import aiCareerQaImage from "@/assets/images/events/ai-career-community-qa.webp"
 import professionalNetworkingImage from "@/assets/images/events/professional-communication-networking.webp";
 import resumeReviewImage from "@/assets/images/events/resume-review.webp";
 
-
 export function isEventPast(dateISO: string): boolean {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
@@ -19,9 +18,7 @@ export function isEventPast(dateISO: string): boolean {
 /**
  * Look up a single event by its slug.
  */
-export function findEventBySlug(
-  slug: string,
-): EventCardData | undefined {
+export function findEventBySlug(slug: string): EventCardData | undefined {
   return ALL_EVENTS.find((event) => event.slug === slug);
 }
 
@@ -128,24 +125,24 @@ export const ALL_EVENTS: EventCardData[] = [
 
   {
     // Upcoming Event
-    slug: "2026-09-20-resume-review-session",
-    dateShort: "SEP 20, 2026",
-    dateISO: "2026-09-20",
+    slug: "2026-10-10-resume-review-session",
+    dateShort: "OCT 10, 2026",
+    dateISO: "2026-10-10",
     category: "Resume Review",
-    title: "Resume Review with KWT",
+    title: "Make Your Resume Stand Out",
     description:
       "Get practical feedback on your resume and learn how to present your experience clearly for your next tech opportunity.",
     format: "Virtual",
     image: resumeReviewImage,
-    time: "6:00 PM IST",
+    time: "7:30 PM IST",
     duration: "1 hour",
     note: "Register to receive the joining details before the event.",
     aboutLabel: "About this session",
     people: [
       {
-        name: "Name(soon to be revealed)",
+        name: "Nida Noor",
         role: "Resume Reviewer",
-        linkedin: "REPLACE_WITH_LINKEDIN_URL",
+        linkedin: "https://www.linkedin.com/in/nidanoor12/",
         bio: "Experienced professional providing practical resume feedback and career guidance.",
       },
     ],
