@@ -1,6 +1,11 @@
-import PersonCard from "@/components/sections/wall-of-gratitude/PersonCard";
-import SponsorCard from "@/components/sections/wall-of-gratitude/SponsorCard";
-import PageIntro from "@/components/shared/PageIntro";
+import ContributorCarousel from "@/components/sections/wall-of-gratitude/ContributorCarousel";
+import CommunitySponsorCard from "@/components/sections/wall-of-gratitude/CommunitySponsorCard";
+import MentorCard from "@/components/sections/wall-of-gratitude/MentorCard";
+import RecognitionCarousel from "@/components/sections/wall-of-gratitude/RecognitionCarousel";
+import SpeakerCard from "@/components/sections/wall-of-gratitude/SpeakerCard";
+import MemberSpotlight from "@/components/sections/wall-of-gratitude/MemberSpotlight";
+import WallOfGratitudeHero from "@/components/sections/wall-of-gratitude/WallOfGratitudeHero";
+import SEO from "@/components/shared/SEO";
 import SectionHeading from "@/components/shared/SectionHeading";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import PageContainer from "@/components/layout/PageContainer";
@@ -9,18 +14,18 @@ import {
   mentors,
   speakers,
   sponsors,
-  volunteers,
+  memberSpotlights,
 } from "@/data/wall-of-gratitude";
 
 export default function WallOfGratitude() {
   return (
     <PageContainer>
-      {/* Page Introduction */}
-      <PageIntro
-        eyebrow="Wall of Gratitude"
-        title="Thank you to everyone who helps build KWT."
-        description="KWT would not be what it is without the time, care, knowledge, and generosity of every mentor, volunteer, speaker, sponsor, and contributor who helps our community grow."
+      <SEO
+        title="Wall of Gratitude"
+        description="Meet the mentors, members, speakers, sponsors, and contributors whose time and generosity help KWT grow."
+        url="https://kwtcommunity.org/wall-of-gratitude"
       />
+      <WallOfGratitudeHero />
 
       {/* Mentors section */}
       <SectionWrapper id="mentors" tone="surface">
@@ -31,27 +36,23 @@ export default function WallOfGratitude() {
           className="mb-10"
         />
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
-          {mentors.map((person) => (
-            <PersonCard key={person.id} person={person} />
-          ))}
-        </div>
+        <RecognitionCarousel
+          items={mentors}
+          ariaLabel="Mentors"
+          itemClassName="w-[74%] sm:w-[calc((100%-2.5rem)/3)] lg:w-[calc((100%-5rem)/5)]"
+          renderItem={(person) => <MentorCard person={person} />}
+        />
       </SectionWrapper>
 
-      {/* Volunteers section */}
-      <SectionWrapper id="volunteers" tone="default">
+      {/* Member spotlight section */}
+      <SectionWrapper id="member-spotlight" tone="default">
         <SectionHeading
-          title="Volunteers"
-          description="People who make KWT events, initiatives, and day-to-day activities possible."
+          title="Member Spotlight"
+          description="Message from the members of KWT."
           align="center"
           className="mb-10"
         />
-
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
-          {volunteers.map((person) => (
-            <PersonCard key={person.id} person={person} />
-          ))}
-        </div>
+        <MemberSpotlight items={memberSpotlights} />
       </SectionWrapper>
 
       {/* Speakers section */}
@@ -63,11 +64,12 @@ export default function WallOfGratitude() {
           className="mb-10"
         />
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
-          {speakers.map((person) => (
-            <PersonCard key={person.id} person={person} />
-          ))}
-        </div>
+        <RecognitionCarousel
+          items={speakers}
+          ariaLabel="Speakers"
+          itemClassName="w-[74%] sm:w-[calc((100%-2.5rem)/3)] lg:w-[calc((100%-5rem)/5)]"
+          renderItem={(person) => <SpeakerCard person={person} />}
+        />
       </SectionWrapper>
 
       {/* Sponsors section */}
@@ -79,11 +81,12 @@ export default function WallOfGratitude() {
           className="mb-10"
         />
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
-          {sponsors.map((sponsor) => (
-            <SponsorCard key={sponsor.id} sponsor={sponsor} />
-          ))}
-        </div>
+        <RecognitionCarousel
+          items={sponsors}
+          ariaLabel="Sponsors"
+          itemClassName="w-[74%] sm:w-[calc((100%-2.5rem)/3)] lg:w-[calc((100%-5rem)/5)]"
+          renderItem={(sponsor) => <CommunitySponsorCard sponsor={sponsor} />}
+        />
       </SectionWrapper>
 
       {/* Contributors section */}
@@ -95,11 +98,7 @@ export default function WallOfGratitude() {
           className="mb-10"
         />
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
-          {contributors.map((person) => (
-            <PersonCard key={person.id} person={person} />
-          ))}
-        </div>
+        <ContributorCarousel contributors={contributors} />
       </SectionWrapper>
     </PageContainer>
   );
