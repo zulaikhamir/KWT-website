@@ -83,6 +83,14 @@ const team: TeamMember[] = [
     image: imgHadiya,
     linkedinUrl: "https://linkedin.com/in/hadiya-mushtaq-9379282a2",
   },
+  {
+    name: "Sheikh Faiza",
+    role: "Partnership and Opportunities",
+    bio: [
+      "Connects KWT with organizations, communities, and opportunities that support its growth.",
+    ],
+    linkedinUrl: "https://www.linkedin.com/in/sheikh-faiza-585279296",
+  }
 ];
 
 // ─── TeamCard ─────────────────────────────────────────────────────────────────
