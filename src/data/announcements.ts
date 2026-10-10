@@ -1,4 +1,3 @@
-
 /** Kind of update — drives the pill label and its icon in the banner. */
 export type AnnouncementTag =
   | "New"
@@ -34,15 +33,15 @@ export const MAX_VISIBLE_ANNOUNCEMENTS = 4;
 
 export const ANNOUNCEMENTS: Announcement[] = [
   {
-    id: "resume-review-registration-open",
-    dateISO: "2026-08-25",
-    tag: "Event",
-    title: "Resume Review with KWT",
-    body: "Registration is open for our resume review session on 20 September at 6:00 PM IST.",
-    cta: {
-      label: "Register",
-      href: "/events/2026-09-20-resume-review-session",
-    },
+    id: "resume-review-recap",
+    dateISO: "2026-10-10",
+    tag: "Recap",
+    title: "Make your resume stand out",
+    body: "This session provided valuable insights and feedback for participants.",
+    // cta: {
+    //   label: "View details",
+    //   href: "/events/2026-10-10-resume-review-session",
+    // },
   },
 
   {
@@ -71,8 +70,7 @@ export const ANNOUNCEMENTS: Announcement[] = [
 export function getLatestAnnouncements(
   limit = MAX_VISIBLE_ANNOUNCEMENTS,
 ): Announcement[] {
-  return ANNOUNCEMENTS
-    .filter((item) => item.published !== false)
+  return ANNOUNCEMENTS.filter((item) => item.published !== false)
     .sort((a, b) => b.dateISO.localeCompare(a.dateISO))
     .slice(0, limit);
 }

@@ -124,9 +124,9 @@ export const ALL_EVENTS: EventCardData[] = [
   },
 
   {
-    // Upcoming Event
+    // Event 05
     slug: "2026-10-10-resume-review-session",
-    dateShort: "OCT 10, 2026",
+    dateShort: "OCT 10",
     dateISO: "2026-10-10",
     category: "Resume Review",
     title: "Make Your Resume Stand Out",
@@ -146,7 +146,7 @@ export const ALL_EVENTS: EventCardData[] = [
         bio: "Experienced professional providing practical resume feedback and career guidance.",
       },
     ],
-    href: "https://tally.so/r/ja81gR",
+    href: "/events/2026-10-10-resume-review-session",
   },
 ];
 
