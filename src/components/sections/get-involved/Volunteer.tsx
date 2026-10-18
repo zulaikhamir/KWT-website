@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { CalendarCheck, Megaphone, Lifebuoy, Books } from "@phosphor-icons/react";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import CtaLink from "@/components/shared/CtaLink";
@@ -26,6 +27,8 @@ const areas = [
 ];
 
 export default function Volunteer() {
+  const [showOpenRoles, setShowOpenRoles] = useState(false);
+
   return (
     <SectionWrapper id="volunteer" divided>
       <div className="grid gap-x-16 gap-y-10 lg:grid-cols-[0.9fr_1.1fr]">
@@ -45,15 +48,41 @@ export default function Volunteer() {
   you can still fill out the volunteer form and tell us what you would like to
   contribute.
 </p>
+<div className="mt-9 flex flex-col items-start gap-3">
           <CtaLink
             href="https://tally.so/r/44leEO"
             target="_blank"
             rel="noreferrer noopener"
             variant="outline"
-            className="mt-9"
           >
             Express Interest
           </CtaLink>
+          <CtaLink
+            href="#open-volunteer-roles"
+            variant="outline"
+            aria-expanded={showOpenRoles}
+            aria-controls="open-volunteer-roles"
+            onClick={(event) => {
+              event.preventDefault();
+              setShowOpenRoles(true);
+            }}
+          >
+            View Open Roles
+          </CtaLink>
+</div>
+          {showOpenRoles && (
+            <div id="open-volunteer-roles" className="mt-10 scroll-mt-32">
+              <p className="eyebrow">Currently open</p>
+              <ul className="mt-4 space-y-3 text-[0.9375rem] leading-7 text-[var(--color-secondary)]">
+                <li className="rounded-xl border border-hairline bg-[var(--color-background)] px-4 py-3">
+                  Partnership
+                </li>
+                <li className="rounded-xl border border-hairline bg-[var(--color-background)] px-4 py-3">
+                  Member Outreach
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
 
         {/* Right column — contribution areas */}
