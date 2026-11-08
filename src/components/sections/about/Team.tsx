@@ -14,8 +14,8 @@ import SectionHeading from "@/components/shared/SectionHeading";
 import imgZulaikha  from "@/assets/team/zulaikha-founder.webp";
 import imgUzma      from "@/assets/team/uzma-techlead.webp";
 import imgSaatiya   from "@/assets/team/Saathiya-commex.webp";
-import imgHazika    from "@/assets/team/Hazika-comm-op.webp";
-import imgHadiya    from "@/assets/team/Hadiya-website.webp";
+// import imgHazika    from "@/assets/team/Hazika-comm-op.webp";
+// import imgHadiya    from "@/assets/team/Hadiya-website.webp";
 
 // ─── Team data ────────────────────────────────────────────────────────────────
 interface TeamMember {
