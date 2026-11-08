@@ -14,8 +14,8 @@ import SectionHeading from "@/components/shared/SectionHeading";
 import imgZulaikha  from "@/assets/team/zulaikha-founder.webp";
 import imgUzma      from "@/assets/team/uzma-techlead.webp";
 import imgSaatiya   from "@/assets/team/Saathiya-commex.webp";
-import imgHazika    from "@/assets/team/Hazika-comm-op.webp";
-import imgHadiya    from "@/assets/team/Hadiya-website.webp";
+// import imgHazika    from "@/assets/team/Hazika-comm-op.webp";
+// import imgHadiya    from "@/assets/team/Hadiya-website.webp";
 
 // ─── Team data ────────────────────────────────────────────────────────────────
 interface TeamMember {
@@ -56,41 +56,41 @@ const team: TeamMember[] = [
     image: imgSaatiya,
     linkedinUrl: "https://www.linkedin.com/in/saatiya-shabeer-3b8111295",
   },
-  {
-    name: "Hazika Shafi",
-    role: "Community Operations",
-    bio: [
-      "Supports KWT’s community operations, coordination, documentation, and day-to-day organization.",
-    ],
-    image: imgHazika,
-    linkedinUrl: "https://linkedin.com/in/hazika-shafi-170892321/",
-  },
-  {
-    name: "Tuhoor Fatima",
-    role: "Social Media",
-    bio: [
-      "Leads KWT’s social media presence, content planning, and communication across platforms.",
-    ],
-    // No photo yet — the card renders the ghost avatar.
-    linkedinUrl: "https://www.linkedin.com/in/tahoorfaatima",
-  },
-  {
-    name: "Hadiya Mustaq",
-    role: "Website",
-    bio: [
-      "Contributes to KWT’s website development, content organization, and digital presence.",
-    ],
-    image: imgHadiya,
-    linkedinUrl: "https://linkedin.com/in/hadiya-mushtaq-9379282a2",
-  },
-  {
-    name: "Sheikh Faiza",
-    role: "Partnership and Opportunities",
-    bio: [
-      "Connects KWT with organizations, communities, and opportunities that support its growth.",
-    ],
-    linkedinUrl: "https://www.linkedin.com/in/sheikh-faiza-585279296",
-  }
+  // {
+  //   name: "Hazika Shafi",
+  //   role: "Community Operations",
+  //   bio: [
+  //     "Supports KWT’s community operations, coordination, documentation, and day-to-day organization.",
+  //   ],
+  //   image: imgHazika,
+  //   linkedinUrl: "https://linkedin.com/in/hazika-shafi-170892321/",
+  // },
+  // {
+  //   name: "Tuhoor Fatima",
+  //   role: "Social Media",
+  //   bio: [
+  //     "Leads KWT’s social media presence, content planning, and communication across platforms.",
+  //   ],
+  //   // No photo yet — the card renders the ghost avatar.
+  //   linkedinUrl: "https://www.linkedin.com/in/tahoorfaatima",
+  // },
+  // {
+  //   name: "Hadiya Mustaq",
+  //   role: "Website",
+  //   bio: [
+  //     "Contributes to KWT’s website development, content organization, and digital presence.",
+  //   ],
+  //   image: imgHadiya,
+  //   linkedinUrl: "https://linkedin.com/in/hadiya-mushtaq-9379282a2",
+  // },
+  // {
+  //   name: "Sheikh Faiza",
+  //   role: "Partnership and Opportunities",
+  //   bio: [
+  //     "Connects KWT with organizations, communities, and opportunities that support its growth.",
+  //   ],
+  //   linkedinUrl: "https://www.linkedin.com/in/sheikh-faiza-585279296",
+  // }
 ];
 
 // ─── TeamCard ─────────────────────────────────────────────────────────────────
